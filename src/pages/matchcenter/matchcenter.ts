@@ -22,7 +22,7 @@ import {
   InAppBrowser,
   InAppBrowserOptions
 } from "@ionic-native/in-app-browser";
-import { GoogleAnalytics } from "@ionic-native/google-analytics";
+// import { GoogleAnalytics } from "@ionic-native/google-analytics";
 import { Content } from "ionic-angular";
 import * as moment from "moment";
 import { PopoverController } from "ionic-angular";
@@ -31,6 +31,7 @@ import { ProductListProvider } from "../../providers/product-list/product-list";
 import { LocalDataProvider } from "./../../providers/local-data/local-data";
 import { DomSanitizer } from "@angular/platform-browser";
 import { Storage } from '@ionic/storage';
+import { FirebaseAnalyticsProvider } from "../../providers/firebase-analytics/firebase-analytics";
 
 /**
  * Generated class for the MatchcenterPage page.
@@ -145,7 +146,7 @@ export class MatchcenterPage {
   constructor(
     private inapp: InAppBrowser,
     public plt: Platform,
-    public ga: GoogleAnalytics,
+    public ga: FirebaseAnalyticsProvider,
     public localData: LocalDataProvider,
     public popoverCtrl: PopoverController,
     private alertCtrl: AlertController,

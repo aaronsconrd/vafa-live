@@ -1,12 +1,13 @@
 import { Component, ViewChild, NgZone, ElementRef } from '@angular/core';
-import { IonicPage, NavController, NavParams, Slides, ModalController, Content,Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Slides, ModalController, Content, Platform } from 'ionic-angular';
 import { AjaxProvider } from '../../providers/ajax/ajax';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
 import { Events } from 'ionic-angular';
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
+// import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { Storage } from '@ionic/storage';
+import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
 
 /**
  * Generated class for the PostmatchPage page.
@@ -40,20 +41,20 @@ export class PostmatchPage {
   scrollTop: any;
   isLogin: boolean = false;
   constructor(private zone: NgZone, private inapp: InAppBrowser,
-    public events: Events,public plt:Platform,public ga:GoogleAnalytics,
+    public events: Events, public plt: Platform, public ga: FirebaseAnalyticsProvider,
     private youtube: YoutubeVideoPlayer, private modalCtrl: ModalController,
     public ajax: AjaxProvider, public cmnfun: CommomfunctionProvider,
     public navCtrl: NavController, public navParams: NavParams,
     public storage: Storage) {
     this.plt.ready().then(() => {
       this.ga.startTrackerWithId('UA-118996199-1')
-   .then(() => {
-     console.log('Google analytics is ready now');
-        this.ga.trackView('Post Match');
-        this.ga.trackTiming('Post Match', 1000, 'Duration', 'Time');
-   })
-   .catch(e => console.log('Error starting GoogleAnalytics', e));
-       })
+        .then(() => {
+          console.log('Google analytics is ready now');
+          this.ga.trackView('Post Match');
+          this.ga.trackTiming('Post Match', 1000, 'Duration', 'Time');
+        })
+        .catch(e => console.log('Error starting GoogleAnalytics', e));
+    })
   }
   scrollToTop() {
     this.content.scrollToTop();
@@ -83,11 +84,11 @@ export class PostmatchPage {
     }
   }
 
-    // path reset function
-    cutPath(url){
-      if(url)
+  // path reset function
+  cutPath(url) {
+    if (url)
       return url.substring(12);
-    }
+  }
 
 
   ionViewDidEnter() {
@@ -147,29 +148,29 @@ export class PostmatchPage {
           //     }
           //   });
           // } else {
-            this.storage.get('UserTeamData').then((val) => {
-              if (val) {
-                let cntr = 0;
-                console.log("From storage:", val.selectedcompetition);
-                let storedId = val.selectedcompetition.competitions_name;
-                this.comptitionlists.forEach(element => {
-                  console.log(element.competition_id);
-                  if (storedId == element.competitions_name && val.selectedcompetition.seasons[0].manual_score_recording != "2") {
-                    this.selectables = element.competitions_name;
-                    this.competition_id = element.competition_id;
-                    this.getPostMatch(element.competition_id);
-                  }else if (val.selectedcompetition.seasons[0].manual_score_recording == "2"  && cntr < 1) {
-                    this.selectables = this.comptitionlists[0].competitions_name;
-                    this.competition_id = this.comptitionlists[0].competition_id;
-                    this.getPostMatch(this.competition_id);
-                  }
-                });
-              } else {
-                this.selectables = this.comptitionlists[0].competitions_name;
-                this.competition_id = this.comptitionlists[0].competition_id;
-                this.getPostMatch(this.competition_id);
-              }
-            });
+          this.storage.get('UserTeamData').then((val) => {
+            if (val) {
+              let cntr = 0;
+              console.log("From storage:", val.selectedcompetition);
+              let storedId = val.selectedcompetition.competitions_name;
+              this.comptitionlists.forEach(element => {
+                console.log(element.competition_id);
+                if (storedId == element.competitions_name && val.selectedcompetition.seasons[0].manual_score_recording != "2") {
+                  this.selectables = element.competitions_name;
+                  this.competition_id = element.competition_id;
+                  this.getPostMatch(element.competition_id);
+                } else if (val.selectedcompetition.seasons[0].manual_score_recording == "2" && cntr < 1) {
+                  this.selectables = this.comptitionlists[0].competitions_name;
+                  this.competition_id = this.comptitionlists[0].competition_id;
+                  this.getPostMatch(this.competition_id);
+                }
+              });
+            } else {
+              this.selectables = this.comptitionlists[0].competitions_name;
+              this.competition_id = this.comptitionlists[0].competition_id;
+              this.getPostMatch(this.competition_id);
+            }
+          });
           // }
 
 
@@ -181,9 +182,9 @@ export class PostmatchPage {
     })
   }
 
-  getPostMatch(comp){
+  getPostMatch(comp) {
 
-    console.log(comp+':'+'comp')
+    console.log(comp + ':' + 'comp')
     this.ajax.postMethod('get-compition-post-match', {
       accessKey: 'QzEnDyPAHT12asHb4On6HH2016',
       competition_id: this.competition_id
@@ -227,34 +228,34 @@ export class PostmatchPage {
     let modal = this.modalCtrl.create('CommommodelPage', { items: this.comptitionlists });
     let me = this;
     modal.onDidDismiss(data => {
-      if(data){
-      this.postMatchData = [];
-      this.cmnfun.showLoader('Please wait...');
-      this.slides.update();
-      this.selectables = data.competitions_name
-      this.competition_id = data.competition_id
-      this.ajax.postMethod('get-compition-post-match', {
-        accessKey: 'QzEnDyPAHT12asHb4On6HH2016',
-        competition_id: this.competition_id
-      }).subscribe((res) => {
-        this.postMatchData = res;
-        console.log(this.postMatchData);
-        this.scrollToTop();
-        if (this.postMatchData.code == 2) {
+      if (data) {
+        this.postMatchData = [];
+        this.cmnfun.showLoader('Please wait...');
+        this.slides.update();
+        this.selectables = data.competitions_name
+        this.competition_id = data.competition_id
+        this.ajax.postMethod('get-compition-post-match', {
+          accessKey: 'QzEnDyPAHT12asHb4On6HH2016',
+          competition_id: this.competition_id
+        }).subscribe((res) => {
+          this.postMatchData = res;
+          console.log(this.postMatchData);
+          this.scrollToTop();
+          if (this.postMatchData.code == 2) {
+            this.cmnfun.hideLoader();
+            // this.cmnfun.showLoading('Post Match Not Found!');
+          } else {
+            this.headerAdv = this.postMatchData.headerAdv;
+            this.footerAdv = this.postMatchData.footerAdv;
+            this.headerimage = this.postMatchData.headerAdv[0].ad_image;
+            this.headerurl = this.postMatchData.headerAdv[0].ad_url;
+            this.cmnfun.hideLoader();
+          }
+        }, error => {
+          this.cmnfun.showToast('Some thing Unexpected happen please try again');
           this.cmnfun.hideLoader();
-          // this.cmnfun.showLoading('Post Match Not Found!');
-        } else {
-          this.headerAdv = this.postMatchData.headerAdv;
-          this.footerAdv = this.postMatchData.footerAdv;
-          this.headerimage = this.postMatchData.headerAdv[0].ad_image;
-          this.headerurl = this.postMatchData.headerAdv[0].ad_url;
-          this.cmnfun.hideLoader();
-        }
-      }, error => {
-        this.cmnfun.showToast('Some thing Unexpected happen please try again');
-        this.cmnfun.hideLoader();
-      })
-    }
+        })
+      }
     });
     modal.present();
   }

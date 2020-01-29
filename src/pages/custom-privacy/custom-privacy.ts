@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage, NavController, Platform } from 'ionic-angular';
 import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
 // import { DomSanitizer } from '@angular/platform-browser';
 // import { GoogleAnalytics } from '@ionic-native/google-analytics';
@@ -23,24 +23,22 @@ export class CustomPrivacyPage {
     public navCtrl: NavController,
     // private sanitize: DomSanitizer,
     // public navParams: NavParams,
-    // public plt: Platform,
+    public plt: Platform,
     // public ga: GoogleAnalytics
-    public firebaselogger: FirebaseAnalyticsProvider
+    public ga: FirebaseAnalyticsProvider
   ) {
-    // this.plt.ready().then(() => {
-    //   this.ga.startTrackerWithId('UA-118996199-1')
-    //     .then(() => {
-    //       console.log('Google analytics is ready now');
-    //       this.ga.trackView('Privacy Policy');
-    //     })
-    //     .catch(e => console.log('Error starting GoogleAnalytics', e));
-    // });
-    this.firebaselogger.trackView('Privacy Policy');
+    this.plt.ready().then(() => {
+      this.ga.startTrackerWithId('UA-118996199-1')
+        .then(() => {
+          console.log('Google analytics is ready now');
+          this.ga.trackView('Privacy Policy');
+        })
+        .catch(e => console.log('Error starting GoogleAnalytics', e));
+    });
   }
 
   ionViewDidLoad() {
-    // this.ga.trackView('Privacy Policy Page');
-    this.firebaselogger.trackView('Privacy Policy Page');
+    this.ga.trackView('Privacy Policy Page');
     console.log('ionViewDidLoad CustomPrivacyPage');
   }
 

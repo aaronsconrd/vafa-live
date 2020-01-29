@@ -5,10 +5,11 @@ import { AjaxProvider } from '../../providers/ajax/ajax';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
 import { Events } from 'ionic-angular';
 import { LocalDataProvider } from '../../providers/local-data/local-data';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
+// import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { NewaccountPage } from '../newaccount/newaccount';
 import { HomePage } from '../../pages/home/home';
 import { InnermatchcenterPage } from './../innermatchcenter/innermatchcenter';
+import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
 
 @IonicPage()
 @Component({
@@ -35,7 +36,7 @@ export class SignUpPage {
   valid: any = /^\({0,1}((0|\+61)(2|4|3|7|8)){0,1}\){0,1}( |-){0,1}[0-9]{2}( |-){0,1}[0-9]{2}( |-){0,1}[0-9]{1}( |-){0,1}[0-9]{3}$/;
   emailValid: any = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
   constructor(public events: Events, public localData: LocalDataProvider,
-    public ajax: AjaxProvider, public cmnfun: CommomfunctionProvider, public plt: Platform, public ga: GoogleAnalytics, public navCtrl: NavController, public navParams: NavParams, public Storage: Storage) {
+    public ajax: AjaxProvider, public cmnfun: CommomfunctionProvider, public plt: Platform, public ga: FirebaseAnalyticsProvider, public navCtrl: NavController, public navParams: NavParams, public Storage: Storage) {
     Storage.get('userEmail').then((val) => {
       if (val) {
         this.email = val;
@@ -130,21 +131,20 @@ export class SignUpPage {
         this.Storage.set('FullData', this.fulluserdetails);
         this.localData.StoreData(this.fulluserdetails.webuser);
         this.events.publish('userlogin', 'true1');
-        if(this.localData.LoginTo()=='LandingpagePage'){
+        if (this.localData.LoginTo() == 'LandingpagePage') {
           this.navCtrl.push(this.localData.LoginTo());
-        }else if(this.localData.LoginTo()=='InnermatchcenterPage')
-        {
-          if(this.localData.getBckpage() != '' && this.localData.getBckpage() != undefined){
+        } else if (this.localData.LoginTo() == 'InnermatchcenterPage') {
+          if (this.localData.getBckpage() != '' && this.localData.getBckpage() != undefined) {
             let det = this.localData.getBckdata().details;
             let yr = this.localData.getBckdata().year;
             let pr = this.localData.getBckdata().parent;
-            this.localData.SetBack('','','','');
-            this.navCtrl.push('InnermatchcenterPage', { details: det, year :yr ,stats : true});
+            this.localData.SetBack('', '', '', '');
+            this.navCtrl.push('InnermatchcenterPage', { details: det, year: yr, stats: true });
+          }
+        } else {
+          this.events.publish('gotostats:changed', true);
+          this.navCtrl.setRoot(NewaccountPage);
         }
-      }else{
-        this.events.publish('gotostats:changed', true);
-        this.navCtrl.setRoot(NewaccountPage);
-      }
 
       }, error => {
         this.cmnfun.HideLoading();

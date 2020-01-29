@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { AjaxProvider } from '../../providers/ajax/ajax';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
 import { Events } from 'ionic-angular';
 import { SocialSharing } from '@ionic-native/social-sharing';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
+import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
+// import { GoogleAnalytics } from '@ionic-native/google-analytics';
 /**
  * Generated class for the MatchreportdetailsPage page.
  *
@@ -48,18 +49,18 @@ export class MatchreportdetailsPage {
   away_team_total_score3: any;
   home_team: any;
   away_team: any;
-  constructor(public ajax: AjaxProvider, private socialSharing: SocialSharing,public plt:Platform,public ga:GoogleAnalytics,public cmnfun: CommomfunctionProvider, public events: Events, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public ajax: AjaxProvider, private socialSharing: SocialSharing, public plt: Platform, public ga: FirebaseAnalyticsProvider, public cmnfun: CommomfunctionProvider, public events: Events, public navCtrl: NavController, public navParams: NavParams) {
     this.reportid = navParams.get('repordid');
     this.plt.ready().then(() => {
       this.ga.startTrackerWithId('UA-118996199-1')
-   .then(() => {
-     console.log('Google analytics is ready now');
-        this.ga.trackView('Match Report - Individual');
-        this.ga.trackTiming('Match Report - Individual', 1000, 'Duration', 'Time');
-        // this.ga.trackEvent('Advertisement', 'Viewed', 'MatchReportDetails Page', 1);
-   })
-   .catch(e => console.log('Error starting GoogleAnalytics', e));
-       })
+        .then(() => {
+          console.log('Google analytics is ready now');
+          this.ga.trackView('Match Report - Individual');
+          this.ga.trackTiming('Match Report - Individual', 1000, 'Duration', 'Time');
+          // this.ga.trackEvent('Advertisement', 'Viewed', 'MatchReportDetails Page', 1);
+        })
+        .catch(e => console.log('Error starting GoogleAnalytics', e));
+    })
   }
 
   ionViewDidEnter() {

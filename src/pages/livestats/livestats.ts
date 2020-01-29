@@ -3,7 +3,8 @@ import { IonicPage, NavController, Slides, NavParams,Platform } from 'ionic-angu
 import { Storage } from '@ionic/storage';
 import { HomePage } from '../../pages/home/home';
 import { Events } from 'ionic-angular';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
+import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
+// import { GoogleAnalytics } from '@ionic-native/google-analytics';
 /**
  * Generated class for the LivestatsPage page.
  *
@@ -21,7 +22,7 @@ export class LivestatsPage {
   disableLogin: any;
   isLogin: any;
   userSubscription: any;
-  constructor(public events: Events, public Storage: Storage,public plt:Platform,public ga:GoogleAnalytics, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public events: Events, public Storage: Storage,public plt:Platform,public ga:FirebaseAnalyticsProvider, public navCtrl: NavController, public navParams: NavParams) {
     this.disableLogin = navParams.get('disableLogin');
     this.isLogin = navParams.get('isLogin');
 

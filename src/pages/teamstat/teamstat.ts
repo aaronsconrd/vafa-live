@@ -6,7 +6,8 @@ import { Storage } from '@ionic/storage';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
 import { Searchbar } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
+import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
+// import { GoogleAnalytics } from '@ionic-native/google-analytics';
 @IonicPage()
 @Component({
 	selector: 'page-teamstat',
@@ -61,7 +62,7 @@ export class TeamstatPage {
 		public events: Events,
 		public plt:Platform,
 		private inapp: InAppBrowser,
-		public ga:GoogleAnalytics,
+		public ga:FirebaseAnalyticsProvider,
 		private modalCtrl: ModalController,
 		public cmfn: CommomfunctionProvider,
 		public storage: Storage,

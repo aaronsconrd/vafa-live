@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, Slides } from 'ionic-angular';
+import { NavController, Slides, Platform } from 'ionic-angular';
 import { AjaxProvider } from '../../providers/ajax/ajax';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
 import { Events } from 'ionic-angular';
@@ -23,27 +23,24 @@ export class HomePage {
   // path: any = 'http://54.244.98.247';
   constructor(
     private inapp: InAppBrowser,
-    // public plt: Platform,
+    public plt: Platform,
     // public ga: GoogleAnalytics,
     public events: Events,
     public ajax: AjaxProvider,
     public cmnfun: CommomfunctionProvider,
     public navCtrl: NavController,
-    public firebaselogger: FirebaseAnalyticsProvider) {
+    public ga: FirebaseAnalyticsProvider) {
 
-    // this.plt.ready().then(() => {
-    //   this.ga.startTrackerWithId('UA-118996199-1')
-    //     .then(() => {
-    //       console.log('Google analytics is ready now');
-    //       this.ga.trackView('News');
-    //       // this.ga.trackEvent('Advertisement', 'Viewed', 'News Page', 1);
-    //       this.ga.trackTiming('News', 1000, 'Duration', 'Time');
-    //     })
-    //     .catch(e => console.log('Error starting GoogleAnalytics', e));
-    // })
-
-    this.firebaselogger.trackView('News');
-    this.firebaselogger.trackEvent('Advertisement', { action: 'Viewed', trackEvent: 'News Page' });
+    this.plt.ready().then(() => {
+      this.ga.startTrackerWithId('UA-118996199-1')
+        .then(() => {
+          console.log('Google analytics is ready now');
+          this.ga.trackView('News');
+          // this.ga.trackEvent('Advertisement', 'Viewed', 'News Page', 1);
+          this.ga.trackTiming('News', 1000, 'Duration', 'Time');
+        })
+        .catch(e => console.log('Error starting GoogleAnalytics', e));
+    });
   }
   ionViewWillLeave() {
     this.slides.stopAutoplay();
@@ -94,11 +91,9 @@ export class HomePage {
     this.navCtrl.push('NewsDetailsPage', { newdetails: item });
   }
   goToAddSite(ad_url) {
-    // this.ga.trackEvent('Advertisement', 'Viewed', 'News', 1);
-    this.firebaselogger.trackEvent('Advertisement', { action: 'Viewed', trackEvent: 'News' });
+    this.ga.trackEvent('Advertisement', 'Viewed', 'News', 1);
     const browser = this.inapp.create(ad_url);
   }
-
 
   // path reset function
   cutPath(url) {

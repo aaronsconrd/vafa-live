@@ -4,8 +4,9 @@ import { AjaxProvider } from '../../providers/ajax/ajax';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
 import { Events } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
+// import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { Storage } from '@ionic/storage';
+import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
 
 /**
  * Generated class for the MatchreportPage page.
@@ -36,7 +37,7 @@ export class MatchreportPage {
   //  path:any='http://vafalive.com.au';
   //  path: any = 'http://54.244.98.247';
   path: any = 'https://s3.us-west-2.amazonaws.com/vafas3';
-  constructor(private zone: NgZone, private inapp: InAppBrowser, public plt: Platform, public ga: GoogleAnalytics, public ajax: AjaxProvider, public cmnfun: CommomfunctionProvider, private modalCtrl: ModalController, public events: Events, public navCtrl: NavController, public navParams: NavParams,
+  constructor(private zone: NgZone, private inapp: InAppBrowser, public plt: Platform, public ga: FirebaseAnalyticsProvider, public ajax: AjaxProvider, public cmnfun: CommomfunctionProvider, private modalCtrl: ModalController, public events: Events, public navCtrl: NavController, public navParams: NavParams,
     public storage: Storage) {
     this.plt.ready().then(() => {
       this.ga.startTrackerWithId('UA-118996199-1')

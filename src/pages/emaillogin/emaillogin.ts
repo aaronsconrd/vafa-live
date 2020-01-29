@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, Platform } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { AjaxProvider } from '../../providers/ajax/ajax';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
@@ -32,28 +32,27 @@ export class EmailloginPage {
     public events: Events,
     public alertCtrl: AlertController,
     public cmnfun: CommomfunctionProvider,
-    // public plt: Platform,
-    public ga: GoogleAnalytics,
+    public plt: Platform,
+    // public ga: GoogleAnalytics,
     public navCtrl: NavController,
     public navParams: NavParams,
     public Storage: Storage,
-    public firebaselogger: FirebaseAnalyticsProvider) {
+    public ga: FirebaseAnalyticsProvider) {
 
     this.local = this.localData.getlocalprofile();
     if (this.local) {
       this.user.email = this.local.user_email;
     }
 
-    // this.plt.ready().then(() => {
-    //   this.ga.startTrackerWithId('UA-118996199-1')
-    //     .then(() => {
-    //       console.log('Google analytics is ready now');
-    //       this.ga.trackView('Login');
-    //       this.ga.trackTiming('Login', 1000, 'Duration', 'Time');
-    //     })
-    //     .catch(e => console.log('Error starting GoogleAnalytics', e));
-    // })
-    this.firebaselogger.trackView('Login');
+    this.plt.ready().then(() => {
+      this.ga.startTrackerWithId('UA-118996199-1')
+        .then(() => {
+          console.log('Google analytics is ready now');
+          this.ga.trackView('Login');
+          this.ga.trackTiming('Login', 1000, 'Duration', 'Time');
+        })
+        .catch(e => console.log('Error starting GoogleAnalytics', e));
+    })
   }
 
   ionViewDidLoad() {

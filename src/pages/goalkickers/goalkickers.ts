@@ -116,19 +116,17 @@ export class GoalkickersPage {
     public popoverCtrl: PopoverController,
     public navParams: NavParams,
     public storage: Storage,
-    public firebaselogger: FirebaseAnalyticsProvider) {
-    // this.plt.ready().then(() => {
-    //   this.ga.startTrackerWithId('UA-118996199-1')
-    //     .then(() => {
-    //       console.log('Google analytics is ready now');
-    //       this.ga.trackView('Goal Kickers');
-    //       // this.ga.trackEvent('Advertisement', 'Viewed', 'Goal Kickers Page', 1);
-    //       this.ga.trackTiming('Goal Kickers', 1000, 'Duration', 'Time');
-    //     })
-    //     .catch(e => console.log('Error starting GoogleAnalytics', e));
-    // })
-    this.firebaselogger.trackView('Goal Kickers');
-    this.firebaselogger.trackEvent('Advertisement', { action: 'Viewed', trackEvent: 'Goal Kickers Page' });
+    public ga: FirebaseAnalyticsProvider) {
+    this.plt.ready().then(() => {
+      this.ga.startTrackerWithId('UA-118996199-1')
+        .then(() => {
+          console.log('Google analytics is ready now');
+          this.ga.trackView('Goal Kickers');
+          // this.ga.trackEvent('Advertisement', 'Viewed', 'Goal Kickers Page', 1);
+          this.ga.trackTiming('Goal Kickers', 1000, 'Duration', 'Time');
+        })
+        .catch(e => console.log('Error starting GoogleAnalytics', e));
+    });
   }
   toggleSearch() {
     this.searchTerm = '';
@@ -427,8 +425,7 @@ export class GoalkickersPage {
     // this.events.unsubscribe('competitionlistgoalkickers:changed');
   }
   goToAddSite(ad_url) {
-    // this.ga.trackEvent('Advertisement', 'Viewed', 'Goal Kickers', 1);
-    this.firebaselogger.trackEvent('Advertisement', { action: 'Viewed', trackEvent: 'Goal Kickers' });
+    this.ga.trackEvent('Advertisement', 'Viewed', 'Goal Kickers', 1);
     const browser = this.inapp.create(ad_url);
   }
   goToGoalKickerDetailsPage(player_id, team_id, pName, pNo, teamName, pImage, pGoals) {

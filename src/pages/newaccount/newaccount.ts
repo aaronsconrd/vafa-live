@@ -12,9 +12,10 @@ import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser'
 import { LocalDataProvider } from '../../providers/local-data/local-data';
 import { ProductListProvider } from '../../providers/product-list/product-list';
 import { SocialSharing } from '@ionic-native/social-sharing';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
+// import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { normalizeURL } from 'ionic-angular';
 import { FilePath } from '@ionic-native/file-path';
+import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
 
 const TermsLink = 'http://vafalive.com.au/termsconds';
 
@@ -78,7 +79,7 @@ export class NewaccountPage {
   deviceId: any = '';
   state: boolean = false;
 
-  teamcomp : any = '';
+  teamcomp: any = '';
 
   constructor(public navCtrl: NavController,
     public cmnfun: CommomfunctionProvider,
@@ -87,7 +88,7 @@ export class NewaccountPage {
     private modalCtrl: ModalController,
     private camera: Camera,
     private filePath: FilePath,
-    public plt: Platform, public ga: GoogleAnalytics,
+    public plt: Platform, public ga: FirebaseAnalyticsProvider,
     public ajax: AjaxProvider,
     public SocialSharing: SocialSharing,
     public prolist: ProductListProvider,
@@ -134,40 +135,40 @@ export class NewaccountPage {
     //   }
     //   this.storage.set('mteam', this.MyTeam);
     // } else {
-      this.storage.get('UserTeamData').then((val) => {
+    this.storage.get('UserTeamData').then((val) => {
+      console.log(val)
+      if (val) {
         console.log(val)
-        if (val) {
-          console.log(val)
-          this.teamcomp = val.selectedcompetition.competition_id;
-          this.MyTeam = {
-            team: val.selectedteam.team_name,
-            competition: val.selectedcompetition.competitions_name,
-            product: '',
+        this.teamcomp = val.selectedcompetition.competition_id;
+        this.MyTeam = {
+          team: val.selectedteam.team_name,
+          competition: val.selectedcompetition.competitions_name,
+          product: '',
+        }
+        if (val.selectedteam != '' && val.selectedcompetition != '') {
+          this.UserTeamData = {
+            selectedcompetition: val.selectedcompetition,
+            selectedteam: val.selectedteam,
           }
-          if (val.selectedteam != '' && val.selectedcompetition != '') {
-            this.UserTeamData = {
-              selectedcompetition: val.selectedcompetition,
-              selectedteam: val.selectedteam,
-            }
-          } else if (val.selectedcompetition != '' && val.selectedteam == '') {
-            this.UserTeamData.selectedcompetition = val.selectedcompetition;
-          } else if (val.selectedcompetition == '' && val.selectedteam != '') {
-            this.UserTeamData.selectedteam = val.selectedteam;
-          }
-
-        } else {
-          this.storage.get('mteam').then((val) => {
-            if (val) {
-              this.MyTeam = {
-                team: val.team,
-                competition: val.competition,
-                product: '',
-              }
-            }
-          });
+        } else if (val.selectedcompetition != '' && val.selectedteam == '') {
+          this.UserTeamData.selectedcompetition = val.selectedcompetition;
+        } else if (val.selectedcompetition == '' && val.selectedteam != '') {
+          this.UserTeamData.selectedteam = val.selectedteam;
         }
 
-      });
+      } else {
+        this.storage.get('mteam').then((val) => {
+          if (val) {
+            this.MyTeam = {
+              team: val.team,
+              competition: val.competition,
+              product: '',
+            }
+          }
+        });
+      }
+
+    });
     // }
 
     //  local-image-upload
@@ -292,7 +293,7 @@ export class NewaccountPage {
           accessKey: 'QzEnDyPAHT12asHb4On6HH2016',
           competition_id: this.selectedcompetition.seasons[0].competition_id
         }).subscribe((res) => {
-       this.teamlist = res;
+          this.teamlist = res;
         }, error => {
           // this.cmnfun.showToast('Some thing Unexpected happen please try again');
         })
@@ -375,19 +376,19 @@ export class NewaccountPage {
     }
     else {
       console.log(this.teamcomp);
-      if(this.teamcomp != '' && this.teamcomp != undefined){
+      if (this.teamcomp != '' && this.teamcomp != undefined) {
         this.ajax.datalist('get-all-teams-by-competitions', {
           accessKey: 'QzEnDyPAHT12asHb4On6HH2016',
           competition_id: this.teamcomp
         }).subscribe((res) => {
-       this.teamlist = res;
-       this.list = this.teamlist.teams;
-       this.type = 'teams'
-       this.gotopage(false);
+          this.teamlist = res;
+          this.list = this.teamlist.teams;
+          this.type = 'teams'
+          this.gotopage(false);
         }, error => {
           // this.cmnfun.showToast('Some thing Unexpected happen please try again');
         })
-      }else{
+      } else {
         this.list = this.teamlist.teams;
         this.type = 'teams'
         this.gotopage(false);
@@ -417,16 +418,16 @@ export class NewaccountPage {
       } else if (this.MyTeam.product == 'Premium Plus') {
         this.ga.trackEvent("My Account - Premium Pass", "Selected", "Premium Pass - Purchase", 1);
         this.nav.setRoot('LandingpagePage');
-      } else if(this.MyTeam.product == '2019 Competition Pass'){
+      } else if (this.MyTeam.product == '2019 Competition Pass') {
         this.nav.setRoot('LandingpagePage');
-      } else if (this.MyTeam.product == '2019 VAFA Pass'){
+      } else if (this.MyTeam.product == '2019 VAFA Pass') {
         let alert = this.alertCtrl.create({
           subTitle: 'CONGRATULATIONS\nyou have the top\nPREMIUM PASS',
           cssClass: 'CusttoastCtrl',
           buttons: ['Dismiss']
         });
         alert.present();
-      } else if (this.MyTeam.product == '2019 Game Pass'){
+      } else if (this.MyTeam.product == '2019 Game Pass') {
         this.nav.setRoot('LandingpagePage');
       }
     } else if (this.MyTeam.product != '2019 VAFA Pass' || this.MyTeam.product == '' && this.isLogin == false) {

@@ -56,12 +56,12 @@ export class MyApp {
     public platform: Platform,
     // private uniqueDeviceID: AjaxProvider,
     public statusBar: StatusBar,
-    private ga: GoogleAnalytics,
+    // private ga: GoogleAnalytics,
     public cmnfn: CommomfunctionProvider,
     public prolist: ProductListProvider,
     public localData: LocalDataProvider,
     public splashScreen: SplashScreen,
-    public firebaselogger: FirebaseAnalyticsProvider) {
+    public ga: FirebaseAnalyticsProvider) {
 
     // Device_id checking ajax sample
     // this.ajax.CheckDeviceData(this.deviceData).subscribe((res) => {
@@ -277,7 +277,6 @@ export class MyApp {
           this.ga.trackView('Splash');
         })
         .catch(e => console.log('Error starting GoogleAnalytics', e));
-      // this.firebaselogger.trackView('Splash');
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       // this.statusBar.styleDefault();

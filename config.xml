@@ -123,4 +123,7 @@
     <plugin name="cordova-plugin-x-socialsharing" source="npm" version="5.4.0" />
     <preference name="SplashScreenDelay" value="3000" />
     <engine name="android" spec="7.1.4" />
+    <plugin name="cordova-plugin-firebase-analytics" spec="1.1.1">
+        <variable name="FIREBASE_CORE_VERSION" value="16.0.+" />
+    </plugin>
 </widget>

@@ -38,13 +38,13 @@ import { Camera } from '@ionic-native/camera';
 import { FilePath } from '@ionic-native/file-path';
 
 import { LocalDataProvider } from '../providers/local-data/local-data';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
+// import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { ProductListProvider } from '../providers/product-list/product-list';
 import { SQLite } from '@ionic-native/sqlite';
 import { gamepasspage } from '../pages/innermatchcenter/innermatchcenter';
 import { Device } from '@ionic-native/device';
 import { FirebaseAnalyticsProvider } from '../providers/firebase-analytics/firebase-analytics';
-
+import { FirebaseAnalytics } from '@ionic-native/firebase-analytics';
 @NgModule({
   declarations: [
     MyApp,
@@ -107,7 +107,8 @@ import { FirebaseAnalyticsProvider } from '../providers/firebase-analytics/fireb
     FilePath,
     FileTransfer,
     LocalDataProvider,
-    GoogleAnalytics,
+    // GoogleAnalytics,
+    FirebaseAnalytics,
     ProductListProvider,
     SQLite,
     StreamingMedia,
