@@ -7,6 +7,7 @@ import { CommomfunctionProvider } from '../../providers/commomfunction/commomfun
 import { Searchbar } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
+import { environment } from '../../environments/environment';
 @IonicPage()
 @Component({
 	selector: 'page-teamstat',
@@ -25,7 +26,7 @@ export class TeamstatPage {
 	selectablesRound = [];
 	selectablesDisposals = [];
 	// path = 'http://vafalive.com.au';
-	path: any = 'https://vafalive.com.au';
+	path: any = environment.baseURL;
 
 	getAllCompititions: any;
 	allCompetionData = [];

@@ -14,6 +14,7 @@ import 'datatables.net';
 import 'datatables.net-fixedcolumns';
 import 'datatables.net-fixedheader';
 import * as $ from 'jquery';
+import { environment } from '../../environments/environment';
 // import 'datatables.net';
 // import 'datatables.net-fixedcolumns';
 // import 'jquery-flot'
@@ -42,7 +43,7 @@ export class StatTeamGameCoachPage {
     isLogin: boolean = false;
     ApiResponse: any;
     // path: any = 'http://vafalive.com.au';
-    path: any = 'https://vafalive.com.au';
+    path: any = environment.baseURL;
     type: any = 'SCORE';
     showcontent: any = 'hide';
     showfooter: any;

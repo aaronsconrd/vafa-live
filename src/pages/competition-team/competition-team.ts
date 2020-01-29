@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
-
+import { environment } from '../../environments/environment';
 /**
  * Generated class for the CompetitionTeamPage page.
  *
@@ -19,7 +19,7 @@ export class CompetitionTeamPage {
   // path : any = 'http://vafalive.com.au/';
   // path:any = 'http://v2.vafalive.com.au/';
   // path: any = 'http://54.244.98.247';
-  path: any = 'https://s3.us-west-2.amazonaws.com/vafas3';
+  path: any = environment.amazonaws;
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
     this.list = navParams.get('list');
     this.type = navParams.get('type');

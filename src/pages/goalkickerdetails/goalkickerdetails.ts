@@ -6,6 +6,7 @@ import { Events } from 'ionic-angular';
 import { KeysPipe } from '../../pipes/keys/keys';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
+import { environment } from '../../environments/environment';
 /**
  * Generated class for the GoalkickerdetailsPage page.
  *
@@ -20,8 +21,8 @@ import { GoogleAnalytics } from '@ionic-native/google-analytics';
 })
 export class GoalkickerdetailsPage {
   // path: any = 'http://vafalive.com.au';
-  path1: any = 'https://vafalive.com.au';
-  path: any = 'https://s3.us-west-2.amazonaws.com/vafas3';
+  path1: any = environment.baseURL;
+  path: any = environment.amazonaws;
   goaldeatls: any = [];
   showhide: any;
   details: any = {}; pImage: any; pGoals: any; footerAdv: any = []; headerAdv: any = []; teamGoal: any; goalKickersimage: any; playerTotalGoal: any;

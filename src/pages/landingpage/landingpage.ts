@@ -13,7 +13,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
 import { AlertController } from 'ionic-angular';
-
+import { environment } from '../../environments/environment';
 const proId0 = '2018_premium_william_buck_premier_womens_caulfield_grammarians';
 const proId1 = '2018_premium_william_buck_womens_fitzroy_acu';
 const proId2 = '2018_premium_william_buck_premier_womens_kew_fc';
@@ -59,7 +59,7 @@ const VafaPass = 'vafa_pass';
   templateUrl: 'landingpage.html',
 })
 export class LandingpagePage {
-
+  path: any = environment.baseURL;
   ProductSet: number;
 
   HideTeam: boolean = true;

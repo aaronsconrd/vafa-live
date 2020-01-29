@@ -12,7 +12,7 @@ import 'datatables.net-fixedheader';
 import { PopoverController } from 'ionic-angular';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Storage } from '@ionic/storage';
-
+import { environment } from '../../environments/environment';
 /**
  * Generated class for the LadderPage page.
  *
@@ -42,8 +42,8 @@ export class LadderPage {
   weblink: boolean = false;
   safeURL: any;
   // path: any = 'http://vafalive.com.au';
-  path1: any = 'https://vafalive.com.au';
-  path: any = 'https://s3.us-west-2.amazonaws.com/vafas3';
+  path1: any = environment.baseURL;
+  path: any = environment.amazonaws;
 
   options: InAppBrowserOptions = {
     location: "no", //Or 'no'

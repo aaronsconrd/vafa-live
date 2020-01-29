@@ -6,7 +6,7 @@ import { Events } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { Storage } from '@ionic/storage';
-
+import { environment } from '../../environments/environment';
 /**
  * Generated class for the MatchreportPage page.
  *
@@ -35,7 +35,8 @@ export class MatchreportPage {
   isLogin: boolean = false;
   //  path:any='http://vafalive.com.au';
   //  path: any = 'http://54.244.98.247';
-  path: any = 'https://s3.us-west-2.amazonaws.com/vafas3';
+  path: any = environment.amazonaws;
+
   constructor(private zone: NgZone, private inapp: InAppBrowser, public plt: Platform, public ga: GoogleAnalytics, public ajax: AjaxProvider, public cmnfun: CommomfunctionProvider, private modalCtrl: ModalController, public events: Events, public navCtrl: NavController, public navParams: NavParams,
     public storage: Storage) {
     this.plt.ready().then(() => {

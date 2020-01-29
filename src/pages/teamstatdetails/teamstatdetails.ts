@@ -7,6 +7,7 @@ import { Content } from 'ionic-angular';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { environment } from '../../environments/environment';
 @IonicPage()
 @Component({
   selector: 'page-teamstatdetails',
@@ -16,7 +17,7 @@ export class TeamstatdetailsPage {
   @ViewChild(Content) content: Content;
 
   // path = 'http://vafalive.com.au';
-  path: any = 'https://vafalive.com.au';
+  path: any = environment.baseURL;
   advHide: boolean = false;
   advDisplay: boolean = true;
   team_id: any = '';

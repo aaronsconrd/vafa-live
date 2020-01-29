@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
-
+import { environment } from '../../environments/environment';
 /**
  * Generated class for the AccountmodelteamPage page.
  *
@@ -17,7 +17,7 @@ export class AccountmodelteamPage {
 
 
   // path:any = 'http://vafalive.com.au/';
-  path: any = 'https://vafalive.com.au/';
+  path = environment.baseURL;
   // path:any = 'http://v2.vafalive.com.au/';
 
   head: boolean = true;

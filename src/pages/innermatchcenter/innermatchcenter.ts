@@ -14,6 +14,7 @@ import 'datatables.net';
 import 'datatables.net-fixedcolumns';
 import 'datatables.net-fixedheader';
 import * as $ from 'jquery';
+import { environment } from '../../environments/environment';
 // import 'datatables.net';
 // import 'datatables.net-fixedcolumns';
 // import 'jquery-flot'
@@ -83,9 +84,9 @@ export class InnermatchcenterPage {
     }
     isLogin: boolean = false;
     ApiResponse: any;
-    path: any = 'https://s3.us-west-2.amazonaws.com/vafas3';
+    path: any = environment.amazonaws;
     // path: any = 'http://vafalive.com.au';
-    path1: any = 'https://vafalive.com.au';
+    path1: any = environment.baseURL;
     // path1: any = 'http://52.89.30.220';
     type: any = 'SCORE';
     showcontent: any = 'hide';
@@ -4227,9 +4228,7 @@ export class gamepasspage {
     compid: any;
     isLogin: boolean = false;
     details: any;
-    path: any = 'https://vafalive.com.au';
-
-    // path: any = 'https://s3.us-west-2.amazonaws.com/vafas3';
+    path: any = environment.baseURL;
     constructor(
         public processproduct: ProductListProvider,
         public ga: GoogleAnalytics,

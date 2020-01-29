@@ -8,6 +8,7 @@ import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { PopoverController } from 'ionic-angular';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Storage } from '@ionic/storage';
+import { environment } from '../../environments/environment';
 /**
  * Generated class for the FixturePage page.
  *
@@ -34,7 +35,7 @@ export class FixturePage {
   team_id: any = '0_0';
   // path: any = 'http://vafalive.com.au';
   // path: any = 'http://54.244.98.247';
-  path: any = 'https://s3.us-west-2.amazonaws.com/vafas3';
+  path: any = environment.amazonaws;
   competition_id: any;
   comptitionlists: any = [];
   selectables: any = []

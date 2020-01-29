@@ -7,7 +7,7 @@ import { Content } from 'ionic-angular';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-
+import { environment } from '../../environments/environment';
 @IonicPage()
 @Component({
   selector: 'page-playerstatdetails',
@@ -17,7 +17,7 @@ export class PlayerstatdetailsPage {
   @ViewChild(Content) content: Content;
 
   // path: any = 'http://vafalive.com.au';
-  path: any = 'https://vafalive.com.au';
+  path: any = environment.baseURL;
   Coach: boolean = true;
   player_id:any='';
   resData:any='';

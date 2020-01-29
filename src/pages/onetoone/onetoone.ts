@@ -7,7 +7,7 @@ import { CommomfunctionProvider } from '../../providers/commomfunction/commomfun
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { LocalDataProvider } from '../../providers/local-data/local-data';
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
-
+import { environment } from '../../environments/environment';
 @IonicPage()
 @Component({
   selector: 'page-onetoone',
@@ -15,7 +15,7 @@ import { GoogleAnalytics } from '@ionic-native/google-analytics';
 })
 export class OnetoonePage {
   //  path = 'http://vafalive.com.au';
-  path: any = 'https://vafalive.com.au';
+  path: any = environment.baseURL;
   teamMtach: any = [];
   teamSelection: any;
   resData: any = [];

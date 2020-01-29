@@ -1,9 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, Slides, NavController, NavParams,Platform } from 'ionic-angular';
+import { IonicPage, Slides, NavController, NavParams, Platform } from 'ionic-angular';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
+import { environment } from '../../environments/environment';
 /**
  * Generated class for the NewsDetailsPage page.
  *
@@ -19,22 +20,22 @@ import { GoogleAnalytics } from '@ionic-native/google-analytics';
 export class NewsDetailsPage {
   @ViewChild(Slides) slides: Slides;
   newsdetails: any = {};
-  path1: any = 'https://s3.us-west-2.amazonaws.com/vafas3';
+  path1: any = environment.amazonaws;
   // path: any = 'http://vafalive.com.au';
-  path: any = 'https://vafalive.com.au';
-  constructor(public navCtrl: NavController, private youtube: YoutubeVideoPlayer,public plt:Platform,public ga:GoogleAnalytics, public navParams: NavParams, private socialSharing: SocialSharing, public cmnfun: CommomfunctionProvider) {
+  path: any = environment.baseURL;
+  constructor(public navCtrl: NavController, private youtube: YoutubeVideoPlayer, public plt: Platform, public ga: GoogleAnalytics, public navParams: NavParams, private socialSharing: SocialSharing, public cmnfun: CommomfunctionProvider) {
     this.newsdetails = navParams.get('newdetails');
     console.log(this.newsdetails);
 
- this.plt.ready().then(() => {
+    this.plt.ready().then(() => {
       this.ga.startTrackerWithId('UA-118996199-1')
-   .then(() => {
-     console.log('Google analytics is ready now');
-        this.ga.trackView('News - Individual');
-        this.ga.trackTiming('News - Individual', 1000, 'Duration', 'Time');
-   })
-   .catch(e => console.log('Error starting GoogleAnalytics', e));
-       })
+        .then(() => {
+          console.log('Google analytics is ready now');
+          this.ga.trackView('News - Individual');
+          this.ga.trackTiming('News - Individual', 1000, 'Duration', 'Time');
+        })
+        .catch(e => console.log('Error starting GoogleAnalytics', e));
+    })
   }
 
   ionViewDidLoad() {
@@ -73,9 +74,9 @@ export class NewsDetailsPage {
   }
 
 
-  cutPath(url){
-    if(url)
-    return url.substring(12);
+  cutPath(url) {
+    if (url)
+      return url.substring(12);
   }
 
 }

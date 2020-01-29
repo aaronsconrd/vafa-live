@@ -6,6 +6,7 @@ import 'rxjs/add/operator/catch';
 import { Events } from 'ionic-angular';
 import { CommomfunctionProvider } from "../commomfunction/commomfunction";
 import { Device } from '@ionic-native/device';
+import { environment } from '../../environments/environment';
 /*
   Generated class for the AjaxProvider provider.
 
@@ -17,8 +18,7 @@ import { Device } from '@ionic-native/device';
 // staging url : http://v2.vafalive.com.au/
 
 // const baseurl = 'http://v2.vafalive.com.au';
-// const baseurl = 'http://54.244.98.247';
-const baseurl = "https://vafalive.com.au";
+const baseurl = environment.baseURL;
 // const baseurl = 'http://52.89.30.220';
 
 

@@ -10,7 +10,7 @@ import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { PopoverController } from 'ionic-angular';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Storage } from '@ionic/storage';
-
+import { environment } from '../../environments/environment';
 /**
  * Generated class for the GoalkickersPage page.
  *
@@ -32,9 +32,9 @@ export class GoalkickersPage {
   searchTerm: String = '';
   items: any = [];
   // path: any = 'http://vafalive.com.au';
-  path1: any = 'https://vafalive.com.au';
+  path1: any = environment.baseURL;
   // path1: any = 'http://52.89.30.220';
-  path: any = 'https://s3.us-west-2.amazonaws.com/vafas3';
+  path: any = environment.amazonaws;
   competition_id: any;
   comptitionlists: any = [];
   selectables: any = [];

@@ -31,7 +31,7 @@ import { ProductListProvider } from "../../providers/product-list/product-list";
 import { LocalDataProvider } from "./../../providers/local-data/local-data";
 import { DomSanitizer } from "@angular/platform-browser";
 import { Storage } from '@ionic/storage';
-
+import { environment } from "../../environments/environment";
 /**
  * Generated class for the MatchcenterPage page.
  *
@@ -118,7 +118,7 @@ export class MatchcenterPage {
   roundNo: any = "";
   // path: any = 'http://vafalive.com.au';
   // path: any = 'http://54.244.98.247';
-  path: any = "https://s3.us-west-2.amazonaws.com/vafas3";
+  path: any = environment.amazonaws;
   competition_id: any;
   comptitionlists: any = [];
   selectables: any = [];

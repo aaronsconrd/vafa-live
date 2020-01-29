@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LocalDataProvider } from '../local-data/local-data';
-import { ToastController, LoadingController,AlertController } from 'ionic-angular';
+import { ToastController, LoadingController, AlertController } from 'ionic-angular';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { Storage } from '@ionic/storage';
-import {HomePage} from '../../pages/home/home';
+import { HomePage } from '../../pages/home/home';
 
 import { Events } from 'ionic-angular';
 import 'rxjs/add/operator/map';
+import { environment } from '../../environments/environment';
 // import { Geolocation } from '@ionic-native/geolocation';
 // import { Storage } from '@ionic/storage';
 // import { AjaxProvider } from '../ajax/ajax';
@@ -17,14 +18,14 @@ export class CommomfunctionProvider {
   loading: any;
   custmLoading: any;
   userdetails: any;
-  ImgRes:any;
+  ImgRes: any;
 
   constructor(public toastCtrl: ToastController,
     private transfer: FileTransfer,
-    public localData:LocalDataProvider,
-    public alertCtrl:AlertController,
-    public events:Events,
-    public storage:Storage,
+    public localData: LocalDataProvider,
+    public alertCtrl: AlertController,
+    public events: Events,
+    public storage: Storage,
     public loadingCtrl: LoadingController) {
     console.log('Hello CommomfunctionProvider Provider');
 
@@ -43,8 +44,8 @@ export class CommomfunctionProvider {
       subTitle: msg1,
       cssClass: 'CusttoastCtrl',
       buttons: ['OK']
-      });
-      alert.present();
+    });
+    alert.present();
   }
 
   showToast2(msg: string) {
@@ -52,11 +53,11 @@ export class CommomfunctionProvider {
       subTitle: msg,
       cssClass: 'CusttoastCtrl',
       buttons: ['OK']
-      });
-      alert.present();
+    });
+    alert.present();
   }
 
-    CustshowToast(msg: string) {
+  CustshowToast(msg: string) {
     // let toast = this.toastCtrl.create({
     //   message: msg,
     //   cssClass: 'toastCtrl',
@@ -70,8 +71,8 @@ export class CommomfunctionProvider {
       subTitle: msg,
       cssClass: 'CusttoastCtrl',
       buttons: ['OK']
-      });
-      alert.present();
+    });
+    alert.present();
   }
 
 
@@ -81,7 +82,7 @@ export class CommomfunctionProvider {
       spinner: 'hide',
       content: msg,
       cssClass: 'loading-class-my'
-      });
+    });
     this.loading.present();
   }
 
@@ -95,15 +96,15 @@ export class CommomfunctionProvider {
     this.loading.present();
   }
 
-   Loading(msg) {
+  Loading(msg) {
     this.loading = this.loadingCtrl.create({
       spinner: 'hide',
       content: msg,
       cssClass: 'loading-class-my'
-      });
+    });
     this.loading.present();
 
-     setTimeout(() => {
+    setTimeout(() => {
       this.loading.dismiss();
     }, 5000);
   }
@@ -113,9 +114,9 @@ export class CommomfunctionProvider {
       spinner: 'hide',
       content: 'WELCOME\nVAFA Live Official App.',
       cssClass: 'CustLoadCtrl',
-      });
+    });
     this.loading.present();
-     setTimeout(() => {
+    setTimeout(() => {
       this.loading.dismiss();
     }, 5000);
   }
@@ -137,42 +138,42 @@ export class CommomfunctionProvider {
     this.custmLoading.present();
   }
 
-  hideLoader(){
+  hideLoader() {
     this.custmLoading.dismiss();
   }
 
-  UploadImgServer(url){
-        if(!url){
-          return;
-        }
-        let data=this.localData.GetData();
+  UploadImgServer(url) {
+    if (!url) {
+      return;
+    }
+    let data = this.localData.GetData();
 
-      const fileTransfer: FileTransferObject = this.transfer.create();
+    const fileTransfer: FileTransferObject = this.transfer.create();
 
-       let imgpath = url.toString();
-       let imageName =imgpath.substring(imgpath.lastIndexOf('/') + 1);
+    let imgpath = url.toString();
+    let imageName = imgpath.substring(imgpath.lastIndexOf('/') + 1);
 
-       let options: FileUploadOptions = {
-        fileKey: 'user_image',
-        fileName: imageName,
-        chunkedMode: false,
-        mimeType: "image/jpeg",
-        params: { 'id': data.id},
-        headers: {}
-      }
-      fileTransfer.upload(imgpath,'https://vafalive.com.au/score/custom/save-image-email', options)
-        .then((data) => {
-        this.ImgRes=data.response;
-        this.ImgRes=JSON.parse(this.ImgRes);
+    let options: FileUploadOptions = {
+      fileKey: 'user_image',
+      fileName: imageName,
+      chunkedMode: false,
+      mimeType: "image/jpeg",
+      params: { 'id': data.id },
+      headers: {}
+    }
+    fileTransfer.upload(imgpath, environment.baseURL + '/score/custom/save-image-email', options)
+      .then((data) => {
+        this.ImgRes = data.response;
+        this.ImgRes = JSON.parse(this.ImgRes);
         this.localData.StoreData(this.ImgRes.webuser);
         this.storage.set("userData", JSON.stringify(this.ImgRes.webuser));
         this.localData.setlocaldata(this.ImgRes.webuser);
-        this.storage.set('FullData',this.ImgRes);
-        this.events.publish('LocalImageUpdated',this.ImgRes.webuser.user_image);
-        }, (err) => {
+        this.storage.set('FullData', this.ImgRes);
+        this.events.publish('LocalImageUpdated', this.ImgRes.webuser.user_image);
+      }, (err) => {
 
       });
-      }
+  }
 
 
 

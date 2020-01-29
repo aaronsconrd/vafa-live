@@ -2,10 +2,10 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController, Slides } from 'ionic-angular';
 import { AjaxProvider } from '../../providers/ajax/ajax';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
-import { Events,Platform } from 'ionic-angular';
+import { Events, Platform } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
-
+import { environment } from '../../environments/environment';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -16,22 +16,22 @@ export class HomePage {
   comptitionlists: any = [];
   headerimage: any = '';
   headerurl: any;
-  index : any =0;
-  path: any = 'https://s3.us-west-2.amazonaws.com/vafas3';
+  index: any = 0;
+  path: any = environment.amazonaws;
   // path: any = 'http://vafalive.com.au';
   // path: any = 'http://54.244.98.247';
-  constructor(private inapp: InAppBrowser,public plt:Platform,public ga:GoogleAnalytics, public events: Events, public ajax: AjaxProvider, public cmnfun: CommomfunctionProvider, public navCtrl: NavController) {
+  constructor(private inapp: InAppBrowser, public plt: Platform, public ga: GoogleAnalytics, public events: Events, public ajax: AjaxProvider, public cmnfun: CommomfunctionProvider, public navCtrl: NavController) {
 
-   this.plt.ready().then(() => {
+    this.plt.ready().then(() => {
       this.ga.startTrackerWithId('UA-118996199-1')
-   .then(() => {
-     console.log('Google analytics is ready now');
-        this.ga.trackView('News');
-        // this.ga.trackEvent('Advertisement', 'Viewed', 'News Page', 1);
-        this.ga.trackTiming('News', 1000, 'Duration', 'Time');
-   })
-   .catch(e => console.log('Error starting GoogleAnalytics', e));
-       })
+        .then(() => {
+          console.log('Google analytics is ready now');
+          this.ga.trackView('News');
+          // this.ga.trackEvent('Advertisement', 'Viewed', 'News Page', 1);
+          this.ga.trackTiming('News', 1000, 'Duration', 'Time');
+        })
+        .catch(e => console.log('Error starting GoogleAnalytics', e));
+    })
   }
   ionViewWillLeave() {
     this.slides.stopAutoplay();
@@ -60,17 +60,16 @@ export class HomePage {
     this.cmnfun.showLoading('Please wait...');
     this.ajax.postMethod('get-all-news-v1', {
       accessKey: 'QzEnDyPAHT12asHb4On6HH2016',
-      page : this.index
+      page: this.index
     }).subscribe((res) => {
       this.cmnfun.HideLoading();
 
       this.newsData = res;
-      if(this.newsData.code==1)
-        {
-          console.log(this.newsData);
-          this.headerimage = this.newsData.headerAdv[0].ad_image;
-          this.headerurl = this.newsData.headerAdv[0].ad_url;
-        }
+      if (this.newsData.code == 1) {
+        console.log(this.newsData);
+        this.headerimage = this.newsData.headerAdv[0].ad_image;
+        this.headerurl = this.newsData.headerAdv[0].ad_url;
+      }
 
     }, error => {
       this.cmnfun.HideLoading();
@@ -88,28 +87,28 @@ export class HomePage {
   }
 
 
-    // path reset function
-    cutPath(url){
-      if(url)
+  // path reset function
+  cutPath(url) {
+    if (url)
       return url.substring(12);
-    }
+  }
 
 
-    doInfinite(infiniteScroll) {
-      this.index = this.index + 10;
-      this.ajax.postMethod('get-all-news-v1', {
-        accessKey: 'QzEnDyPAHT12asHb4On6HH2016',
-        page : this.index
-      }).subscribe((res:any) => {
-        infiniteScroll.complete();
-      for(let data of res.news){
-         this.newsData.news.push(data);
+  doInfinite(infiniteScroll) {
+    this.index = this.index + 10;
+    this.ajax.postMethod('get-all-news-v1', {
+      accessKey: 'QzEnDyPAHT12asHb4On6HH2016',
+      page: this.index
+    }).subscribe((res: any) => {
+      infiniteScroll.complete();
+      for (let data of res.news) {
+        this.newsData.news.push(data);
       }
-      }, error => {
-        infiniteScroll.complete();
-        // this.cmnfun.showToast('Some thing Unexpected happen please try again');
-      })
+    }, error => {
+      infiniteScroll.complete();
+      // this.cmnfun.showToast('Some thing Unexpected happen please try again');
+    })
 
-    }
+  }
 
 }
