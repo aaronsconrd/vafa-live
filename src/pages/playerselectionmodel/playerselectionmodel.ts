@@ -25,7 +25,7 @@ export class PlayerselectionmodelPage {
   getAllCompititions:any=[];
   getAllTeams:any=[];
   // path = 'http://vafalive.com.au';
-  path: any = 'http://54.244.98.247';
+  path: any = 'https://vafalive.com.au';
   getAllPlayers:any=[];
   playertype:any;
   constructor(public navCtrl: NavController,

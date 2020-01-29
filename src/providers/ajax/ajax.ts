@@ -17,7 +17,8 @@ import { Device } from '@ionic-native/device';
 // staging url : http://v2.vafalive.com.au/
 
 // const baseurl = 'http://v2.vafalive.com.au';
-const baseurl = 'http://54.244.98.247';
+// const baseurl = 'http://54.244.98.247';
+const baseurl = "https://vafalive.com.au";
 // const baseurl = 'http://52.89.30.220';
 
 

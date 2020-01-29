@@ -32,7 +32,7 @@
   <div class="jb-button-bu">
     <button [ngClass]="{'jb-color-change' : (selectedteam !='')}" ion-button color="light" (click)="gotocheckcompetitionteam('team')">
           <span *ngIf="selectedteam ==''">TEAM</span>
-          <img  *ngIf="selectedteam !=''"  class="jb-img-ver"src="http://54.244.98.247/{{selectedteam.image_value}}" width="30"/>
+          <img  *ngIf="selectedteam !=''"  class="jb-img-ver"src="https://vafalive.com.au/{{selectedteam.image_value}}" width="30"/>
           <span *ngIf="selectedteam !=''">{{selectedteam.team_name}}</span>
           <ion-icon class="jb-tick-icon" *ngIf="selectedteam !=''" name="checkmark"></ion-icon>
         </button></div>
@@ -85,7 +85,7 @@
         <div class="jb-button-bu" *ngIf="!HideTeam" >
           <button [ngClass]="{'jb-color-change' : (selectedteam !='')}" ion-button color="light" (click)="gotocheckcompetitionteam('team')">
                 <span *ngIf="selectedteam ==''">TEAM</span>
-                <img  *ngIf="selectedteam !=''"  class="jb-img-ver"src="http://54.244.98.247/{{selectedteam.image_value}}" width="30"/>
+                <img  *ngIf="selectedteam !=''"  class="jb-img-ver"src="https://vafalive.com.au/{{selectedteam.image_value}}" width="30"/>
                 <span *ngIf="selectedteam !=''">{{selectedteam.team_name}}</span>
                 <ion-icon class="jb-tick-icon" *ngIf="selectedteam !=''" name="checkmark"></ion-icon>
               </button></div>

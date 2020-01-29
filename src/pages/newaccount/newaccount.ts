@@ -29,7 +29,7 @@ export class NewaccountPage {
   isLogin: boolean = false;
   defaulturl: 'assets/imgs/logo.png';
   // path: any = 'http://vafalive.com.au/web/';
-  path: any = 'http://54.244.98.247/web/';
+  path: any = 'https://vafalive.com.au/web/';
   Dataresponse: any;
   resData: any = [];
   userSubscription: any;

@@ -20,7 +20,7 @@ import { GoogleAnalytics } from '@ionic-native/google-analytics';
 })
 export class GoalkickerdetailsPage {
   // path: any = 'http://vafalive.com.au';
-  path1: any = 'http://54.244.98.247';
+  path1: any = 'https://vafalive.com.au';
   path: any = 'https://s3.us-west-2.amazonaws.com/vafas3';
   goaldeatls: any = [];
   showhide: any;

@@ -21,7 +21,7 @@ export class NewsDetailsPage {
   newsdetails: any = {};
   path1: any = 'https://s3.us-west-2.amazonaws.com/vafas3';
   // path: any = 'http://vafalive.com.au';
-  path: any = 'http://54.244.98.247';
+  path: any = 'https://vafalive.com.au';
   constructor(public navCtrl: NavController, private youtube: YoutubeVideoPlayer,public plt:Platform,public ga:GoogleAnalytics, public navParams: NavParams, private socialSharing: SocialSharing, public cmnfun: CommomfunctionProvider) {
     this.newsdetails = navParams.get('newdetails');
     console.log(this.newsdetails);

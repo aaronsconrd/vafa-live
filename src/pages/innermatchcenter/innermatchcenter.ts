@@ -85,7 +85,7 @@ export class InnermatchcenterPage {
     ApiResponse: any;
     path: any = 'https://s3.us-west-2.amazonaws.com/vafas3';
     // path: any = 'http://vafalive.com.au';
-    path1: any = 'http://54.244.98.247';
+    path1: any = 'https://vafalive.com.au';
     // path1: any = 'http://52.89.30.220';
     type: any = 'SCORE';
     showcontent: any = 'hide';
@@ -4227,7 +4227,7 @@ export class gamepasspage {
     compid: any;
     isLogin: boolean = false;
     details: any;
-    path: any = 'http://54.244.98.247';
+    path: any = 'https://vafalive.com.au';
 
     // path: any = 'https://s3.us-west-2.amazonaws.com/vafas3';
     constructor(

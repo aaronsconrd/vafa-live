@@ -24,7 +24,7 @@ export class TeamOneSelectionModelPage {
   getAllCompititions:any=[];
   teamtype:any;
   // path = 'http://vafalive.com.au';
-  path: any = 'http://54.244.98.247';
+  path: any = 'https://vafalive.com.au';
   constructor(public navCtrl: NavController,
     public viewCtrl:ViewController,
     public ajax: AjaxProvider,

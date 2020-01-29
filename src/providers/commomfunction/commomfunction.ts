@@ -160,7 +160,7 @@ export class CommomfunctionProvider {
         params: { 'id': data.id},
         headers: {}
       }
-      fileTransfer.upload(imgpath,'http://54.244.98.247/score/custom/save-image-email', options)
+      fileTransfer.upload(imgpath,'https://vafalive.com.au/score/custom/save-image-email', options)
         .then((data) => {
         this.ImgRes=data.response;
         this.ImgRes=JSON.parse(this.ImgRes);

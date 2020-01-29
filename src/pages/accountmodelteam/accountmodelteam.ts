@@ -17,7 +17,7 @@ export class AccountmodelteamPage {
 
 
   // path:any = 'http://vafalive.com.au/';
-  path: any = 'http://54.244.98.247/';
+  path: any = 'https://vafalive.com.au/';
   // path:any = 'http://v2.vafalive.com.au/';
 
   head: boolean = true;
