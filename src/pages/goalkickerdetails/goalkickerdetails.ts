@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AjaxProvider } from '../../providers/ajax/ajax';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
 import { Events } from 'ionic-angular';
-import { KeysPipe } from '../../pipes/keys/keys';
+// import { KeysPipe } from '../../pipes/keys/keys';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
+// import { GoogleAnalytics } from '@ionic-native/google-analytics';
+import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
 /**
  * Generated class for the GoalkickerdetailsPage page.
  *
@@ -26,7 +27,16 @@ export class GoalkickerdetailsPage {
   showhide: any;
   details: any = {}; pImage: any; pGoals: any; footerAdv: any = []; headerAdv: any = []; teamGoal: any; goalKickersimage: any; playerTotalGoal: any;
   player_id: any = ''; team_id: any; pName: any; pNo: any; teamName: any; goalKickersNumber: any; goalKickersName: any; firstName: any; lastName: any; goalKickersTeamName: any;
-  constructor(private inapp: InAppBrowser, public ajax: AjaxProvider,public plt:Platform,public ga:GoogleAnalytics, public events: Events, public cmnfun: CommomfunctionProvider, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    private inapp: InAppBrowser,
+    public ajax: AjaxProvider,
+    // public plt: Platform,
+    // public ga:GoogleAnalytics,
+    public events: Events,
+    public cmnfun: CommomfunctionProvider,
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public firebaselogger: FirebaseAnalyticsProvider) {
     this.details = navParams.get('details');
     this.player_id = this.details.player_id;
     this.team_id = this.details.team_id;
@@ -35,27 +45,24 @@ export class GoalkickerdetailsPage {
     this.teamName = this.details.teamName;
     this.pImage = this.details.pImage
     this.pGoals = this.details.pGoals;
-
-
-     this.plt.ready().then(() => {
-      this.ga.startTrackerWithId('UA-118996199-1')
-   .then(() => {
-     console.log('Google analytics is ready now');
-        this.ga.trackView('Goal Kickers - Individual');
-        // this.ga.trackEvent('Advertisement', 'Viewed', 'Goal Kickers - Individual Page', 1);
-        this.ga.trackTiming('Goal Kickers - Individual', 1000, 'Duration', 'Time');
-   })
-   .catch(e => console.log('Error starting GoogleAnalytics', e));
-       })
-
-
+    // this.plt.ready().then(() => {
+    //   this.ga.startTrackerWithId('UA-118996199-1')
+    //     .then(() => {
+    //       console.log('Google analytics is ready now');
+    //       this.ga.trackView('Goal Kickers - Individual');
+    //       // this.ga.trackEvent('Advertisement', 'Viewed', 'Goal Kickers - Individual Page', 1);
+    //       this.ga.trackTiming('Goal Kickers - Individual', 1000, 'Duration', 'Time');
+    //     })
+    //     .catch(e => console.log('Error starting GoogleAnalytics', e));
+    // })
+    this.firebaselogger.trackView('Goal Kickers - Individual');
   }
 
 
   // path reset function
-  cutPath(url){
-    if(url)
-    return url.substring(12);
+  cutPath(url) {
+    if (url)
+      return url.substring(12);
   }
 
   ionViewDidLoad() {
@@ -77,9 +84,11 @@ export class GoalkickerdetailsPage {
 
   }
   goToAddSite(ad_url) {
-    this.ga.trackEvent('Advertisement', 'Viewed', 'Goal Kickers - Individual', 1);
+    // this.ga.trackEvent('Advertisement', 'Viewed', 'Goal Kickers - Individual', 1);
+    this.firebaselogger.trackEvent('Advertisement', { action: 'Viewed', trackEvent: 'Goal Kickers - Individual' });
     const browser = this.inapp.create(ad_url);
   }
+
   getteamplayersgoalkickersdetails(res) {
     console.log(res);
     this.goaldeatls = res;
@@ -101,10 +110,10 @@ export class GoalkickerdetailsPage {
     console.log(this.footerAdv[0].ad_image);
 
   }
+
   ionViewWillLeave() {
     // this.events.unsubscribe('datalist_get-team-players-goal-kickers-details:changed');
     this.showhide = 1;
   }
-
 
 }

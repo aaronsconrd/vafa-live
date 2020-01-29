@@ -43,6 +43,7 @@ import { ProductListProvider } from '../providers/product-list/product-list';
 import { SQLite } from '@ionic-native/sqlite';
 import { gamepasspage } from '../pages/innermatchcenter/innermatchcenter';
 import { Device } from '@ionic-native/device';
+import { FirebaseAnalyticsProvider } from '../providers/firebase-analytics/firebase-analytics';
 
 @NgModule({
   declarations: [
@@ -109,7 +110,8 @@ import { Device } from '@ionic-native/device';
     GoogleAnalytics,
     ProductListProvider,
     SQLite,
-    StreamingMedia
+    StreamingMedia,
+    FirebaseAnalyticsProvider
   ]
 })
 export class AppModule { }

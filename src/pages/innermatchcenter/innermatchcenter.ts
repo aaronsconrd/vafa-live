@@ -3205,7 +3205,7 @@ export class InnermatchcenterPage {
                 let aEffVal = this.awayTeamScoreStat['I50'];
                 let aDiv = aAdd / aEffVal;
                 //alert(hAdd+"......"+hEffVal+"......"+hDiv)
-                if (isNaN(hDiv) || hDiv == 'Infinity') {
+                if (isNaN(hDiv) || hDiv == Infinity) {
                     hDiv = 0;
                     this.hEFF = (hDiv * 100).toFixed(2);
                     this.homeEFF = parseInt(this.hEFF.split('.')[0]);
@@ -3219,7 +3219,7 @@ export class InnermatchcenterPage {
                     //alert(this.hEFF+"=="+this.homeEFF+"=="+this.homeEFFWidth)
                 }
 
-                if (isNaN(aDiv) || aDiv == 'Infinity') {
+                if (isNaN(aDiv) || aDiv == Infinity) {
                     aDiv = 0;
                     this.aEFF = (aDiv * 100).toFixed(2);
                     this.awayEFF = parseInt(this.aEFF.split('.')[0]);

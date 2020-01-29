@@ -18,6 +18,7 @@ import { LocalDataProvider } from '../providers/local-data/local-data';
 import { ProductListProvider } from '../providers/product-list/product-list';
 import { CommomfunctionProvider } from '../providers/commomfunction/commomfunction';
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
+import { FirebaseAnalyticsProvider } from '../providers/firebase-analytics/firebase-analytics';
 // import { INTERNAL_BROWSER_DYNAMIC_PLATFORM_PROVIDERS } from '@angular/platform-browser-dynamic';
 
 @Component({
@@ -59,7 +60,8 @@ export class MyApp {
     public cmnfn: CommomfunctionProvider,
     public prolist: ProductListProvider,
     public localData: LocalDataProvider,
-    public splashScreen: SplashScreen) {
+    public splashScreen: SplashScreen,
+    public firebaselogger: FirebaseAnalyticsProvider) {
 
     // Device_id checking ajax sample
     // this.ajax.CheckDeviceData(this.deviceData).subscribe((res) => {
@@ -275,6 +277,7 @@ export class MyApp {
           this.ga.trackView('Splash');
         })
         .catch(e => console.log('Error starting GoogleAnalytics', e));
+      // this.firebaselogger.trackView('Splash');
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       // this.statusBar.styleDefault();

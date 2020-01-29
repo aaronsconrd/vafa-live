@@ -8,6 +8,7 @@ import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { PopoverController } from 'ionic-angular';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Storage } from '@ionic/storage';
+import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
 /**
  * Generated class for the FixturePage page.
  *
@@ -114,7 +115,7 @@ export class FixturePage {
 
   constructor(private zone: NgZone,
     public plt: Platform,
-    public ga: GoogleAnalytics,
+    // public ga: GoogleAnalytics,
     public popoverCtrl: PopoverController,
     private inapp: InAppBrowser,
     public ajax: AjaxProvider,
@@ -123,18 +124,21 @@ export class FixturePage {
     public events: Events,
     public cmnfun: CommomfunctionProvider,
     public storage: Storage,
-    public navCtrl: NavController, public navParams: NavParams) {
-    this.plt.ready().then(() => {
-      this.ga.startTrackerWithId('UA-118996199-1')
-        .then(() => {
-          console.log('Google analytics is ready now');
-          this.ga.trackView('Fixture - Round');
-          this.ga.trackEvent('Advertisement', 'Viewed', 'Fixture - Round', 1);
-          this.ga.trackTiming('Fixture', 3000, 'Duration', 'Time');
-        })
-        .catch(e => console.log('Error starting GoogleAnalytics', e));
-    })
-
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public firebaselogger: FirebaseAnalyticsProvider) {
+    // this.plt.ready().then(() => {
+    //   this.ga.startTrackerWithId('UA-118996199-1')
+    //     .then(() => {
+    //       console.log('Google analytics is ready now');
+    //       this.ga.trackView('Fixture - Round');
+    //       this.ga.trackEvent('Advertisement', 'Viewed', 'Fixture - Round', 1);
+    //       this.ga.trackTiming('Fixture', 3000, 'Duration', 'Time');
+    //     })
+    //     .catch(e => console.log('Error starting GoogleAnalytics', e));
+    // })
+    this.firebaselogger.trackView('Fixture - Round');
+    this.firebaselogger.trackEvent('Advertisement', { action: 'Viewed', trackView: 'Fixture - Round' });
   }
 
   // year_dropdown
@@ -648,14 +652,16 @@ export class FixturePage {
       //   this.scrolround(this.Current_rd);
       // }, 100);
 
-      this.plt.ready().then(() => {
-        this.ga.startTrackerWithId('UA-118996199-1')
-          .then(() => {
-            console.log('Google analytics is ready now');
-            this.ga.trackView('Fixture - Round');
-          })
-          .catch(e => console.log('Error starting GoogleAnalytics', e));
-      })
+      // this.plt.ready().then(() => {
+      //   this.ga.startTrackerWithId('UA-118996199-1')
+      //     .then(() => {
+      //       console.log('Google analytics is ready now');
+      //       this.ga.trackView('Fixture - Round');
+      //     })
+      //     .catch(e => console.log('Error starting GoogleAnalytics', e));
+      // })
+
+      this.firebaselogger.trackView('Fixture - Round');
       // this.fisttime=0;
       //   this.ajax.datalist('get-round-competition-fixture',{
       //         accessKey: 'QzEnDyPAHT12asHb4On6HH2016',
@@ -680,18 +686,20 @@ export class FixturePage {
         // this.cmnfun.showToast('Some thing Unexpected happen please try again');
       })
 
-      this.plt.ready().then(() => {
-        this.ga.startTrackerWithId('UA-118996199-1')
-          .then(() => {
-            console.log('Google analytics is ready now');
-            this.ga.trackView('Fixture - Club');
-          })
-          .catch(e => console.log('Error starting GoogleAnalytics', e));
-      })
+      // this.plt.ready().then(() => {
+      //   this.ga.startTrackerWithId('UA-118996199-1')
+      //     .then(() => {
+      //       console.log('Google analytics is ready now');
+      //       this.ga.trackView('Fixture - Club');
+      //     })
+      //     .catch(e => console.log('Error starting GoogleAnalytics', e));
+      // })
+      this.firebaselogger.trackView('Fixture - Club');
     }
   }
   goToAddSite(ad_url) {
-    this.ga.trackEvent('Advertisement', 'Viewed', 'Fixture - Club', 1);
+    // this.ga.trackEvent('Advertisement', 'Viewed', 'Fixture - Club', 1);
+    this.firebaselogger.trackEvent('Advertisement', { action: 'Viewed', trackView: 'Fixture - Club' });
     const browser = this.inapp.create(ad_url);
   }
   openMap(ad_url) {
