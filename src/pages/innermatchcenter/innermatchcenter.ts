@@ -6,7 +6,7 @@ import { CommomfunctionProvider } from '../../providers/commomfunction/commomfun
 import { Events } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
+// import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { ProductListProvider } from '../../providers/product-list/product-list';
 import { InAppPurchase } from '@ionic-native/in-app-purchase';
 import { StreamingMedia } from '@ionic-native/streaming-media';
@@ -14,6 +14,7 @@ import 'datatables.net';
 import 'datatables.net-fixedcolumns';
 import 'datatables.net-fixedheader';
 import * as $ from 'jquery';
+import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
 // import 'datatables.net';
 // import 'datatables.net-fixedcolumns';
 // import 'jquery-flot'
@@ -129,8 +130,24 @@ export class InnermatchcenterPage {
 
     Selectedmatch: any;
 
-    constructor(public popover: PopoverController, private iap: InAppPurchase, public platform: Platform, public processproduct: ProductListProvider, public ga: GoogleAnalytics, public localdata: LocalDataProvider,
-        private alertCtrl: AlertController, private streamingMedia: StreamingMedia, private modalCtrl: ModalController, private zone: NgZone, private inapp: InAppBrowser, public Storage: Storage, public ajax: AjaxProvider, public events: Events, public cmnfun: CommomfunctionProvider, public navCtrl: NavController, public navParams: NavParams) {
+    constructor(public popover: PopoverController,
+        private iap: InAppPurchase,
+        public platform: Platform,
+        public processproduct: ProductListProvider,
+        // public ga: GoogleAnalytics,
+        public localdata: LocalDataProvider,
+        private alertCtrl: AlertController,
+        private streamingMedia: StreamingMedia,
+        private modalCtrl: ModalController,
+        private zone: NgZone,
+        private inapp: InAppBrowser,
+        public Storage: Storage,
+        public ajax: AjaxProvider,
+        public events: Events,
+        public cmnfun: CommomfunctionProvider,
+        public navCtrl: NavController,
+        public navParams: NavParams,
+        public firebaselogger: FirebaseAnalyticsProvider) {
         this.details = navParams.get('details');
         this.deviceData.year = navParams.get('year');
         this.selectd_yr = navParams.get('year');
@@ -152,13 +169,14 @@ export class InnermatchcenterPage {
                 .catch((err) => {
                     console.log(err);
                 });
-            this.ga.startTrackerWithId('UA-118996199-1')
-                .then(() => {
-                    console.log('Google analytics is ready now');
-                    this.ga.trackView('Score');
-                })
-                .catch(e => console.log('Error starting GoogleAnalytics', e));
-        })
+            // this.ga.startTrackerWithId('UA-118996199-1')
+            //     .then(() => {
+            //         console.log('Google analytics is ready now');
+            //         this.ga.trackView('Score');
+            //     })
+            //     .catch(e => console.log('Error starting GoogleAnalytics', e));
+        });
+        this.firebaselogger.trackView('Score');
         //check login
         this.Storage.get('userData').then((val) => {
             if (val) {
@@ -209,7 +227,8 @@ export class InnermatchcenterPage {
         clearInterval(this.scoreid);
     }
     goToAddSite(ad_url) {
-        this.ga.trackEvent('Advertisement', 'Viewed', 'Score', 1);
+        //this.ga.trackEvent('Advertisement', 'Viewed', 'Score', 1);
+        this.firebaselogger.trackEvent('Advertisement', { action: 'Viewed', trackEvent: 'Score' });
         const browser = this.inapp.create(ad_url);
     }
     onScroll() {
@@ -1047,16 +1066,18 @@ export class InnermatchcenterPage {
             clearInterval(this.scoreid);
             this.actionpage();
             this.statschoose2 = 'Player';
-            this.platform.ready().then(() => {
-                this.ga.startTrackerWithId('UA-118996199-1')
-                    .then(() => {
-                        console.log('Google analytics is ready now');
-                        this.ga.trackView('Action');
-                        this.ga.trackTiming('Action', 2000, 'Duration', 'Time');
-                        this.ga.trackEvent('Advertisement', 'Viewed', 'Action', 1);
-                    })
-                    .catch(e => console.log('Error starting GoogleAnalytics', e));
-            })
+            // this.platform.ready().then(() => {
+            //     this.ga.startTrackerWithId('UA-118996199-1')
+            //         .then(() => {
+            //             console.log('Google analytics is ready now');
+            //             this.ga.trackView('Action');
+            //             this.ga.trackTiming('Action', 2000, 'Duration', 'Time');
+            //             this.ga.trackEvent('Advertisement', 'Viewed', 'Action', 1);
+            //         })
+            //         .catch(e => console.log('Error starting GoogleAnalytics', e));
+            // })
+            this.firebaselogger.trackView('Action');
+            this.firebaselogger.trackEvent('Advertisement', { action: 'Viewed', trackEvent: 'Action' });
         }
         else if (this.type == 'SCORE') {
             let loader = 0;
@@ -1079,16 +1100,18 @@ export class InnermatchcenterPage {
                 this.cmnfun.showToast('Some thing Unexpected happen please try again');
             })
 
-            this.platform.ready().then(() => {
-                this.ga.startTrackerWithId('UA-118996199-1')
-                    .then(() => {
-                        console.log('Google analytics is ready now');
-                        this.ga.trackView('Score');
-                        this.ga.trackTiming('Score', 1000, 'Duration', 'Time');
-                        this.ga.trackEvent('Advertisement', 'Viewed', 'Score', 1);
-                    })
-                    .catch(e => console.log('Error starting GoogleAnalytics', e));
-            })
+            // this.platform.ready().then(() => {
+            //     this.ga.startTrackerWithId('UA-118996199-1')
+            //         .then(() => {
+            //             console.log('Google analytics is ready now');
+            //             this.ga.trackView('Score');
+            //             this.ga.trackTiming('Score', 1000, 'Duration', 'Time');
+            //             this.ga.trackEvent('Advertisement', 'Viewed', 'Score', 1);
+            //         })
+            //         .catch(e => console.log('Error starting GoogleAnalytics', e));
+            // })
+            this.firebaselogger.trackView('Score');
+            this.firebaselogger.trackEvent('Advertisement', { action: 'Viewed', trackEvent: 'Score' });
         }
         // $state.go('app.action',{fixture_id: this.fixture_id, roundNo: this.stateRoundNo, homeTeamScore: this.totalHoMeScores, awayTeamScore : this.totalAwAyScores, match_status:this.statusName});
     }
@@ -1097,16 +1120,18 @@ export class InnermatchcenterPage {
         //  this.pamentshow = 1;
         //  this.gotostatspage();
         //
-        this.platform.ready().then(() => {
-            this.ga.startTrackerWithId('UA-118996199-1')
-                .then(() => {
-                    console.log('Google analytics is ready now');
-                    this.ga.trackView('Stats - Teams');
-                    this.ga.trackTiming('Stats - Teams', 1000, 'Duration', 'Time');
-                    this.ga.trackEvent('Advertisement', 'Viewed', 'Stats - Teams', 1);
-                })
-                .catch(e => console.log('Error starting GoogleAnalytics', e));
-        })
+        // this.platform.ready().then(() => {
+        //     this.ga.startTrackerWithId('UA-118996199-1')
+        //         .then(() => {
+        //             console.log('Google analytics is ready now');
+        //             this.ga.trackView('Stats - Teams');
+        //             this.ga.trackTiming('Stats - Teams', 1000, 'Duration', 'Time');
+        //             this.ga.trackEvent('Advertisement', 'Viewed', 'Stats - Teams', 1);
+        //         })
+        //         .catch(e => console.log('Error starting GoogleAnalytics', e));
+        // })
+        this.firebaselogger.trackView('Stats - Teams');
+        this.firebaselogger.trackEvent('Advertisement', { action: 'Viewed', trackEvent: 'Stats - Teams' });
         this.statschoose2 = 'team';
         clearInterval(this.id);
         clearInterval(this.scoreid);
@@ -1210,14 +1235,16 @@ export class InnermatchcenterPage {
                             {
                                 text: 'MAY BE LATER',
                                 handler: () => {
-                                    this.ga.trackEvent("Stats - Maybe Later", "Selected", "Premium", 1);
+                                    // this.ga.trackEvent("Stats - Maybe Later", "Selected", "Premium", 1);
+                                    this.firebaselogger.trackEvent('Stats - Maybe Later', { action: 'Selected', trackEvent: 'Premium' });
                                     this.goToActionPage(this.statcheck);
                                 }
                             },
                             {
                                 text: "Let's Do It",
                                 handler: () => {
-                                    this.ga.trackEvent("Stats - Upgrade Now", "Selected", "Premium", 1);
+                                    // this.ga.trackEvent("Stats - Upgrade Now", "Selected", "Premium", 1);
+                                    this.firebaselogger.trackEvent('Stats - Upgrade Now', { action: 'Selected', trackEvent: 'Premium' });
                                     this.localdata.SetBack('innermatchcenter', this.details, this.navParams.get('parentPage'), this.selectd_yr);
                                     if (this.isLogin == true) {
                                         this.localdata.StoreYear(this.selectd_yr);
@@ -1241,14 +1268,16 @@ export class InnermatchcenterPage {
                             {
                                 text: 'MAYBE LATER',
                                 handler: () => {
-                                    this.ga.trackEvent("Stats - Maybe Later", "Selected", "Premium Plus", 1);
+                                    // this.ga.trackEvent("Stats - Maybe Later", "Selected", "Premium Plus", 1);
+                                    this.firebaselogger.trackEvent('Stats - Maybe Later', { action: 'Selected', trackEvent: 'Premium Plus' });
                                     this.goToActionPage(this.statcheck);
                                 }
                             },
                             {
                                 text: 'UPGRADE NOW',
                                 handler: () => {
-                                    this.ga.trackEvent("Stats - Upgrade Now", "Selected", "Premium Plus", 1);
+                                    // this.ga.trackEvent("Stats - Upgrade Now", "Selected", "Premium Plus", 1);
+                                    this.firebaselogger.trackEvent('Stats - Upgrade Now', { action: 'Selected', trackEvent: 'Premium Plus' });
                                     this.localdata.SetBack('innermatchcenter', this.details, this.navParams.get('parentPage'), this.selectd_yr);
                                     this.localdata.Upgrade(this.details.competion_id);
                                     this.localdata.StoreYear(this.selectd_yr);
@@ -1383,14 +1412,17 @@ export class InnermatchcenterPage {
                                 {
                                     text: 'MAYBE LATER',
                                     handler: () => {
-                                        this.ga.trackEvent("Stats - Maybe Later", "Selected", "Premium Plus", 1);
+                                        // this.ga.trackEvent("Stats - Maybe Later", "Selected", "Premium Plus", 1);
+                                        this.firebaselogger.trackEvent('Stats - Maybe Later', { action: 'Selected', trackEvent: 'Premium Plus' });
                                         this.goToActionPage(this.statcheck);
                                     }
                                 },
                                 {
                                     text: 'UPGRADE NOW',
                                     handler: () => {
-                                        this.ga.trackEvent("Stats - Upgrade Now", "Selected", "Premium Plus", 1);
+                                        // this.ga.trackEvent("Stats - Upgrade Now", "Selected", "Premium Plus", 1);
+                                        this.firebaselogger.trackEvent('Stats - Upgrade Now', { action: 'Selected', trackEvent: 'Premium Plus' });
+
                                         this.localdata.SetBack('innermatchcenter', this.details, this.navParams.get('parentPage'), this.selectd_yr);
                                         this.localdata.Upgrade(this.details.competion_id);
                                         this.localdata.StoreYear(this.selectd_yr);
@@ -1415,14 +1447,16 @@ export class InnermatchcenterPage {
                                 {
                                     text: 'Maybe Later',
                                     handler: () => {
-                                        this.ga.trackEvent("Stats - Maybe Later", "Selected", "Premium", 1);
+                                        // this.ga.trackEvent("Stats - Maybe Later", "Selected", "Premium", 1);
+                                        this.firebaselogger.trackEvent('Stats - Maybe Later', { action: 'Selected', trackEvent: 'Premium' });
                                         this.goToActionPage(this.statcheck);
                                     }
                                 },
                                 {
                                     text: "Let's Do It",
                                     handler: () => {
-                                        this.ga.trackEvent("Stats - Upgrade Now", "Selected", "Premium", 1);
+                                        // this.ga.trackEvent("Stats - Upgrade Now", "Selected", "Premium", 1);
+                                        this.firebaselogger.trackEvent('Stats - Upgrade Now', { action: 'Selected', trackEvent: 'Premium' });
                                         this.localdata.SetBack('innermatchcenter', this.details, this.navParams.get('parentPage'), this.selectd_yr);
                                         if (this.isLogin == true) {
                                             this.localdata.StoreYear(this.selectd_yr);
@@ -1447,14 +1481,16 @@ export class InnermatchcenterPage {
                                 {
                                     text: 'MAYBE LATER',
                                     handler: () => {
-                                        this.ga.trackEvent("Stats - Maybe Later", "Selected", "Premium Plus", 1);
+                                        // this.ga.trackEvent("Stats - Maybe Later", "Selected", "Premium Plus", 1);
+                                        this.firebaselogger.trackEvent('Stats - Maybe Later', { action: 'Selected', trackEvent: 'Premium Plus' });
                                         this.goToActionPage(this.statcheck);
                                     }
                                 },
                                 {
                                     text: 'UPGRADE NOW',
                                     handler: () => {
-                                        this.ga.trackEvent("Stats - Upgrade Now", "Selected", "Premium Plus", 1);
+                                        // this.ga.trackEvent("Stats - Upgrade Now", "Selected", "Premium Plus", 1);
+                                        this.firebaselogger.trackEvent('Stats - Upgrade Now', { action: 'Selected', trackEvent: 'Premium Plus' });
                                         this.localdata.SetBack('innermatchcenter', this.details, this.navParams.get('parentPage'), this.selectd_yr);
                                         this.localdata.StoreYear(this.selectd_yr);
                                         this.localdata.Upgrade(this.details.competion_id);
@@ -1480,7 +1516,8 @@ export class InnermatchcenterPage {
                                 {
                                     text: 'Maybe Later',
                                     handler: () => {
-                                        this.ga.trackEvent("Stats - Maybe Later", "Selected", "Premium", 1);
+                                        // this.ga.trackEvent("Stats - Maybe Later", "Selected", "Premium", 1);
+                                        this.firebaselogger.trackEvent('Stats - Maybe Later', { action: 'Selected', trackEvent: 'Premium' });
                                         this.goToActionPage(this.statcheck);
                                     }
                                 },
@@ -1508,7 +1545,8 @@ export class InnermatchcenterPage {
                                 {
                                     text: 'Maybe Later',
                                     handler: () => {
-                                        this.ga.trackEvent("Stats - Maybe Later", "Selected", "Premium", 1);
+                                        // this.ga.trackEvent("Stats - Maybe Later", "Selected", "Premium", 1);
+                                        this.firebaselogger.trackEvent('Stats - Maybe Later', { action: 'Selected', trackEvent: 'Premium' });
                                         this.goToActionPage(this.statcheck);
                                     }
                                 },
@@ -1530,14 +1568,16 @@ export class InnermatchcenterPage {
                                 {
                                     text: 'Maybe Later',
                                     handler: () => {
-                                        this.ga.trackEvent("Stats - Maybe Later", "Selected", "Premium", 1);
+                                        // this.ga.trackEvent("Stats - Maybe Later", "Selected", "Premium", 1);
+                                        this.firebaselogger.trackEvent('Stats - Maybe Later', { action: 'Selected', trackEvent: 'Premium' });
                                         this.goToActionPage(this.statcheck);
                                     }
                                 },
                                 {
                                     text: "Let's Do It",
                                     handler: () => {
-                                        this.ga.trackEvent("Stats - Upgrade Now", "Selected", "Premium", 1);
+                                        // this.ga.trackEvent("Stats - Upgrade Now", "Selected", "Premium", 1);
+                                        this.firebaselogger.trackEvent('Stats - Upgrade Now', { action: 'Selected', trackEvent: 'Premium' });
                                         this.localdata.SetBack('innermatchcenter', this.details, this.navParams.get('parentPage'), this.selectd_yr);
                                         if (this.isLogin == true) {
                                             this.localdata.StoreYear(this.selectd_yr);
@@ -1571,7 +1611,8 @@ export class InnermatchcenterPage {
                 {
                     text: 'Maybe Later',
                     handler: () => {
-                        this.ga.trackEvent("Stats - Maybe Later", "Selected", "Premium", 1);
+                        // this.ga.trackEvent("Stats - Maybe Later", "Selected", "Premium", 1);
+                        this.firebaselogger.trackEvent('Stats - Maybe Later', { action: 'Selected', trackEvent: 'Premium' });
                         this.goToActionPage(this.statcheck);
                     }
                 },
@@ -1599,7 +1640,8 @@ export class InnermatchcenterPage {
                     text: "Season Pass from $29.99",
                     handler: () => {
                         this.localdata.SetBack('innermatchcenter', this.details, this.navParams.get('parentPage'), this.selectd_yr);
-                        this.ga.trackEvent("Stats - Upgrade Now", "Selected", "Premium", 1);
+                        // this.ga.trackEvent("Stats - Upgrade Now", "Selected", "Premium", 1);
+                        this.firebaselogger.trackEvent('Stats - Upgrade Now', { action: 'Selected', trackEvent: 'Premium' });
                         if (this.isLogin == true) {
                             this.localdata.StoreYear(this.selectd_yr);
                             this.navCtrl.push('LandingpagePage', { showPass: true });
@@ -3435,7 +3477,8 @@ export class InnermatchcenterPage {
         //   alert("hh");
         if (item == 'team') {
             this.selectedOption = ['all'];
-            this.ga.trackView('Stats Teams - Game');
+            // this.ga.trackView('Stats Teams - Game');
+            this.firebaselogger.trackView('Stats Teams - Game');
             if (this.statschoose2 != 'team') {
                 this.statschoose2 = 'team';
                 this.cmnfun.showLoading('Please wait...');
@@ -3453,7 +3496,8 @@ export class InnermatchcenterPage {
             }
         }
         else {
-            this.ga.trackView('Stats Players - Game');
+            // this.ga.trackView('Stats Players - Game');
+            this.firebaselogger.trackView('Stats Players - Game');
             if (this.statschoose2 != 'Player') {
                 this.jd_active = 'GB';
                 this.CoachQ = ['all'];
@@ -3462,10 +3506,6 @@ export class InnermatchcenterPage {
                 this.cmnfun.showLoading('Please wait...');
                 this.gotoplayers();
             }
-
-
-
-
         }
     }
 
@@ -3551,24 +3591,16 @@ export class InnermatchcenterPage {
     }
 
     getValue(key, statScore, statName) {
-
         if (statScore == undefined || statScore == 'undefined') {
             this.homeAwayTeamPlayerWithScore[key][statName] = 0;
             this.homeTeamPlayers1[key][statName] = 0;
 
             return 0;
-        }
-
-
-        else {
+        } else {
             this.homeAwayTeamPlayerWithScore[key][statName] = parseInt(this.homeAwayTeamPlayerWithScore[key][statName]);
 
             if (isNaN(statScore)) return 0; else return statScore;
-
-
-
         }
-
     }
     getValueD(key, statScore1, statScore2, statName, pn) {
         let Disposal = 0;
@@ -3577,21 +3609,13 @@ export class InnermatchcenterPage {
 
         if (statScore1 == undefined || statScore1 == 'undefined') {
             K = 0;
-
-
         } else {
-
-
             K = statScore1;
         }
 
         if (statScore2 == undefined || statScore2 == 'undefined') {
             H = 0;
-
-
         } else {
-
-
             H = statScore2;
         }
 
@@ -3834,16 +3858,10 @@ export class InnermatchcenterPage {
                         // })
                         if ($(this).children("td").eq(0).attr('data-t') == 'home') {
                             $(this).show();
-
-
-
                         } else {
-
                             $(this).hide();
                         }
-
                     })
-
                 } else {
                     $(this).addClass("jd_active_sort");
                     console.log("hhhmjkjjl--away");
@@ -3851,27 +3869,18 @@ export class InnermatchcenterPage {
 
                     $("#playerStatsTable tbody tr").each(function () {
                         //   alert($(this).children("td").eq(0).attr('data-t'));
-
                         if ($(this).children("td").eq(0).attr('data-t') == 'away') {
-
                             $(this).show();
-
                         } else {
-
                             $(this).hide();
                         }
-
                     })
 
                     if ($('#btn1').hasClass("activated1") && $('#btn2').hasClass("activated1")) {
                         $("#playerStatsTable tbody tr").each(function () {
                             $(this).show();
-
                         });
-
                     }
-
-
                 }
 
                 setTimeout(function () { selfval.sortBYval(selfval.jd_active); }, 200);
@@ -3897,19 +3906,13 @@ export class InnermatchcenterPage {
                     $(".awayTeam1").addClass("activated1");
 
                     $("#playerStatsTable tbody tr").each(function () {
-
                         console.log('foreach');
                         if ($(this).children("td").eq(0).attr('data-t') == 'away') {
                             $(this).show();
-
                         } else {
-
                             $(this).hide();
                         }
-
                     })
-
-
                 } else {
                     $(this).addClass("jd_active_sort");
                     console.log("hhuhijh");
@@ -3917,27 +3920,19 @@ export class InnermatchcenterPage {
 
                     $("#playerStatsTable tbody tr").each(function () {
                         // alert($(this).children("td").eq(0).attr('data-t'));
-
                         if ($(this).children("td").eq(0).attr('data-t') == 'home') {
-
                             $(this).show();
-
                         } else {
-
                             $(this).hide();
                         }
-
                     })
                     if ($('#btn1').hasClass("activated1") && $('#btn2').hasClass("activated1")) {
                         $("#playerStatsTable tbody tr").each(function () {
                             $(this).show();
-
                         });
                     }
-
                 }
                 setTimeout(function () { selfval.sortBYval(selfval.jd_active); }, 200);
-
                 // this.sortBYType("away");
             });
 
@@ -3946,17 +3941,14 @@ export class InnermatchcenterPage {
 
                 // While there remain elements to shuffle...
                 while (0 !== currentIndex) {
-
                     // Pick a remaining element...
                     randomIndex = Math.floor(Math.random() * currentIndex);
                     currentIndex -= 1;
-
                     // And swap it with the current element.
                     temporaryValue = array[currentIndex];
                     array[currentIndex] = array[randomIndex];
                     array[randomIndex] = temporaryValue;
                 }
-
                 return array;
             }
 
@@ -4232,7 +4224,7 @@ export class gamepasspage {
     // path: any = 'https://s3.us-west-2.amazonaws.com/vafas3';
     constructor(
         public processproduct: ProductListProvider,
-        public ga: GoogleAnalytics,
+        // public ga: GoogleAnalytics,
         private alertCtrl: AlertController,
         public Storage: Storage,
         public ajax: AjaxProvider,
@@ -4278,9 +4270,6 @@ export class gamepasspage {
         this.viewCtrl.dismiss('cancel');
     }
 
-
-
-
     // Buy consume product single game pass
     BuyConsume(product) {
         this.cmnfun.showLoading('Please wait...');
@@ -4312,7 +4301,7 @@ export class gamepasspage {
                     this.processproduct.InsertPurchase(this.resData);
                     this.events.publish('changebanner:changed', true);
                     this.events.publish('menuchange2:changed', 'HomePage');
-                    this.ga.trackEvent("Payment", "Done", "Payment", 1);
+                    // this.ga.trackEvent("Payment", "Done", "Payment", 1);
                     // if (this.isLogin == true) {
                     this.viewCtrl.dismiss('success');
                     // } else {
