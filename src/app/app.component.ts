@@ -13,7 +13,6 @@ import { PostmatchPage } from '../pages/postmatch/postmatch';
 import { LadderPage } from '../pages/ladder/ladder';
 import { GoalkickersPage } from '../pages/goalkickers/goalkickers';
 import { Storage } from '@ionic/storage';
-// import { UniqueDeviceID } from '@ionic-native/unique-device-id';
 import { LocalDataProvider } from '../providers/local-data/local-data';
 import { ProductListProvider } from '../providers/product-list/product-list';
 import { CommomfunctionProvider } from '../providers/commomfunction/commomfunction';
@@ -53,7 +52,6 @@ export class MyApp {
     public events: Events,
     public ajax: AjaxProvider,
     public platform: Platform,
-    // private uniqueDeviceID: AjaxProvider,
     public statusBar: StatusBar,
     private ga: GoogleAnalytics,
     public cmnfn: CommomfunctionProvider,
@@ -263,12 +261,6 @@ export class MyApp {
       this.accessDenied();
     })
     this.platform.ready().then(() => {
-
-      // this.uniqueDeviceID.get()
-      //   .then((uuid: any) => alert(uuid))
-      //   .catch((error: any) => alert(error));
-
-
       // google analytics track view for splash screen
       this.ga.startTrackerWithId('UA-118996199-1')
         .then(() => {

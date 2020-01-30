@@ -9,7 +9,6 @@ import { InAppPurchase } from '@ionic-native/in-app-purchase';
 import { Storage } from '@ionic/storage';
 import { Events } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-// import { UniqueDeviceID } from '@ionic-native/unique-device-id';
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
 import { AlertController } from 'ionic-angular';
@@ -136,7 +135,6 @@ export class LandingpagePage {
     public events: Events,
     private alertCtrl: AlertController,
     private ga: GoogleAnalytics,
-    // private uniqueDeviceID: UniqueDeviceID,
     public processproduct: ProductListProvider,
     public inapp: InAppBrowser,
     public localData: LocalDataProvider,

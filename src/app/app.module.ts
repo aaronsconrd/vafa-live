@@ -29,7 +29,6 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { IonicStorageModule } from '@ionic/storage';
 import { Facebook } from '@ionic-native/facebook';
 import { InAppPurchase } from '@ionic-native/in-app-purchase';
-// import { UniqueDeviceID } from '@ionic-native/unique-device-id';
 import { StreamingMedia } from '@ionic-native/streaming-media';
 
 import { FileTransfer } from '@ionic-native/file-transfer';
@@ -98,7 +97,6 @@ import { Device } from '@ionic-native/device';
     YoutubeVideoPlayer,
     InAppPurchase,
     InAppBrowser,
-    // UniqueDeviceID,
     Device,
     Facebook,
     File,

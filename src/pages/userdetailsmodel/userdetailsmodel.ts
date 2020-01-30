@@ -9,7 +9,6 @@ import { Storage } from '@ionic/storage';
 import { AjaxProvider } from '../../providers/ajax/ajax';
 import { HomePage } from '../../pages/home/home';
 import { InAppPurchase } from '@ionic-native/in-app-purchase';
-// import { UniqueDeviceID } from '@ionic-native/unique-device-id';
 import { LocalDataProvider } from '../../providers/local-data/local-data';
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
 
@@ -73,7 +72,6 @@ export class UserdetailsmodelPage {
     public storage: Storage,
     private transfer: FileTransfer,
     private camera: Camera,
-    // public uniqueDeviceID:UniqueDeviceID,
     public navParams: NavParams) {
 
 
