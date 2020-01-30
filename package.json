@@ -171,8 +171,7 @@
         "GMS_VERSION": "11.0.1"
       },
       "cordova-plugin-androidx": {},
-      "cordova-plugin-androidx-adapter": {},
-      "cordova-plugin-firebase-analytics": {}
+      "cordova-plugin-androidx-adapter": {}
     },
     "platforms": [
       "ios",
