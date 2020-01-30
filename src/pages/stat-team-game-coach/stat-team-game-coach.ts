@@ -2246,7 +2246,7 @@ export class StatTeamGameCoachPage {
                             actualTime1 = actualTime1.split(":");
 
 
-                            qrTimeLimit[temp] = parseInt(qrTimeLimit[temp - 1]) + (parseInt(actualTime1[0]) * 60) + parseInt(actualTime1[1]);
+                            qrTimeLimit[temp] = parseInt(qrTimeLimit[temp - 1]) + parseInt(actualTime1[0] * 60) + parseInt(actualTime1[1]);
 
 
                         }
@@ -3024,7 +3024,7 @@ export class StatTeamGameCoachPage {
         if (k_value == undefined) k = 0; else k = k_value;
         if (h_value == undefined) h = 0; else h = h_value;
 
-        this.homeAwayTeamPlayerWithScore[key].GB = parseInt(parseInt(goal * 6) + parseInt(b + rb));
+        this.homeAwayTeamPlayerWithScore[key].GB = (parseInt(goal) * 6) + parseInt(b + rb);
         this.homeTeamPlayers1[key].GB = parseFloat(parseInt(parseInt(goal * 6) + parseInt(b + rb)));
 
         //this.homeTeamPlayers1[key].D = parseInt(k_value + h_value) ;
