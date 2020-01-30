@@ -2190,9 +2190,9 @@ export class StatTeamGameCoachPage {
                 };
                 let cmp1 = function (x: any, y: any) {
                     data = x.split(":");
-                    let data_time1 = parseInt(parseInt(data[0] * 60) + data[1]);
+                    let data_time1 = parseInt((parseInt(data[0]) * 60) + data[1]);
                     data = y.split(":");
-                    let data_time2 = parseInt(parseInt(data[0] * 60) + data[1]);
+                    let data_time2 = parseInt((parseInt(data[0]) * 60) + data[1]);
                     return data_time1 > data_time2 ? 1 : data_time1 < data_time2 ? -1 : 0;
 
                 };
@@ -2246,7 +2246,7 @@ export class StatTeamGameCoachPage {
                             actualTime1 = actualTime1.split(":");
 
 
-                            qrTimeLimit[temp] = parseInt(qrTimeLimit[temp - 1]) + parseInt(actualTime1[0] * 60) + parseInt(actualTime1[1]);
+                            qrTimeLimit[temp] = parseInt(qrTimeLimit[temp - 1]) + (parseInt(actualTime1[0]) * 60) + parseInt(actualTime1[1]);
 
 
                         }
@@ -2259,7 +2259,7 @@ export class StatTeamGameCoachPage {
                     splitTime = actualTime.split(":");
 
                     minuteVal = splitTime[1];
-                    let TotalSec = parseInt(parseInt(splitTime[0] * 60) + parseInt(splitTime[1]));
+                    let TotalSec = (parseInt(splitTime[0]) * 60) + parseInt(splitTime[1]);
                     totalSec = (minuteVal / 60).toFixed(2);
 
                     // let TotalTime = parseFloat(splitTime[0] + (splitTime[1]) / 60);
@@ -2285,7 +2285,7 @@ export class StatTeamGameCoachPage {
                        }*/
 
                     let addQrTime = (value3.quater - 1) * timeDuration * 60;
-                    timeTotalGlobal = parseInt(parseInt(splitTime[0] * 60) + parseInt(splitTime[1]) + parseInt(addQrTime));
+                    timeTotalGlobal = parseInt((parseInt(splitTime[0]) * 60) + parseInt(splitTime[1]) + parseInt(addQrTime));
 
 
 
