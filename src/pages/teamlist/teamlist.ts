@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavParams, ViewController } from 'ionic-angular';
 
 /**
  * Generated class for the TeamlistPage page.
@@ -15,7 +15,7 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 })
 export class TeamlistPage {
   items: any = [];
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams) {
+  constructor(public viewCtrl: ViewController, public navParams: NavParams) {
     this.items = navParams.get('items');
   }
 

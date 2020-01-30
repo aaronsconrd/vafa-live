@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, ViewController, Nav, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, Nav, Platform } from 'ionic-angular';
 import { Events } from 'ionic-angular';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';

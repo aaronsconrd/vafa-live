@@ -1,8 +1,7 @@
-import { Component,ViewChild,NgZone  } from '@angular/core';
-import { IonicPage, NavController, NavParams,Platform } from 'ionic-angular';
+import { Component, ViewChild, NgZone } from '@angular/core';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { AjaxProvider } from '../../providers/ajax/ajax';
 import { Events } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
 import { Content } from 'ionic-angular';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
@@ -38,8 +37,8 @@ export class TeamstatdetailsPage {
   knobAvg: any = '';
   advertisementHeader: any = [];
   advertisementFooter: any = [];
-  Hdrimg:any='';
-  Ftrimg:any='';
+  Hdrimg: any = '';
+  Ftrimg: any = '';
   modifiedState: any = [];
   sortedStated: any = [];
 
@@ -47,24 +46,24 @@ export class TeamstatdetailsPage {
   constructor(public navCtrl: NavController,
     public ajax: AjaxProvider,
     public events: Events,
-    public zone:NgZone,
-    public plt:Platform,
+    public zone: NgZone,
+    public plt: Platform,
     private inapp: InAppBrowser,
-    public ga:GoogleAnalytics,
+    public ga: GoogleAnalytics,
     public cmfn: CommomfunctionProvider,
     public navParams: NavParams) {
     this.team_id = navParams.get('team_id');
 
     this.plt.ready().then(() => {
       this.ga.startTrackerWithId('UA-118996199-1')
-     .then(() => {
-       console.log('Google analytics is ready now');
-        this.ga.trackView('Team Stats Individual - Season');
-        this.ga.trackTiming('Team Stats Individual - Season', 1000, 'Duration', 'Time');
-        // this.ga.trackEvent('Advertisement', 'Viewed', 'TeamStatDetails Page', 1);
-     })
-     .catch(e => console.log('Error starting GoogleAnalytics', e));
-       })
+        .then(() => {
+          console.log('Google analytics is ready now');
+          this.ga.trackView('Team Stats Individual - Season');
+          this.ga.trackTiming('Team Stats Individual - Season', 1000, 'Duration', 'Time');
+          // this.ga.trackEvent('Advertisement', 'Viewed', 'TeamStatDetails Page', 1);
+        })
+        .catch(e => console.log('Error starting GoogleAnalytics', e));
+    })
   }
 
   ionViewDidLoad() {
@@ -89,24 +88,21 @@ export class TeamstatdetailsPage {
   }
 
 
-  onScroll()
-		{
-      var moveData =this.content.scrollTop;
-				if(moveData >= 375)
-				{
-          this.zone.run(() => {
-            this.advHide= true;
-						this.advDisplay= false;
-        });
-				}
-				else
-					{
-            this.zone.run(() => {
-              this.advHide= false;
-              this.advDisplay= true;
-          });
-					}
-			}
+  onScroll() {
+    var moveData = this.content.scrollTop;
+    if (moveData >= 375) {
+      this.zone.run(() => {
+        this.advHide = true;
+        this.advDisplay = false;
+      });
+    }
+    else {
+      this.zone.run(() => {
+        this.advHide = false;
+        this.advDisplay = true;
+      });
+    }
+  }
 
 
   GetStatDetailsByTeamid(getStatDetailsByTeamId) {
@@ -138,10 +134,10 @@ export class TeamstatdetailsPage {
     //$state.go('app.goalKickersDetails');
 
     this.advertisementHeader = getStatDetailsByTeamId.headerAdv;
-    this.Hdrimg=this.advertisementHeader[0].ad_image;
+    this.Hdrimg = this.advertisementHeader[0].ad_image;
     console.log(this.Hdrimg);
     this.advertisementFooter = getStatDetailsByTeamId.footerAdv;
-    this.Ftrimg=this.advertisementFooter[0].ad_image;
+    this.Ftrimg = this.advertisementFooter[0].ad_image;
 
     this.modifiedState = ["Goals",
       "Rush Behinds",
@@ -251,12 +247,13 @@ export class TeamstatdetailsPage {
       this.getStatDetailsStats[key].homeTeamColor = '#596682';
       this.getStatDetailsStats[key].awayTeamOnlyColor = 'green';
       this.getStatDetailsStats[key].homeTeamOnlyColor = 'gray';
+      var modifedMaxValue;
       if (awayBarsSpanVal > 100)
-        var modifedMaxValue = parseInt(barValueA) + parseInt(barValueH);
+        modifedMaxValue = parseInt(barValueA) + parseInt(barValueH);
       else
-        var modifedMaxValue = parseInt(barValueA) + maxAway;
+        modifedMaxValue = parseInt(barValueA) + maxAway;
 
-       var percentageUnit = (100 / modifedMaxValue);
+      var percentageUnit = (100 / modifedMaxValue);
 
       this.getStatDetailsStats[key].awayTeamWidth = (percentageUnit * barValueA) + "%";
 
@@ -285,9 +282,9 @@ export class TeamstatdetailsPage {
   }
 
 
-	goToAddSite(ad_url) {
+  goToAddSite(ad_url) {
     this.ga.trackEvent('Advertisement', 'Viewed', 'Team Stats Individual - Season', 1);
-		const browser = this.inapp.create(ad_url);
-	  }
+    const browser = this.inapp.create(ad_url);
+  }
 
 }
