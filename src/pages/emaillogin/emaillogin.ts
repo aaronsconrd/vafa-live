@@ -4,7 +4,6 @@ import { Storage } from '@ionic/storage';
 import { AjaxProvider } from '../../providers/ajax/ajax';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
 import { LocalDataProvider } from '../../providers/local-data/local-data';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { Events } from 'ionic-angular';
 import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
 /**
