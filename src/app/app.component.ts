@@ -17,7 +17,7 @@ import { Storage } from '@ionic/storage';
 import { LocalDataProvider } from '../providers/local-data/local-data';
 import { ProductListProvider } from '../providers/product-list/product-list';
 import { CommomfunctionProvider } from '../providers/commomfunction/commomfunction';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
+// import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { FirebaseAnalyticsProvider } from '../providers/firebase-analytics/firebase-analytics';
 // import { INTERNAL_BROWSER_DYNAMIC_PLATFORM_PROVIDERS } from '@angular/platform-browser-dynamic';
 
