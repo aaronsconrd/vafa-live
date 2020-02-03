@@ -41,6 +41,7 @@
     "@types/datatables.net": "^1.10.13",
     "cordova-android": "7.1.4",
     "cordova-android-play-services-gradle-release": "4.0.0",
+    "cordova-ios": "^5.1.1",
     "cordova-plugin-camera": "^2.4.1",
     "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-device": "^2.0.2",
@@ -66,6 +67,7 @@
     "datatables.net": "^1.10.19",
     "datatables.net-fixedcolumns": "^3.2.6",
     "datatables.net-fixedheader-dt": "^3.1.5",
+    "es6-promise-plugin": "^4.2.2",
     "ionic-angular": "3.9.2",
     "ionicons": "3.0.0",
     "jquery": "^3.4.1",
@@ -168,7 +170,8 @@
       }
     },
     "platforms": [
-      "android"
+      "android",
+      "ios"
     ]
   }
 }
