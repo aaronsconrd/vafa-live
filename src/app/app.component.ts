@@ -18,6 +18,7 @@ import { ProductListProvider } from '../providers/product-list/product-list';
 import { CommomfunctionProvider } from '../providers/commomfunction/commomfunction';
 // import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { FirebaseAnalyticsProvider } from '../providers/firebase-analytics/firebase-analytics';
+import { UniqueDeviceID } from '@ionic-native/unique-device-id';
 // import { INTERNAL_BROWSER_DYNAMIC_PLATFORM_PROVIDERS } from '@angular/platform-browser-dynamic';
 
 @Component({
@@ -54,7 +55,7 @@ export class MyApp {
     public ajax: AjaxProvider,
     public platform: Platform,
     public statusBar: StatusBar,
-    // private ga: GoogleAnalytics,
+    public uniqueDeviceID: UniqueDeviceID,
     public cmnfn: CommomfunctionProvider,
     public prolist: ProductListProvider,
     public localData: LocalDataProvider,
@@ -106,8 +107,9 @@ export class MyApp {
             console.log(val);
             this.localData.StoreDevice(val);
           } else {
-            this.ajax.get()
+            this.uniqueDeviceID.get()
               .then((uuid: any) => {
+                console.log(uuid,'uuid');
                 this.localData.StoreDevice(uuid);
                 this.Storage.set('MydeviceID', uuid);
               })
@@ -140,8 +142,9 @@ export class MyApp {
               this.disableBanner = 1;
             }
           } else {
-            this.ajax.get()
+            this.uniqueDeviceID.get()
               .then((uuid: any) => {
+                console.log(uuid,'uuid');
                 let deviceData: any = {
                   deviceid: uuid
                 }
@@ -169,8 +172,9 @@ export class MyApp {
         this.Storage.set('firsttime', '1');
         this.rootPage = 'LandingpagePage';
         // this.cmnfn.Load();
-        this.ajax.get()
+        this.uniqueDeviceID.get()
           .then((uuid: any) => {
+            console.log(uuid,'uuid');
             let deviceData: any = {
               deviceid: uuid
             }

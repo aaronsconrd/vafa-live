@@ -43,6 +43,7 @@ import { gamepasspage } from '../pages/innermatchcenter/innermatchcenter';
 import { Device } from '@ionic-native/device';
 import { FirebaseAnalyticsProvider } from '../providers/firebase-analytics/firebase-analytics';
 import { FirebaseAnalytics } from '@ionic-native/firebase-analytics';
+import { UniqueDeviceID } from '@ionic-native/unique-device-id';
 @NgModule({
   declarations: [
     MyApp,
@@ -108,7 +109,8 @@ import { FirebaseAnalytics } from '@ionic-native/firebase-analytics';
     ProductListProvider,
     SQLite,
     StreamingMedia,
-    FirebaseAnalyticsProvider
+    FirebaseAnalyticsProvider,
+    UniqueDeviceID
   ]
 })
 export class AppModule { }

@@ -5,7 +5,6 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Events } from 'ionic-angular';
 import { CommomfunctionProvider } from "../commomfunction/commomfunction";
-import { Device } from '@ionic-native/device';
 import { environment } from '../../environments/environment';
 /*
   Generated class for the AjaxProvider provider.
@@ -26,16 +25,9 @@ const baseurl = environment.baseURL;
 @Injectable()
 export class AjaxProvider {
 
-  constructor(public device: Device, public http: HttpClient, public events: Events, public cmnfun: CommomfunctionProvider) {
+  constructor(public http: HttpClient, public events: Events, public cmnfun: CommomfunctionProvider) {
     console.log('Hello AjaxProvider Provider');
 
-  }
-
-  get() {
-    const uniqueDeviceID = this.device.uuid;
-    return new Promise((resolve, reject) => {
-      resolve(uniqueDeviceID)
-    });
   }
 
   GetAllPurchases(params) {
