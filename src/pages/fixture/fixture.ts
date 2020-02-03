@@ -4,11 +4,11 @@ import { AjaxProvider } from '../../providers/ajax/ajax';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
 import { Events } from 'ionic-angular';
 import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { PopoverController } from 'ionic-angular';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Storage } from '@ionic/storage';
 import { environment } from '../../environments/environment';
+import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
 /**
  * Generated class for the FixturePage page.
  *
@@ -115,7 +115,7 @@ export class FixturePage {
 
   constructor(private zone: NgZone,
     public plt: Platform,
-    public ga: GoogleAnalytics,
+    // public ga: GoogleAnalytics,
     public popoverCtrl: PopoverController,
     private inapp: InAppBrowser,
     public ajax: AjaxProvider,
@@ -124,7 +124,9 @@ export class FixturePage {
     public events: Events,
     public cmnfun: CommomfunctionProvider,
     public storage: Storage,
-    public navCtrl: NavController, public navParams: NavParams) {
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public ga: FirebaseAnalyticsProvider) {
     this.plt.ready().then(() => {
       this.ga.startTrackerWithId('UA-118996199-1')
         .then(() => {
@@ -135,7 +137,6 @@ export class FixturePage {
         })
         .catch(e => console.log('Error starting GoogleAnalytics', e));
     })
-
   }
 
   // year_dropdown
@@ -657,6 +658,7 @@ export class FixturePage {
           })
           .catch(e => console.log('Error starting GoogleAnalytics', e));
       })
+
       // this.fisttime=0;
       //   this.ajax.datalist('get-round-competition-fixture',{
       //         accessKey: 'QzEnDyPAHT12asHb4On6HH2016',

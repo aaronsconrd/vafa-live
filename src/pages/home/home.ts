@@ -1,11 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, Slides } from 'ionic-angular';
+import { NavController, Slides, Platform, Events } from 'ionic-angular';
 import { AjaxProvider } from '../../providers/ajax/ajax';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
-import { Events, Platform } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
+// import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { environment } from '../../environments/environment';
+import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -20,7 +20,7 @@ export class HomePage {
   path: any = environment.amazonaws;
   // path: any = 'http://vafalive.com.au';
   // path: any = 'http://54.244.98.247';
-  constructor(private inapp: InAppBrowser, public plt: Platform, public ga: GoogleAnalytics, public events: Events, public ajax: AjaxProvider, public cmnfun: CommomfunctionProvider, public navCtrl: NavController) {
+  constructor(private inapp: InAppBrowser, public plt: Platform, public ga: FirebaseAnalyticsProvider, public events: Events, public ajax: AjaxProvider, public cmnfun: CommomfunctionProvider, public navCtrl: NavController) {
 
     this.plt.ready().then(() => {
       this.ga.startTrackerWithId('UA-118996199-1')
@@ -85,7 +85,6 @@ export class HomePage {
     this.ga.trackEvent('Advertisement', 'Viewed', 'News', 1);
     const browser = this.inapp.create(ad_url);
   }
-
 
   // path reset function
   cutPath(url) {

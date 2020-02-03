@@ -78,8 +78,4 @@ export class EditUserModelPage {
   	}
   }
 
-
-
-
-
 }

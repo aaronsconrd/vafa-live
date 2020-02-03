@@ -37,12 +37,12 @@ import { Camera } from '@ionic-native/camera';
 import { FilePath } from '@ionic-native/file-path';
 
 import { LocalDataProvider } from '../providers/local-data/local-data';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { ProductListProvider } from '../providers/product-list/product-list';
 import { SQLite } from '@ionic-native/sqlite';
 import { gamepasspage } from '../pages/innermatchcenter/innermatchcenter';
 import { Device } from '@ionic-native/device';
-
+import { FirebaseAnalyticsProvider } from '../providers/firebase-analytics/firebase-analytics';
+import { FirebaseAnalytics } from '@ionic-native/firebase-analytics';
 @NgModule({
   declarations: [
     MyApp,
@@ -104,10 +104,11 @@ import { Device } from '@ionic-native/device';
     FilePath,
     FileTransfer,
     LocalDataProvider,
-    GoogleAnalytics,
+    FirebaseAnalytics,
     ProductListProvider,
     SQLite,
-    StreamingMedia
+    StreamingMedia,
+    FirebaseAnalyticsProvider
   ]
 })
 export class AppModule { }

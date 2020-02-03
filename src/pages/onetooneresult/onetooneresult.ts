@@ -6,8 +6,9 @@ import { Storage } from '@ionic/storage';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { LocalDataProvider } from '../../providers/local-data/local-data';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { environment } from '../../environments/environment';
+import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
+
 @IonicPage()
 @Component({
   selector: 'page-onetooneresult',
@@ -64,9 +65,9 @@ export class OnetooneresultPage {
   constructor(public navCtrl: NavController,
     public ajax: AjaxProvider,
     public events: Events,
-    public nav: Nav,
-    public plt: Platform, public ga: GoogleAnalytics,
-    private modalCtrl: ModalController,
+    public nav:Nav,
+    public plt:Platform,public ga:FirebaseAnalyticsProvider,
+		private modalCtrl: ModalController,
     public cmfn: CommomfunctionProvider,
     public localdata: LocalDataProvider,
     private inapp: InAppBrowser,

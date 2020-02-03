@@ -4,7 +4,7 @@ import { AjaxProvider } from '../../providers/ajax/ajax';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
 import { Events } from 'ionic-angular';
 import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
+// import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import * as $ from 'jquery';
 import 'datatables.net';
 import 'datatables.net-fixedcolumns';
@@ -13,6 +13,8 @@ import { PopoverController } from 'ionic-angular';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Storage } from '@ionic/storage';
 import { environment } from '../../environments/environment';
+import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
+
 /**
  * Generated class for the LadderPage page.
  *
@@ -96,7 +98,7 @@ export class LadderPage {
 
 
   constructor(private sanitizer: DomSanitizer, private inapp: InAppBrowser, public popoverCtrl: PopoverController, public storage: Storage,
-    public plt: Platform, public ga: GoogleAnalytics, public ajax: AjaxProvider, public cmnfun: CommomfunctionProvider, private modalCtrl: ModalController, public events: Events, public navCtrl: NavController, public navParams: NavParams) {
+    public plt: Platform, public ga: FirebaseAnalyticsProvider, public ajax: AjaxProvider, public cmnfun: CommomfunctionProvider, private modalCtrl: ModalController, public events: Events, public navCtrl: NavController, public navParams: NavParams) {
 
     // $.plot($("#placeholder"), [ [[0, 0], [1, 1]] ], { yaxis: { max: 1 } });
     this.plt.ready().then(() => {

@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,Platform } from 'ionic-angular';
-import { DomSanitizer } from '@angular/platform-browser';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
+import { IonicPage, NavController, Platform } from 'ionic-angular';
+import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
+// import { DomSanitizer } from '@angular/platform-browser';
+// import { GoogleAnalytics } from '@ionic-native/google-analytics';
+
 /**
  * Generated class for the CustomPrivacyPage page.
  *
@@ -9,7 +11,7 @@ import { GoogleAnalytics } from '@ionic-native/google-analytics';
  * Ionic pages and navigation.
  */
 
- const PPLink = 'https://www.completesportsmanagement.com.au/privacy';
+const PPLink = 'https://www.completesportsmanagement.com.au/privacy';
 
 @IonicPage()
 @Component({
@@ -17,18 +19,22 @@ import { GoogleAnalytics } from '@ionic-native/google-analytics';
   templateUrl: 'custom-privacy.html',
 })
 export class CustomPrivacyPage {
-
-	
-
-  constructor(public navCtrl: NavController,private sanitize: DomSanitizer, public navParams: NavParams,public plt:Platform,public ga:GoogleAnalytics) {
-  	 this.plt.ready().then(() => {
+  constructor(
+    public navCtrl: NavController,
+    // private sanitize: DomSanitizer,
+    // public navParams: NavParams,
+    public plt: Platform,
+    // public ga: GoogleAnalytics
+    public ga: FirebaseAnalyticsProvider
+  ) {
+    this.plt.ready().then(() => {
       this.ga.startTrackerWithId('UA-118996199-1')
-   .then(() => {
-     console.log('Google analytics is ready now');
-        this.ga.trackView('Privacy Policy');
-   })
-   .catch(e => console.log('Error starting GoogleAnalytics', e));
-       })
+        .then(() => {
+          console.log('Google analytics is ready now');
+          this.ga.trackView('Privacy Policy');
+        })
+        .catch(e => console.log('Error starting GoogleAnalytics', e));
+    });
   }
 
   ionViewDidLoad() {

@@ -4,8 +4,9 @@ import { AjaxProvider } from '../../providers/ajax/ajax';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
 import { Events } from 'ionic-angular';
 import { SocialSharing } from '@ionic-native/social-sharing';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { environment } from '../../environments/environment';
+import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
+// import { GoogleAnalytics } from '@ionic-native/google-analytics';
 /**
  * Generated class for the MatchreportdetailsPage page.
  *
@@ -49,7 +50,7 @@ export class MatchreportdetailsPage {
   away_team_total_score3: any;
   home_team: any;
   away_team: any;
-  constructor(public ajax: AjaxProvider, private socialSharing: SocialSharing, public plt: Platform, public ga: GoogleAnalytics, public cmnfun: CommomfunctionProvider, public events: Events, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public ajax: AjaxProvider, private socialSharing: SocialSharing, public plt: Platform, public ga: FirebaseAnalyticsProvider, public cmnfun: CommomfunctionProvider, public events: Events, public navCtrl: NavController, public navParams: NavParams) {
     this.reportid = navParams.get('repordid');
     this.plt.ready().then(() => {
       this.ga.startTrackerWithId('UA-118996199-1')

@@ -5,9 +5,11 @@ import { CommomfunctionProvider } from '../../providers/commomfunction/commomfun
 import { Events } from 'ionic-angular';
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
+// import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { Storage } from '@ionic/storage';
 import { environment } from '../../environments/environment';
+import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
+
 /**
  * Generated class for the PostmatchPage page.
  *
@@ -40,7 +42,7 @@ export class PostmatchPage {
   scrollTop: any;
   isLogin: boolean = false;
   constructor(private zone: NgZone, private inapp: InAppBrowser,
-    public events: Events, public plt: Platform, public ga: GoogleAnalytics,
+    public events: Events, public plt: Platform, public ga: FirebaseAnalyticsProvider,
     private youtube: YoutubeVideoPlayer, private modalCtrl: ModalController,
     public ajax: AjaxProvider, public cmnfun: CommomfunctionProvider,
     public navCtrl: NavController, public navParams: NavParams,

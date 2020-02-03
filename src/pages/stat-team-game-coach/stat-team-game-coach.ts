@@ -6,7 +6,7 @@ import { Events } from 'ionic-angular';
 // import { KeysPipe } from '../../pipes/keys/keys';
 import { Storage } from '@ionic/storage';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
+// import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { LocalDataProvider } from '../../providers/local-data/local-data';
 import { ProductListProvider } from '../../providers/product-list/product-list';
 import { StreamingMedia } from '@ionic-native/streaming-media';
@@ -15,6 +15,7 @@ import 'datatables.net-fixedcolumns';
 import 'datatables.net-fixedheader';
 import * as $ from 'jquery';
 import { environment } from '../../environments/environment';
+import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
 // import 'datatables.net';
 // import 'datatables.net-fixedcolumns';
 // import 'jquery-flot'
@@ -80,7 +81,7 @@ export class StatTeamGameCoachPage {
 
     PurchaseData: any = [];
 
-    constructor(public platform: Platform, public processproduct: ProductListProvider, public ga: GoogleAnalytics, public localdata: LocalDataProvider,
+    constructor(public platform: Platform, public processproduct: ProductListProvider, public ga: FirebaseAnalyticsProvider, public localdata: LocalDataProvider,
         private alertCtrl: AlertController, private streamingMedia: StreamingMedia, private modalCtrl: ModalController, private zone: NgZone, private inapp: InAppBrowser, public Storage: Storage, public ajax: AjaxProvider, public events: Events, public cmnfun: CommomfunctionProvider, public navCtrl: NavController, public navParams: NavParams) {
 
         this.details = navParams.get('details');

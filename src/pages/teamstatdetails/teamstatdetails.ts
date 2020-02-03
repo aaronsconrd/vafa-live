@@ -4,9 +4,10 @@ import { AjaxProvider } from '../../providers/ajax/ajax';
 import { Events } from 'ionic-angular';
 import { Content } from 'ionic-angular';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
+// import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { environment } from '../../environments/environment';
+import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
 @IonicPage()
 @Component({
   selector: 'page-teamstatdetails',
@@ -49,7 +50,7 @@ export class TeamstatdetailsPage {
     public zone: NgZone,
     public plt: Platform,
     private inapp: InAppBrowser,
-    public ga: GoogleAnalytics,
+    public ga:FirebaseAnalyticsProvider,
     public cmfn: CommomfunctionProvider,
     public navParams: NavParams) {
     this.team_id = navParams.get('team_id');

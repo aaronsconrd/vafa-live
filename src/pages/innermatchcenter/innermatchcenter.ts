@@ -6,7 +6,7 @@ import { CommomfunctionProvider } from '../../providers/commomfunction/commomfun
 import { Events } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
+// import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { ProductListProvider } from '../../providers/product-list/product-list';
 import { InAppPurchase } from '@ionic-native/in-app-purchase';
 import { StreamingMedia } from '@ionic-native/streaming-media';
@@ -15,6 +15,7 @@ import 'datatables.net-fixedcolumns';
 import 'datatables.net-fixedheader';
 import * as $ from 'jquery';
 import { environment } from '../../environments/environment';
+import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
 // import 'datatables.net';
 // import 'datatables.net-fixedcolumns';
 // import 'jquery-flot'
@@ -130,8 +131,24 @@ export class InnermatchcenterPage {
 
     Selectedmatch: any;
 
-    constructor(public popover: PopoverController, private iap: InAppPurchase, public platform: Platform, public processproduct: ProductListProvider, public ga: GoogleAnalytics, public localdata: LocalDataProvider,
-        private alertCtrl: AlertController, private streamingMedia: StreamingMedia, private modalCtrl: ModalController, private zone: NgZone, private inapp: InAppBrowser, public Storage: Storage, public ajax: AjaxProvider, public events: Events, public cmnfun: CommomfunctionProvider, public navCtrl: NavController, public navParams: NavParams) {
+    constructor(public popover: PopoverController,
+        private iap: InAppPurchase,
+        public platform: Platform,
+        public processproduct: ProductListProvider,
+        // public ga: GoogleAnalytics,
+        public localdata: LocalDataProvider,
+        private alertCtrl: AlertController,
+        private streamingMedia: StreamingMedia,
+        private modalCtrl: ModalController,
+        private zone: NgZone,
+        private inapp: InAppBrowser,
+        public Storage: Storage,
+        public ajax: AjaxProvider,
+        public events: Events,
+        public cmnfun: CommomfunctionProvider,
+        public navCtrl: NavController,
+        public navParams: NavParams,
+        public ga: FirebaseAnalyticsProvider) {
         this.details = navParams.get('details');
         this.deviceData.year = navParams.get('year');
         this.selectd_yr = navParams.get('year');
@@ -157,9 +174,8 @@ export class InnermatchcenterPage {
                 .then(() => {
                     console.log('Google analytics is ready now');
                     this.ga.trackView('Score');
-                })
-                .catch(e => console.log('Error starting GoogleAnalytics', e));
-        })
+                }).catch(e => console.log('Error starting GoogleAnalytics', e));
+        });
         //check login
         this.Storage.get('userData').then((val) => {
             if (val) {
@@ -1051,12 +1067,10 @@ export class InnermatchcenterPage {
             this.platform.ready().then(() => {
                 this.ga.startTrackerWithId('UA-118996199-1')
                     .then(() => {
-                        console.log('Google analytics is ready now');
                         this.ga.trackView('Action');
                         this.ga.trackTiming('Action', 2000, 'Duration', 'Time');
                         this.ga.trackEvent('Advertisement', 'Viewed', 'Action', 1);
-                    })
-                    .catch(e => console.log('Error starting GoogleAnalytics', e));
+                    }).catch(e => console.log('Error starting GoogleAnalytics', e));
             })
         }
         else if (this.type == 'SCORE') {
@@ -1087,8 +1101,7 @@ export class InnermatchcenterPage {
                         this.ga.trackView('Score');
                         this.ga.trackTiming('Score', 1000, 'Duration', 'Time');
                         this.ga.trackEvent('Advertisement', 'Viewed', 'Score', 1);
-                    })
-                    .catch(e => console.log('Error starting GoogleAnalytics', e));
+                    }).catch(e => console.log('Error starting GoogleAnalytics', e));
             })
         }
         // $state.go('app.action',{fixture_id: this.fixture_id, roundNo: this.stateRoundNo, homeTeamScore: this.totalHoMeScores, awayTeamScore : this.totalAwAyScores, match_status:this.statusName});
@@ -3206,7 +3219,7 @@ export class InnermatchcenterPage {
                 let aEffVal = this.awayTeamScoreStat['I50'];
                 let aDiv = aAdd / aEffVal;
                 //alert(hAdd+"......"+hEffVal+"......"+hDiv)
-                if (isNaN(hDiv) || hDiv == 'Infinity') {
+                if (isNaN(hDiv) || hDiv == Infinity) {
                     hDiv = 0;
                     this.hEFF = (hDiv * 100).toFixed(2);
                     this.homeEFF = parseInt(this.hEFF.split('.')[0]);
@@ -3220,7 +3233,7 @@ export class InnermatchcenterPage {
                     //alert(this.hEFF+"=="+this.homeEFF+"=="+this.homeEFFWidth)
                 }
 
-                if (isNaN(aDiv) || aDiv == 'Infinity') {
+                if (isNaN(aDiv) || aDiv == Infinity) {
                     aDiv = 0;
                     this.aEFF = (aDiv * 100).toFixed(2);
                     this.awayEFF = parseInt(this.aEFF.split('.')[0]);
@@ -3463,10 +3476,6 @@ export class InnermatchcenterPage {
                 this.cmnfun.showLoading('Please wait...');
                 this.gotoplayers();
             }
-
-
-
-
         }
     }
 
@@ -3552,24 +3561,16 @@ export class InnermatchcenterPage {
     }
 
     getValue(key, statScore, statName) {
-
         if (statScore == undefined || statScore == 'undefined') {
             this.homeAwayTeamPlayerWithScore[key][statName] = 0;
             this.homeTeamPlayers1[key][statName] = 0;
 
             return 0;
-        }
-
-
-        else {
+        } else {
             this.homeAwayTeamPlayerWithScore[key][statName] = parseInt(this.homeAwayTeamPlayerWithScore[key][statName]);
 
             if (isNaN(statScore)) return 0; else return statScore;
-
-
-
         }
-
     }
     getValueD(key, statScore1, statScore2, statName, pn) {
         let Disposal = 0;
@@ -3578,21 +3579,13 @@ export class InnermatchcenterPage {
 
         if (statScore1 == undefined || statScore1 == 'undefined') {
             K = 0;
-
-
         } else {
-
-
             K = statScore1;
         }
 
         if (statScore2 == undefined || statScore2 == 'undefined') {
             H = 0;
-
-
         } else {
-
-
             H = statScore2;
         }
 
@@ -3835,16 +3828,10 @@ export class InnermatchcenterPage {
                         // })
                         if ($(this).children("td").eq(0).attr('data-t') == 'home') {
                             $(this).show();
-
-
-
                         } else {
-
                             $(this).hide();
                         }
-
                     })
-
                 } else {
                     $(this).addClass("jd_active_sort");
                     console.log("hhhmjkjjl--away");
@@ -3852,27 +3839,18 @@ export class InnermatchcenterPage {
 
                     $("#playerStatsTable tbody tr").each(function () {
                         //   alert($(this).children("td").eq(0).attr('data-t'));
-
                         if ($(this).children("td").eq(0).attr('data-t') == 'away') {
-
                             $(this).show();
-
                         } else {
-
                             $(this).hide();
                         }
-
                     })
 
                     if ($('#btn1').hasClass("activated1") && $('#btn2').hasClass("activated1")) {
                         $("#playerStatsTable tbody tr").each(function () {
                             $(this).show();
-
                         });
-
                     }
-
-
                 }
 
                 setTimeout(function () { selfval.sortBYval(selfval.jd_active); }, 200);
@@ -3898,19 +3876,13 @@ export class InnermatchcenterPage {
                     $(".awayTeam1").addClass("activated1");
 
                     $("#playerStatsTable tbody tr").each(function () {
-
                         console.log('foreach');
                         if ($(this).children("td").eq(0).attr('data-t') == 'away') {
                             $(this).show();
-
                         } else {
-
                             $(this).hide();
                         }
-
                     })
-
-
                 } else {
                     $(this).addClass("jd_active_sort");
                     console.log("hhuhijh");
@@ -3918,27 +3890,19 @@ export class InnermatchcenterPage {
 
                     $("#playerStatsTable tbody tr").each(function () {
                         // alert($(this).children("td").eq(0).attr('data-t'));
-
                         if ($(this).children("td").eq(0).attr('data-t') == 'home') {
-
                             $(this).show();
-
                         } else {
-
                             $(this).hide();
                         }
-
                     })
                     if ($('#btn1').hasClass("activated1") && $('#btn2').hasClass("activated1")) {
                         $("#playerStatsTable tbody tr").each(function () {
                             $(this).show();
-
                         });
                     }
-
                 }
                 setTimeout(function () { selfval.sortBYval(selfval.jd_active); }, 200);
-
                 // this.sortBYType("away");
             });
 
@@ -3947,17 +3911,14 @@ export class InnermatchcenterPage {
 
                 // While there remain elements to shuffle...
                 while (0 !== currentIndex) {
-
                     // Pick a remaining element...
                     randomIndex = Math.floor(Math.random() * currentIndex);
                     currentIndex -= 1;
-
                     // And swap it with the current element.
                     temporaryValue = array[currentIndex];
                     array[currentIndex] = array[randomIndex];
                     array[randomIndex] = temporaryValue;
                 }
-
                 return array;
             }
 
@@ -4231,7 +4192,7 @@ export class gamepasspage {
     path: any = environment.baseURL;
     constructor(
         public processproduct: ProductListProvider,
-        public ga: GoogleAnalytics,
+        // public ga: GoogleAnalytics,
         private alertCtrl: AlertController,
         public Storage: Storage,
         public ajax: AjaxProvider,
@@ -4277,9 +4238,6 @@ export class gamepasspage {
         this.viewCtrl.dismiss('cancel');
     }
 
-
-
-
     // Buy consume product single game pass
     BuyConsume(product) {
         this.cmnfun.showLoading('Please wait...');
@@ -4311,7 +4269,7 @@ export class gamepasspage {
                     this.processproduct.InsertPurchase(this.resData);
                     this.events.publish('changebanner:changed', true);
                     this.events.publish('menuchange2:changed', 'HomePage');
-                    this.ga.trackEvent("Payment", "Done", "Payment", 1);
+                    // this.ga.trackEvent("Payment", "Done", "Payment", 1);
                     // if (this.isLogin == true) {
                     this.viewCtrl.dismiss('success');
                     // } else {

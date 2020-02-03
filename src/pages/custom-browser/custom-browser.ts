@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
-import { DomSanitizer } from '@angular/platform-browser';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
+import { IonicPage, NavController, Platform } from 'ionic-angular';
+import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
+// import { DomSanitizer } from '@angular/platform-browser';
+// import { GoogleAnalytics } from '@ionic-native/google-analytics';
 /**
  * Generated class for the CustomBrowserPage page.
  *
@@ -17,7 +18,13 @@ const TermsLink = 'http://vafalive.com.au/termsconds';
   templateUrl: 'custom-browser.html',
 })
 export class CustomBrowserPage {
-  constructor(public navCtrl: NavController, private sanitize: DomSanitizer, public navParams: NavParams, public plt: Platform, public ga: GoogleAnalytics) {
+  constructor(public navCtrl: NavController,
+    // private sanitize: DomSanitizer,
+    // public navParams: NavParams,
+    public plt: Platform,
+    // public ga: GoogleAnalytics
+    public ga: FirebaseAnalyticsProvider
+  ) {
     this.plt.ready().then(() => {
       this.ga.startTrackerWithId('UA-118996199-1')
         .then(() => {

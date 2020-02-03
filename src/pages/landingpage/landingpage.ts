@@ -9,10 +9,13 @@ import { InAppPurchase } from '@ionic-native/in-app-purchase';
 import { Storage } from '@ionic/storage';
 import { Events } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
+// import { UniqueDeviceID } from '@ionic-native/unique-device-id';
+// import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
 import { AlertController } from 'ionic-angular';
+import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
 import { environment } from '../../environments/environment';
+
 const proId0 = '2018_premium_william_buck_premier_womens_caulfield_grammarians';
 const proId1 = '2018_premium_william_buck_womens_fitzroy_acu';
 const proId2 = '2018_premium_william_buck_premier_womens_kew_fc';
@@ -134,7 +137,8 @@ export class LandingpagePage {
     private iap: InAppPurchase,
     public events: Events,
     private alertCtrl: AlertController,
-    private ga: GoogleAnalytics,
+    private ga: FirebaseAnalyticsProvider,
+    // private uniqueDeviceID: UniqueDeviceID,
     public processproduct: ProductListProvider,
     public inapp: InAppBrowser,
     public localData: LocalDataProvider,

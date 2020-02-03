@@ -3,7 +3,7 @@ import { IonicPage, Slides, NavController, NavParams, Platform } from 'ionic-ang
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
+import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
 import { environment } from '../../environments/environment';
 /**
  * Generated class for the NewsDetailsPage page.
@@ -23,7 +23,7 @@ export class NewsDetailsPage {
   path1: any = environment.amazonaws;
   // path: any = 'http://vafalive.com.au';
   path: any = environment.baseURL;
-  constructor(public navCtrl: NavController, private youtube: YoutubeVideoPlayer, public plt: Platform, public ga: GoogleAnalytics, public navParams: NavParams, private socialSharing: SocialSharing, public cmnfun: CommomfunctionProvider) {
+  constructor(public navCtrl: NavController, private youtube: YoutubeVideoPlayer, public plt: Platform, public ga: FirebaseAnalyticsProvider, public navParams: NavParams, private socialSharing: SocialSharing, public cmnfun: CommomfunctionProvider) {
     this.newsdetails = navParams.get('newdetails');
     console.log(this.newsdetails);
 

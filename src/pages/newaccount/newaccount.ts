@@ -12,10 +12,12 @@ import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser'
 import { LocalDataProvider } from '../../providers/local-data/local-data';
 import { ProductListProvider } from '../../providers/product-list/product-list';
 import { SocialSharing } from '@ionic-native/social-sharing';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
+// import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { normalizeURL } from 'ionic-angular';
 import { FilePath } from '@ionic-native/file-path';
 import { environment } from '../../environments/environment';
+import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
+
 const TermsLink = 'http://vafalive.com.au/termsconds';
 
 @IonicPage()
@@ -87,7 +89,7 @@ export class NewaccountPage {
     private modalCtrl: ModalController,
     private camera: Camera,
     private filePath: FilePath,
-    public plt: Platform, public ga: GoogleAnalytics,
+    public plt: Platform, public ga: FirebaseAnalyticsProvider,
     public ajax: AjaxProvider,
     public SocialSharing: SocialSharing,
     public prolist: ProductListProvider,

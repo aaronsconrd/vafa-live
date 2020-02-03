@@ -10,7 +10,8 @@ import { AjaxProvider } from '../../providers/ajax/ajax';
 import { HomePage } from '../../pages/home/home';
 import { InAppPurchase } from '@ionic-native/in-app-purchase';
 import { LocalDataProvider } from '../../providers/local-data/local-data';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
+import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
+// import { GoogleAnalytics } from '@ionic-native/google-analytics';
 
 const proId1 = 'vafa_premium0001';
 const proId2 = 'vafa_premium_plus0002';
@@ -67,7 +68,7 @@ export class UserdetailsmodelPage {
     public events: Events,
     public cmnfun: CommomfunctionProvider,
     public nav: Nav,
-    public ga: GoogleAnalytics,
+    public ga: FirebaseAnalyticsProvider,
     public localData: LocalDataProvider,
     public storage: Storage,
     private transfer: FileTransfer,

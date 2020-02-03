@@ -5,9 +5,11 @@ import { Events } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { Content } from 'ionic-angular';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
+// import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { environment } from '../../environments/environment';
+import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
+
 /**
  * Generated class for the PlayerstatindividualPage page.
  *
@@ -49,7 +51,7 @@ export class PlayerstatindividualPage {
     public zone: NgZone,
     private inapp: InAppBrowser,
     public plt: Platform,
-    public ga: GoogleAnalytics,
+    public ga: FirebaseAnalyticsProvider,
     public cmfn: CommomfunctionProvider,
     public navParams: NavParams) {
     this.player_id = navParams.get('player_id');

@@ -1,16 +1,18 @@
 import { Component, ViewChild, NgZone } from '@angular/core';
-import { IonicPage, NavController, ModalController, NavParams, Content,Keyboard,Platform } from 'ionic-angular';
+import { IonicPage, NavController, ModalController, NavParams, Content, Keyboard, Platform } from 'ionic-angular';
 import { AjaxProvider } from '../../providers/ajax/ajax';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
 import { Events } from 'ionic-angular';
-import { KeysPipe } from '../../pipes/keys/keys';
-import { InAppBrowser,InAppBrowserOptions } from '@ionic-native/in-app-browser';
+// import { KeysPipe } from '../../pipes/keys/keys';
+import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser';
 import { Searchbar } from 'ionic-angular';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
+// import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { PopoverController } from 'ionic-angular';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Storage } from '@ionic/storage';
 import { environment } from '../../environments/environment';
+import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
+
 /**
  * Generated class for the GoalkickersPage page.
  *
@@ -43,10 +45,10 @@ export class GoalkickersPage {
   goalKickers: any = [];
   selectablesTeam: any;
   team_id: any;
-  YearList : any = [];
+  YearList: any = [];
   headerAdv: any = [];
   footerAdv: any = [];
-  WeblinkAd:any;
+  WeblinkAd: any;
   isLogin: boolean = false;
 
   weblink: boolean = false;
@@ -54,21 +56,21 @@ export class GoalkickersPage {
 
   options: InAppBrowserOptions = {
     location: "no", //Or 'no'
-    hidden : 'no', //Or  'yes'
-    clearcache : 'yes',
-    clearsessioncache : 'yes',
-    zoom : 'no',//Android only ,shows browser zoom controls
-    hardwareback : 'yes',
-    mediaPlaybackRequiresUserAction : 'no',
-    shouldPauseOnSuspend : 'no', //Android only
-    disallowoverscroll : 'no', //iOS only
-    toolbar : 'yes', //iOS only
-    enableViewportScale : 'no', //iOS only
-    allowInlineMediaPlayback : 'no',//iOS only
-    presentationstyle : 'pagesheet',//iOS only
-    fullscreen : 'yes',//Windows only
+    hidden: 'no', //Or  'yes'
+    clearcache: 'yes',
+    clearsessioncache: 'yes',
+    zoom: 'no',//Android only ,shows browser zoom controls
+    hardwareback: 'yes',
+    mediaPlaybackRequiresUserAction: 'no',
+    shouldPauseOnSuspend: 'no', //Android only
+    disallowoverscroll: 'no', //iOS only
+    toolbar: 'yes', //iOS only
+    enableViewportScale: 'no', //iOS only
+    allowInlineMediaPlayback: 'no',//iOS only
+    presentationstyle: 'pagesheet',//iOS only
+    fullscreen: 'yes',//Windows only
     // hideurlbar: 'yes'
-    closebuttoncaption : '< VAFA Live', //iOS only
+    closebuttoncaption: '< VAFA Live', //iOS only
     hidespinner: 'yes',
     toolbarposition: 'top',
     toolbarcolor: '#04225e',
@@ -78,21 +80,21 @@ export class GoalkickersPage {
 
   optionsAndroid: InAppBrowserOptions = {
     location: "yes", //Or 'no'
-    hidden : 'no', //Or  'yes'
-    clearcache : 'yes',
-    clearsessioncache : 'yes',
-    zoom : 'no',//Android only ,shows browser zoom controls
-    hardwareback : 'yes',
-    mediaPlaybackRequiresUserAction : 'no',
-    shouldPauseOnSuspend : 'no', //Android only
-    disallowoverscroll : 'no', //iOS only
-    toolbar : 'yes', //iOS only
-    enableViewportScale : 'no', //iOS only
-    allowInlineMediaPlayback : 'no',//iOS only
-    presentationstyle : 'pagesheet',//iOS only
-    fullscreen : 'yes',//Windows only
+    hidden: 'no', //Or  'yes'
+    clearcache: 'yes',
+    clearsessioncache: 'yes',
+    zoom: 'no',//Android only ,shows browser zoom controls
+    hardwareback: 'yes',
+    mediaPlaybackRequiresUserAction: 'no',
+    shouldPauseOnSuspend: 'no', //Android only
+    disallowoverscroll: 'no', //iOS only
+    toolbar: 'yes', //iOS only
+    enableViewportScale: 'no', //iOS only
+    allowInlineMediaPlayback: 'no',//iOS only
+    presentationstyle: 'pagesheet',//iOS only
+    fullscreen: 'yes',//Windows only
     // hideurlbar: 'yes'
-    closebuttoncaption : '< VAFA Live', //iOS only
+    closebuttoncaption: '< VAFA Live', //iOS only
     hidespinner: 'yes',
     toolbarposition: 'top',
     toolbarcolor: '#04225e',
@@ -101,27 +103,34 @@ export class GoalkickersPage {
   };
 
   selectd_yr: any = '';
-  constructor(private zone: NgZone,public plt:Platform,
-    public ga:GoogleAnalytics, public keyboard: Keyboard,
-     private inapp: InAppBrowser, public ajax: AjaxProvider,
-     private sanitizer: DomSanitizer,
-      private modalCtrl: ModalController, public events: Events,
-       public cmnfun: CommomfunctionProvider, public navCtrl: NavController,
-       public popoverCtrl: PopoverController,  public navParams: NavParams,
-       public storage: Storage) {
-     this.plt.ready().then(() => {
+  constructor(private zone: NgZone,
+    public plt: Platform,
+    // public ga: GoogleAnalytics,
+    public keyboard: Keyboard,
+    private inapp: InAppBrowser,
+    public ajax: AjaxProvider,
+    private sanitizer: DomSanitizer,
+    private modalCtrl: ModalController,
+    public events: Events,
+    public cmnfun: CommomfunctionProvider,
+    public navCtrl: NavController,
+    public popoverCtrl: PopoverController,
+    public navParams: NavParams,
+    public storage: Storage,
+    public ga: FirebaseAnalyticsProvider) {
+    this.plt.ready().then(() => {
       this.ga.startTrackerWithId('UA-118996199-1')
-   .then(() => {
-     console.log('Google analytics is ready now');
-        this.ga.trackView('Goal Kickers');
-        // this.ga.trackEvent('Advertisement', 'Viewed', 'Goal Kickers Page', 1);
-        this.ga.trackTiming('Goal Kickers', 1000, 'Duration', 'Time');
-   })
-   .catch(e => console.log('Error starting GoogleAnalytics', e));
-       })
+        .then(() => {
+          console.log('Google analytics is ready now');
+          this.ga.trackView('Goal Kickers');
+          // this.ga.trackEvent('Advertisement', 'Viewed', 'Goal Kickers Page', 1);
+          this.ga.trackTiming('Goal Kickers', 1000, 'Duration', 'Time');
+        })
+        .catch(e => console.log('Error starting GoogleAnalytics', e));
+    });
   }
   toggleSearch() {
-    this.searchTerm='';
+    this.searchTerm = '';
     this.toggled = this.toggled ? false : true;
     this.items = this.goalKickers;
     if (this.toggled == true) {
@@ -130,8 +139,7 @@ export class GoalkickersPage {
       }, 150);
     }
   }
-  toggleSearchcancel()
-  {
+  toggleSearchcancel() {
     this.toggled = this.toggled ? false : true;
     if (this.toggled == true) {
       setTimeout(() => {
@@ -140,14 +148,14 @@ export class GoalkickersPage {
     }
   }
 
-    // path reset function
-    cutPath(url){
-      if(url)
+  // path reset function
+  cutPath(url) {
+    if (url)
       return url.substring(12);
-    }
+  }
 
   identify(index, value) {
-        return value.player_id;
+    return value.player_id;
   }
   scrollToTop() {
     this.content.scrollToTop();
@@ -155,11 +163,10 @@ export class GoalkickersPage {
   initializeItems() {
     this.items = this.goalKickers;
   }
-  submitSearch()
-  {
+  submitSearch() {
     this.keyboard.close();
     this.toggled = this.toggled ? false : true;
-    this.searchTerm='';
+    this.searchTerm = '';
     // this.items = this.goalKickers;
   }
   triggerInput(ev: any) {
@@ -202,122 +209,88 @@ export class GoalkickersPage {
   getallcompetitions(res) {
 
     this.comptitionlists = res.competition;
-      console.log(res.competition);
-      // if(this.isLogin){
-      //   this.storage.get('userData').then((val) => {
-      //     if (val) {
-      //       console.log("From storage:", val);
-      //       let user = JSON.parse(val);
-      //       let storedId = user.favourite_competition_id;
-      //       let CompArr = this.comptitionlists;
-      //       let cntr = 0;
-      //       CompArr.forEach(element => {
-      //         if(storedId == element.competition_id && val.selectedcompetition.seasons[0].manual_score_recording != "2"){
-      //           this.selectables = element.competitions_name;
-      //           this.competition_id = element.seasons[0].competition_id;
-      //           let compId = element.seasons[0].competition_id;
-      //           // year listing
-      //           this.YearList = element.seasons;
-      //           this.selectd_yr = this.YearList[0].competition_year;
-      //           this.getGoalKickers(compId);
-      //         }else if(storedId == 65 && cntr < 1){
-      //           this.selectables = this.comptitionlists[0].competitions_name;
-      //           this.competition_id = this.comptitionlists[0].seasons[0].competition_id;
-      //           let compId = this.comptitionlists[0].seasons[0].competition_id;
-      //           // year listing
-      //           this.YearList = this.comptitionlists[0].seasons;
-      //           this.selectd_yr = this.YearList[0].competition_year;
-      //           //  get matches
-      //           this.getGoalKickers(compId);
-      //         }else if (val.selectedcompetition.seasons[0].manual_score_recording == "2"  && cntr < 1) {
-      //           this.selectables = this.comptitionlists[0].competitions_name;
-      //           this.competition_id = this.comptitionlists[0].seasons[0].competition_id;
-      //           let compId = this.comptitionlists[0].seasons[0].competition_id;
-      //           // year listing
-      //           this.YearList = this.comptitionlists[0].seasons;
-      //           this.selectd_yr = this.YearList[0].competition_year;
-      //           //  get matches
-      //           this.getGoalKickers(compId);
+    console.log(res.competition);
+    // if(this.isLogin){
+    //   this.storage.get('userData').then((val) => {
+    //     if (val) {
+    //       console.log("From storage:", val);
+    //       let user = JSON.parse(val);
+    //       let storedId = user.favourite_competition_id;
+    //       let CompArr = this.comptitionlists;
+    //       let cntr = 0;
+    //       CompArr.forEach(element => {
+    //         if(storedId == element.competition_id && val.selectedcompetition.seasons[0].manual_score_recording != "2"){
+    //           this.selectables = element.competitions_name;
+    //           this.competition_id = element.seasons[0].competition_id;
+    //           let compId = element.seasons[0].competition_id;
+    //           // year listing
+    //           this.YearList = element.seasons;
+    //           this.selectd_yr = this.YearList[0].competition_year;
+    //           this.getGoalKickers(compId);
+    //         }else if(storedId == 65 && cntr < 1){
+    //           this.selectables = this.comptitionlists[0].competitions_name;
+    //           this.competition_id = this.comptitionlists[0].seasons[0].competition_id;
+    //           let compId = this.comptitionlists[0].seasons[0].competition_id;
+    //           // year listing
+    //           this.YearList = this.comptitionlists[0].seasons;
+    //           this.selectd_yr = this.YearList[0].competition_year;
+    //           //  get matches
+    //           this.getGoalKickers(compId);
+    //         }else if (val.selectedcompetition.seasons[0].manual_score_recording == "2"  && cntr < 1) {
+    //           this.selectables = this.comptitionlists[0].competitions_name;
+    //           this.competition_id = this.comptitionlists[0].seasons[0].competition_id;
+    //           let compId = this.comptitionlists[0].seasons[0].competition_id;
+    //           // year listing
+    //           this.YearList = this.comptitionlists[0].seasons;
+    //           this.selectd_yr = this.YearList[0].competition_year;
+    //           //  get matches
+    //           this.getGoalKickers(compId);
 
-      //           if (this.plt.is('ios')) {
-      //             let target = "_blank";
-      //             this.inapp.create(val.selectedcompetition.seasons[0].weblink_goal_kickers,target,this.options);
+    //           if (this.plt.is('ios')) {
+    //             let target = "_blank";
+    //             this.inapp.create(val.selectedcompetition.seasons[0].weblink_goal_kickers,target,this.options);
 
-      //           }else if (this.plt.is('android')) {
-      //             let target = "_blank";
-      //             this.inapp.create(val.selectedcompetition.seasons[0].weblink_goal_kickers,target,this.optionsAndroid);
-      //           }
+    //           }else if (this.plt.is('android')) {
+    //             let target = "_blank";
+    //             this.inapp.create(val.selectedcompetition.seasons[0].weblink_goal_kickers,target,this.optionsAndroid);
+    //           }
 
-      //           // let target = "_blank";
-      //           // this.inapp.create(val.selectedcompetition.seasons[0].weblink_goal_kickers,target,this.options);
+    //           // let target = "_blank";
+    //           // this.inapp.create(val.selectedcompetition.seasons[0].weblink_goal_kickers,target,this.options);
 
-      //           cntr++;
-      //         }
-      //       });
+    //           cntr++;
+    //         }
+    //       });
 
-      //     } else  {
-      //       this.selectables = this.comptitionlists[0].competitions_name;
-      //       this.competition_id = this.comptitionlists[0].seasons[0].competition_id;
-      //       let compId = this.comptitionlists[0].seasons[0].competition_id;
-      //       // year listing
-      //       this.YearList = this.comptitionlists[0].seasons;
-      //       this.selectd_yr = this.YearList[0].competition_year;
-      //       //  get matches
-      //       this.getGoalKickers(compId);
-      //     }
-      //   });
-      // }else{
-        this.storage.get('UserTeamData').then((val) => {
-          if (val) {
-            console.log("From storage:", val.selectedcompetition.competition_id);
-            let storedId = val.selectedcompetition.competition_id;
-            let CompArr = this.comptitionlists;
-            let cntr = 0;
-            CompArr.forEach(element => {
-              if(storedId == element.competition_id && val.selectedcompetition.seasons[0].manual_score_recording != "2"){
-                this.selectables = element.competitions_name;
-                this.competition_id = element.seasons[0].competition_id;
-                let compId = element.seasons[0].competition_id;
-                // year listing
-                this.YearList = element.seasons;
-                this.selectd_yr = this.YearList[0].competition_year;
-                this.getGoalKickers(compId);
-              }else if(storedId == 65 && cntr < 1){
-                cntr++;
-                this.selectables = this.comptitionlists[0].competitions_name;
-            this.competition_id = this.comptitionlists[0].seasons[0].competition_id;
-            let compId = this.comptitionlists[0].seasons[0].competition_id;
+    //     } else  {
+    //       this.selectables = this.comptitionlists[0].competitions_name;
+    //       this.competition_id = this.comptitionlists[0].seasons[0].competition_id;
+    //       let compId = this.comptitionlists[0].seasons[0].competition_id;
+    //       // year listing
+    //       this.YearList = this.comptitionlists[0].seasons;
+    //       this.selectd_yr = this.YearList[0].competition_year;
+    //       //  get matches
+    //       this.getGoalKickers(compId);
+    //     }
+    //   });
+    // }else{
+    this.storage.get('UserTeamData').then((val) => {
+      if (val) {
+        console.log("From storage:", val.selectedcompetition.competition_id);
+        let storedId = val.selectedcompetition.competition_id;
+        let CompArr = this.comptitionlists;
+        let cntr = 0;
+        CompArr.forEach(element => {
+          if (storedId == element.competition_id && val.selectedcompetition.seasons[0].manual_score_recording != "2") {
+            this.selectables = element.competitions_name;
+            this.competition_id = element.seasons[0].competition_id;
+            let compId = element.seasons[0].competition_id;
             // year listing
-            this.YearList = this.comptitionlists[0].seasons;
+            this.YearList = element.seasons;
             this.selectd_yr = this.YearList[0].competition_year;
-            //  get matches
             this.getGoalKickers(compId);
-              }else if (val.selectedcompetition.seasons[0].manual_score_recording == "2"  && cntr < 1) {
-                this.selectables = this.comptitionlists[0].competitions_name;
-                this.competition_id = this.comptitionlists[0].seasons[0].competition_id;
-                let compId = this.comptitionlists[0].seasons[0].competition_id;
-                // year listing
-                this.YearList = this.comptitionlists[0].seasons;
-                this.selectd_yr = this.YearList[0].competition_year;
-                //  get matches
-                this.getGoalKickers(compId);
-
-                if (this.plt.is('ios')) {
-                  let target = "_blank";
-                  this.inapp.create(val.selectedcompetition.seasons[0].weblink_goal_kickers,target,this.options);
-
-                }else if (this.plt.is('android')) {
-                  let target = "_blank";
-                  this.inapp.create(val.selectedcompetition.seasons[0].weblink_goal_kickers,target,this.optionsAndroid);
-                }
-
-                // let target = "_blank";
-                // this.inapp.create(val.selectedcompetition.seasons[0].weblink_goal_kickers,target,this.options);
-
-                cntr++;
-              }
-            });
-          }else{
+          } else if (storedId == 65 && cntr < 1) {
+            cntr++;
             this.selectables = this.comptitionlists[0].competitions_name;
             this.competition_id = this.comptitionlists[0].seasons[0].competition_id;
             let compId = this.comptitionlists[0].seasons[0].competition_id;
@@ -326,9 +299,43 @@ export class GoalkickersPage {
             this.selectd_yr = this.YearList[0].competition_year;
             //  get matches
             this.getGoalKickers(compId);
+          } else if (val.selectedcompetition.seasons[0].manual_score_recording == "2" && cntr < 1) {
+            this.selectables = this.comptitionlists[0].competitions_name;
+            this.competition_id = this.comptitionlists[0].seasons[0].competition_id;
+            let compId = this.comptitionlists[0].seasons[0].competition_id;
+            // year listing
+            this.YearList = this.comptitionlists[0].seasons;
+            this.selectd_yr = this.YearList[0].competition_year;
+            //  get matches
+            this.getGoalKickers(compId);
+
+            if (this.plt.is('ios')) {
+              let target = "_blank";
+              this.inapp.create(val.selectedcompetition.seasons[0].weblink_goal_kickers, target, this.options);
+
+            } else if (this.plt.is('android')) {
+              let target = "_blank";
+              this.inapp.create(val.selectedcompetition.seasons[0].weblink_goal_kickers, target, this.optionsAndroid);
+            }
+
+            // let target = "_blank";
+            // this.inapp.create(val.selectedcompetition.seasons[0].weblink_goal_kickers,target,this.options);
+
+            cntr++;
           }
         });
-      // }
+      } else {
+        this.selectables = this.comptitionlists[0].competitions_name;
+        this.competition_id = this.comptitionlists[0].seasons[0].competition_id;
+        let compId = this.comptitionlists[0].seasons[0].competition_id;
+        // year listing
+        this.YearList = this.comptitionlists[0].seasons;
+        this.selectd_yr = this.YearList[0].competition_year;
+        //  get matches
+        this.getGoalKickers(compId);
+      }
+    });
+    // }
 
     // console.log(res);
     // this.comptitionlists = res.competition;
@@ -341,7 +348,7 @@ export class GoalkickersPage {
 
   }
 
-  getGoalKickers(comp){
+  getGoalKickers(comp) {
 
     this.ajax.datalist('get-all-teams-by-competitions', {
       accessKey: 'QzEnDyPAHT12asHb4On6HH2016',
@@ -356,19 +363,19 @@ export class GoalkickersPage {
 
   getteamplayersgoalkickersfilter(res) {
     console.log(res);
-    if(res.message == 'No Data Found'){
+    if (res.message == 'No Data Found') {
       this.cmnfun.hideLoader();
       this.headerAdv = [];
       this.footerAdv = [];
       this.goalKickers = [];
       this.items = this.goalKickers;
       this.cmnfun.showToast('No data');
-    }else{
-    this.headerAdv = res.headerAdv;
-    this.footerAdv = res.footerAdv;
-    this.goalKickers = res.playerGoal;
-    this.items = this.goalKickers;
-    this.cmnfun.hideLoader();
+    } else {
+      this.headerAdv = res.headerAdv;
+      this.footerAdv = res.footerAdv;
+      this.goalKickers = res.playerGoal;
+      this.items = this.goalKickers;
+      this.cmnfun.hideLoader();
     }
   };
   ionViewDidLoad() {
@@ -392,9 +399,9 @@ export class GoalkickersPage {
     })
 
     // weblink add fetching api
-  this.ajax.postMethod('get-weblink-advertisements',{ page_title : 'Goal Kickers(Weblink)'}).subscribe((res : any) =>{
-    this.WeblinkAd = res.footerAdv.ad_image;
-  })
+    this.ajax.postMethod('get-weblink-advertisements', { page_title: 'Goal Kickers(Weblink)' }).subscribe((res: any) => {
+      this.WeblinkAd = res.footerAdv.ad_image;
+    })
   }
   onScroll() {
     //   this.content.ionScrollEnd.subscribe((data)=>{
@@ -430,47 +437,47 @@ export class GoalkickersPage {
       let modal = this.modalCtrl.create('CommommodelPage', { items: this.comptitionlists });
       let me = this;
       modal.onDidDismiss(data => {
-         if(data){
-           if(data.seasons[0].manual_score_recording == "2"){
+        if (data) {
+          if (data.seasons[0].manual_score_recording == "2") {
             // this.selectables = data.competitions_name;
             let target = "_blank";
-            this.inapp.create(data.seasons[0].weblink_goal_kickers,target,this.options);
-            var htmlvalue = '<iframe src='+data.seasons[0].weblink_goal_kickers+' seamless   sandbox="allow-popups allow-same-origin allow-forms allow-scripts"></iframe>';
-            this.safeURL =this.sanitizer.bypassSecurityTrustHtml(htmlvalue);
+            this.inapp.create(data.seasons[0].weblink_goal_kickers, target, this.options);
+            var htmlvalue = '<iframe src=' + data.seasons[0].weblink_goal_kickers + ' seamless   sandbox="allow-popups allow-same-origin allow-forms allow-scripts"></iframe>';
+            this.safeURL = this.sanitizer.bypassSecurityTrustHtml(htmlvalue);
             // this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl(data.seasons[0].weblink_goal_kickers);
             // this.weblink = true;
-           }else {
+          } else {
             this.weblink = false;
-        console.log(data);
-        this.competition_id = data.seasons[0].competition_id;
-        this.YearList = data.seasons;
-         // default year selection
-         this.selectd_yr = data.seasons[0].competition_year;
+            console.log(data);
+            this.competition_id = data.seasons[0].competition_id;
+            this.YearList = data.seasons;
+            // default year selection
+            this.selectd_yr = data.seasons[0].competition_year;
 
-        this.selectables = data.competitions_name
-        // this.competition_id = data.competition_id;
-        this.cmnfun.showLoader('Please wait...');
-        this.ajax.datalist('get-all-teams-by-competitions', {
-          accessKey: 'QzEnDyPAHT12asHb4On6HH2016',
-          competition_id: this.competition_id,
-        }).subscribe((res) => {
-          this.scrollToTop();
-          this.getallteamsbycompetitions(res);
-        }, error => {
-          // this.cmnfun.showToast('Some thing Unexpected happen please try again');
-        })
-      }
-      }
+            this.selectables = data.competitions_name
+            // this.competition_id = data.competition_id;
+            this.cmnfun.showLoader('Please wait...');
+            this.ajax.datalist('get-all-teams-by-competitions', {
+              accessKey: 'QzEnDyPAHT12asHb4On6HH2016',
+              competition_id: this.competition_id,
+            }).subscribe((res) => {
+              this.scrollToTop();
+              this.getallteamsbycompetitions(res);
+            }, error => {
+              // this.cmnfun.showToast('Some thing Unexpected happen please try again');
+            })
+          }
+        }
       });
       modal.present();
-    } else if(type == 'year') {
+    } else if (type == 'year') {
       // year selection dropdown.
       let data = this.YearList;
-      let popover = this.popoverCtrl.create("YeardropdownPage",{ yearData : data },{cssClass: 'year-popover'});
+      let popover = this.popoverCtrl.create("YeardropdownPage", { yearData: data }, { cssClass: 'year-popover' });
       popover.present();
 
-      popover.onDidDismiss(data =>{
-        if(data != null && data.manual_score_recording != "2"){
+      popover.onDidDismiss(data => {
+        if (data != null && data.manual_score_recording != "2") {
           this.selectd_yr = data.competition_year;
           this.competition_id = data.competition_id;
           // get team by year
@@ -484,9 +491,9 @@ export class GoalkickersPage {
           }, error => {
             // this.cmnfun.showToast('Some thing Unexpected happen please try again');
           })
-        }else if (data != null && data.manual_score_recording == "2") {
+        } else if (data != null && data.manual_score_recording == "2") {
           let target = "_blank";
-          this.inapp.create(data.weblink_goal_kickers,target,this.options);
+          this.inapp.create(data.weblink_goal_kickers, target, this.options);
         }
       });
 
@@ -494,22 +501,22 @@ export class GoalkickersPage {
       let modal = this.modalCtrl.create('TeamlistPage', { items: this.allTeamData });
       let me = this;
       modal.onDidDismiss(data => {
-        if(data){
-        console.log(data);
-        this.selectablesTeam = data.team_name;
-        this.team_id = data.team_id;
-        this.cmnfun.showLoader('Please wait...');
-        this.ajax.datalist('get-team-players-goal-kickers-filter', {
-          accessKey: 'QzEnDyPAHT12asHb4On6HH2016',
-          team_id: this.team_id,
-          compition_id: this.competition_id
-        }).subscribe((res) => {
-          this.scrollToTop()
-          this.getteamplayersgoalkickersfilter(res);
-        }, error => {
-          // this.cmnfun.showToast('Some thing Unexpected happen please try again');
-        })
-      }
+        if (data) {
+          console.log(data);
+          this.selectablesTeam = data.team_name;
+          this.team_id = data.team_id;
+          this.cmnfun.showLoader('Please wait...');
+          this.ajax.datalist('get-team-players-goal-kickers-filter', {
+            accessKey: 'QzEnDyPAHT12asHb4On6HH2016',
+            team_id: this.team_id,
+            compition_id: this.competition_id
+          }).subscribe((res) => {
+            this.scrollToTop()
+            this.getteamplayersgoalkickersfilter(res);
+          }, error => {
+            // this.cmnfun.showToast('Some thing Unexpected happen please try again');
+          })
+        }
       });
       modal.present();
     }

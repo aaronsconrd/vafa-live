@@ -16,7 +16,8 @@ import { Storage } from '@ionic/storage';
 import { LocalDataProvider } from '../providers/local-data/local-data';
 import { ProductListProvider } from '../providers/product-list/product-list';
 import { CommomfunctionProvider } from '../providers/commomfunction/commomfunction';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
+// import { GoogleAnalytics } from '@ionic-native/google-analytics';
+import { FirebaseAnalyticsProvider } from '../providers/firebase-analytics/firebase-analytics';
 // import { INTERNAL_BROWSER_DYNAMIC_PLATFORM_PROVIDERS } from '@angular/platform-browser-dynamic';
 
 @Component({
@@ -53,11 +54,12 @@ export class MyApp {
     public ajax: AjaxProvider,
     public platform: Platform,
     public statusBar: StatusBar,
-    private ga: GoogleAnalytics,
+    // private ga: GoogleAnalytics,
     public cmnfn: CommomfunctionProvider,
     public prolist: ProductListProvider,
     public localData: LocalDataProvider,
-    public splashScreen: SplashScreen) {
+    public splashScreen: SplashScreen,
+    public ga: FirebaseAnalyticsProvider) {
 
     // Device_id checking ajax sample
     // this.ajax.CheckDeviceData(this.deviceData).subscribe((res) => {

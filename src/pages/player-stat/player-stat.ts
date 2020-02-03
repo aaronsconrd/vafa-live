@@ -3,9 +3,10 @@ import { IonicPage, NavController, ModalController, NavParams, Content, Keyboard
 import { AjaxProvider } from '../../providers/ajax/ajax';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
 import { Searchbar } from 'ionic-angular';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
+// import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { environment } from '../../environments/environment';
+import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
 /**
  * Generated class for the PlayerStatPage page.
  *
@@ -36,7 +37,7 @@ export class PlayerStatPage {
   teamselect: any; headerAdv: any = []; footerAdv: any; sleectablescompetionname: any; sleectablesteamname: any; sleectablesstatname: any;
   constructor(private zone: NgZone,
     public plt: Platform,
-    public ga: GoogleAnalytics,
+    public ga: FirebaseAnalyticsProvider,
     public ajax: AjaxProvider,
     private inapp: InAppBrowser,
     private modalCtrl: ModalController,
