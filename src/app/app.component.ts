@@ -109,7 +109,6 @@ export class MyApp {
           } else {
             this.uniqueDeviceID.get()
               .then((uuid: any) => {
-                console.log(uuid,'uuid');
                 this.localData.StoreDevice(uuid);
                 this.Storage.set('MydeviceID', uuid);
               })
@@ -144,7 +143,6 @@ export class MyApp {
           } else {
             this.uniqueDeviceID.get()
               .then((uuid: any) => {
-                console.log(uuid,'uuid');
                 let deviceData: any = {
                   deviceid: uuid
                 }
@@ -174,7 +172,6 @@ export class MyApp {
         // this.cmnfn.Load();
         this.uniqueDeviceID.get()
           .then((uuid: any) => {
-            console.log(uuid,'uuid');
             let deviceData: any = {
               deviceid: uuid
             }
