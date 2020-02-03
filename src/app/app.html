@@ -22,9 +22,11 @@
         <!-- </span> -->
       </ion-item>
       <ion-item menuClose ion-item *ngFor="let p of pages" [class]="p.itemseleted" (click)="openPage(p)">
-        <img src="{{p.icon}}">
+        <img src="{{p.img}}" *ngIf="p.icon == ''">
+        <ion-icon name="{{p.icon}}" *ngIf="p.icon != ''"></ion-icon>
         <p>{{p.title}}</p>
       </ion-item>
+      
     </ion-list>
 
   </ion-content>

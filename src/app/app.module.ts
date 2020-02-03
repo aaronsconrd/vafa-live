@@ -43,6 +43,7 @@ import { gamepasspage } from '../pages/innermatchcenter/innermatchcenter';
 import { Device } from '@ionic-native/device';
 import { FirebaseAnalyticsProvider } from '../providers/firebase-analytics/firebase-analytics';
 import { FirebaseAnalytics } from '@ionic-native/firebase-analytics';
+import { ClubAdminPage } from '../pages/club-admin/club-admin';
 @NgModule({
   declarations: [
     MyApp,
@@ -51,6 +52,7 @@ import { FirebaseAnalytics } from '@ionic-native/firebase-analytics';
     MatchreportPage,
     MatchcenterPage,
     gamepasspage,
+    ClubAdminPage,
     // YeardropdownPage,
     FixturePage,
     PostmatchPage,
@@ -85,7 +87,8 @@ import { FirebaseAnalytics } from '@ionic-native/firebase-analytics';
     PostmatchPage,
     LadderPage,
     GoalkickersPage,
-    TeamstatPage
+    TeamstatPage,
+    ClubAdminPage
   ],
   providers: [
     StatusBar,

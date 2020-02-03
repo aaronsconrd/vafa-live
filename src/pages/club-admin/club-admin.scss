@@ -1,0 +1,27 @@
+.club-admin{
+    background-color: black;
+    @media (max-width:767px){
+        .scroll-content{
+            top: 15% !important;
+        }
+    }
+    .scroll-content{
+        top: 20%;
+    }
+    .title{
+        color: white;
+    }
+    .pinDiv{
+       padding-top: 35px;
+       padding-bottom: 20px; 
+       ion-icon{
+           color: white;
+       }
+    }
+    .numButton{
+        color: color($colors,white_color);
+        border: solid;
+        border-color: white;
+        background: transparent;
+    }
+}
