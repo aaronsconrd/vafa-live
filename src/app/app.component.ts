@@ -21,6 +21,7 @@ import { CommomfunctionProvider } from '../providers/commomfunction/commomfuncti
 import { FirebaseAnalyticsProvider } from '../providers/firebase-analytics/firebase-analytics';
 // import { INTERNAL_BROWSER_DYNAMIC_PLATFORM_PROVIDERS } from '@angular/platform-browser-dynamic';
 import { ClubAdminPage } from '../pages/club-admin/club-admin';
+import { LiveScorePage } from '../pages/live-score/live-score';
 
 @Component({
   templateUrl: 'app.html'
@@ -102,7 +103,7 @@ export class MyApp {
   initializeApp() {
     this.Storage.get('firsttime').then((val) => {
       if (val) {
-        this.rootPage = HomePage;
+        this.rootPage = LiveScorePage;
         this.splashScreen.hide();
         this.Storage.get('MydeviceID').then((val) => {
           if (val) {
@@ -205,12 +206,10 @@ export class MyApp {
       }
     })
 
-
     this.events.subscribe('userlogin:changed', res => {
       console.log(res);
       this.disableLogin = res.disableLogin;
       this.isLogin = res.isLogin;
-
     })
     this.events.subscribe('changebanner:changed', res => {
       console.log(res);

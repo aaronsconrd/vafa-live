@@ -211,7 +211,11 @@ export class AjaxProvider {
       .map(res => res)
       .catch(error => error)
   }
-
+ 
+  CheckPasscode(params){
+   console.log(params)
+    return params
+  }
 
 
 }

@@ -44,7 +44,9 @@ import { Device } from '@ionic-native/device';
 import { FirebaseAnalyticsProvider } from '../providers/firebase-analytics/firebase-analytics';
 import { FirebaseAnalytics } from '@ionic-native/firebase-analytics';
 import { ClubAdminPage } from '../pages/club-admin/club-admin';
-@NgModule({
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import { LiveScorePage } from '../pages/live-score/live-score';
+@NgModule({ 
   declarations: [
     MyApp,
     HomePage,
@@ -53,6 +55,7 @@ import { ClubAdminPage } from '../pages/club-admin/club-admin';
     MatchcenterPage,
     gamepasspage,
     ClubAdminPage,
+    LiveScorePage,
     // YeardropdownPage,
     FixturePage,
     PostmatchPage,
@@ -88,7 +91,8 @@ import { ClubAdminPage } from '../pages/club-admin/club-admin';
     LadderPage,
     GoalkickersPage,
     TeamstatPage,
-    ClubAdminPage
+    ClubAdminPage,
+    LiveScorePage
   ],
   providers: [
     StatusBar,
@@ -111,7 +115,8 @@ import { ClubAdminPage } from '../pages/club-admin/club-admin';
     ProductListProvider,
     SQLite,
     StreamingMedia,
-    FirebaseAnalyticsProvider
+    FirebaseAnalyticsProvider,
+    ScreenOrientation
   ]
 })
 export class AppModule { }
