@@ -3140,7 +3140,7 @@ export class InnermatchcenterPage {
 
 
     }
-    getplayerscoreforstatteam(data) {
+    getplayerscoreforstatteam(data: any) {
         this.newTotalHomeTeamScore = data.totalHomeTeamScore;
         this.newTotalAwayTeamScore = data.totalAwayTeamScore;
 
@@ -3595,8 +3595,6 @@ export class InnermatchcenterPage {
 
     callAlert(name) { alert(name); return name; };
     sortBYType(name) {
-        //    alert('aaaa')
-        // alert('a');
         console.log('Sortby' + name);
         this.orderByFieldName = 'type';
         if (this.reverse) this.reverse = false; else this.reverse = true;
@@ -3679,16 +3677,16 @@ export class InnermatchcenterPage {
         this.homeTeamPlayers.forEach((value, index) => {
             //alert("homePlayerId"+value.player_id)
 
-            let fullName = value.fullName;
+            // let fullName = value.fullName;
             let first_name = value.first_name
-            let res = first_name.split(" ");
+            // let res = first_name.split(" ");
             let playerName = first_name.substring(0, 1) + ". " + value.surname;
             // let playerNameLen = playerName.length;
             let playerFName = playerName;
             // let playerFName = ((playerName.length <= 8) ? playerName : playerName.substr(0, 8) + '..');
             let playerNo = value.player_number;
             let playerId = value.player_id;
-            let type = 'home';
+            // let type = 'home';
 
             //this.homePlayerData.push({playerFName:playerFName, playerNo:playerNo,playerId:playerId});
             value.playerFName = playerFName;
@@ -3701,7 +3699,7 @@ export class InnermatchcenterPage {
         this.awayTeamPlayers.forEach((value, index) => {
             //alert("homePlayerId"+value.player_id)
 
-            let fullName = value.fullName;
+            // let fullName = value.fullName;
             let first_name = value.first_name;
             // let res = first_name.split(" ");
             let playerName = first_name.substring(0, 1) + ". " + value.surname;
@@ -3738,7 +3736,7 @@ export class InnermatchcenterPage {
             var jqvar = this;
             $(document).ready(function () {
                 $('#playerStatsTable').DataTable().destroy();
-                let table = $('#playerStatsTable').DataTable({
+                 $('#playerStatsTable').DataTable({
                     scrollY: true,
                     scrollX: true,
                     scrollCollapse: true,
@@ -3748,6 +3746,7 @@ export class InnermatchcenterPage {
                         "orderable": true
                     }],
                     "aoColumns": [
+                        { "orderSequence": ["desc", "asc"] },
                         { "orderSequence": ["desc", "asc"] },
                         { "orderSequence": ["desc", "asc"] },
                         { "orderSequence": ["desc", "asc"] },

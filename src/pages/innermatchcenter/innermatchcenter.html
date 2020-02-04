@@ -1,9 +1,9 @@
 <ion-header class="custBar">
   <ion-navbar>
-      <button ion-button menuToggle>
-          <ion-icon name="appicons-menu"></ion-icon>
-        </button>
-        <!-- <ion-buttons left>
+    <button ion-button menuToggle>
+      <ion-icon name="appicons-menu"></ion-icon>
+    </button>
+    <!-- <ion-buttons left>
             <button class="Custiback" ion-button (click)="Goback()">
                 <ion-icon class="appicons-iback"></ion-icon>
             </button>
@@ -13,19 +13,23 @@
     <ion-title *ngIf="type=='ACTION' " class="newtitleHeader">
       <div class="wide-as-needed text-center scorePageCss" style="background-color:transparent">
         <div class="button newHeaderText">
-          <img src="{{path}}{{cutPath(homeTeamData.team_image)}}" class="img-storke titleHeaderImg" align="center" />{{homeTeamData.team_abbrevation}}</div>
+          <img src="{{path}}{{cutPath(homeTeamData.team_image)}}" class="img-storke titleHeaderImg"
+            align="center" />{{homeTeamData.team_abbrevation}}</div>
         <div class="button newHeaderText-Middle">{{newTotalHomeTeamScore}} - {{newTotalAwayTeamScore}}</div>
         <div class="button newHeaderText">
-          <img src="{{path}}{{cutPath(awayTeamData.team_image)}}" class="img-storke titleHeaderImg" />{{awayTeamData.team_abbrevation}}</div>
+          <img src="{{path}}{{cutPath(awayTeamData.team_image)}}"
+            class="img-storke titleHeaderImg" />{{awayTeamData.team_abbrevation}}</div>
       </div>
     </ion-title>
     <ion-title *ngIf="type=='stats'" class="newtitleHeader">
       <div class="wide-as-needed text-center scorePageCss" style="background-color:transparent">
         <div class="button newHeaderText">
-          <img src="{{path}}{{cutPath(homeTeam.team_image)}}" class="img-storke titleHeaderImg" align="center" />{{homeTeam.team_abbrevation}}</div>
+          <img src="{{path}}{{cutPath(homeTeam.team_image)}}" class="img-storke titleHeaderImg"
+            align="center" />{{homeTeam.team_abbrevation}}</div>
         <div class="button newHeaderText-Middle">{{newTotalHomeTeamScore}} - {{newTotalAwayTeamScore}}</div>
         <div class="button newHeaderText">
-          <img src="{{path}}{{cutPath(awayTeam.team_image)}}" class="img-storke titleHeaderImg" />{{awayTeam.team_abbrevation}}</div>
+          <img src="{{path}}{{cutPath(awayTeam.team_image)}}"
+            class="img-storke titleHeaderImg" />{{awayTeam.team_abbrevation}}</div>
       </div>
     </ion-title>
   </ion-navbar>
@@ -45,7 +49,8 @@
   </ion-segment-button>
 </ion-segment>
 <ion-header class="jb-grapheader" *ngIf="showcontent=='show' && type=='ACTION'">
-  <div id="scoreChartminh" class="bar-subheader" style="height:105px; width:100% !important; background: white;  border: 0px !important; border-bottom-color: transparent !important; background-image: none !important; border-bottom: none !important;">
+  <div id="scoreChartminh" class="bar-subheader"
+    style="height:105px; width:100% !important; background: white;  border: 0px !important; border-bottom-color: transparent !important; background-image: none !important; border-bottom: none !important;">
     <div [style.display]="shortAdvhideshow==0 ? 'block' : 'none'">
       <div class="graphTextContainerawayHeader">
         <img class="graphImgHeader  img-storke" src="{{path}}{{cutPath(homeTeamData.team_image)}}">
@@ -56,30 +61,36 @@
       </div>
     </div>
     <div class="jb-class-back-top">
-      <div class='graph' id="scoreChartmin" style="height:100px;width:100% !important; margin-left:35px;   vertical-align: middle;font-size:14px;"></div>
-      <div class="border-under-graph">        </div>
-      <div class="border-top-graph">        </div>
- <div class="border-left-graph">    </div>
-    <div class="border-right-graph">    </div>
+      <div class='graph' id="scoreChartmin"
+        style="height:100px;width:100% !important; margin-left:35px;   vertical-align: middle;font-size:14px;"></div>
+      <div class="border-under-graph"> </div>
+      <div class="border-top-graph"> </div>
+      <div class="border-left-graph"> </div>
+      <div class="border-right-graph"> </div>
     </div>
 
-    <div [style.display]="shortAdvhideshow==0 ? 'block' : 'none'" class="advContainer" style="position:absolute; margin: 2px auto 0 0px; width: 104%;">
-      <img src="{{path}}{{cutPath(advertisementHeader[0].ad_image)}}" (click)="goToAddSite(advertisementHeader[0].ad_url);">
+    <div [style.display]="shortAdvhideshow==0 ? 'block' : 'none'" class="advContainer"
+      style="position:absolute; margin: 2px auto 0 0px; width: 104%;">
+      <img src="{{path}}{{cutPath(advertisementHeader[0].ad_image)}}"
+        (click)="goToAddSite(advertisementHeader[0].ad_url);">
     </div>
   </div>
 </ion-header>
 <ion-toolbar ion-scroll no-border class="scrollable-segments " *ngIf=" type=='stats' && pamentshow==1">
   <ion-segment [(ngModel)]="statschoose" style="background-color: #ffffff !important;">
-    <ion-segment-button style="text-transform: capitalize;" class="jb-club-seg" (click)="selectstats('team'); " value="team">
+    <ion-segment-button style="text-transform: capitalize;" class="jb-club-seg" (click)="selectstats('team'); "
+      value="team">
       Teams
     </ion-segment-button>
-    <ion-segment-button style="text-transform: capitalize;" class="jb-club-seg" (click)="selectstats('Player'); " value="Player">
+    <ion-segment-button style="text-transform: capitalize;" class="jb-club-seg" (click)="selectstats('Player'); "
+      value="Player">
       Players
     </ion-segment-button>
   </ion-segment>
 </ion-toolbar>
-<ion-header *ngIf="headerimage!='' && type=='stats'  && pamentshow==1" [style.display]="advDisplay=='hide' ? 'block' : 'none'"
-  class="bar-sub-subheader" style="height: 50px;position:relative; top:85px; background-color: transparent; border: 0px !important; border-bottom-color: transparent !important; background-image: none !important; border-bottom: none !important; ">
+<ion-header *ngIf="headerimage!='' && type=='stats'  && pamentshow==1"
+  [style.display]="advDisplay=='hide' ? 'block' : 'none'" class="bar-sub-subheader"
+  style="height: 50px;position:relative; top:85px; background-color: transparent; border: 0px !important; border-bottom-color: transparent !important; background-image: none !important; border-bottom: none !important; ">
   <div *ngIf="statschoose !='Player'" class="advContainer" style="position:fixed;margin: 9px auto 0 -7px; width: 104%;">
     <!-- <img src="{{path}}{{headerimage}}" class="full-image" (click)="goToAddSite(headerurl);"> -->
     <img src="{{path}}{{cutPath(adv[0].ad_image)}}" (click)="goToAddSite(adv[0].ad_url);">
@@ -180,7 +191,8 @@
 
         </div>
 
-        <div class="circularMidQtr" [ngClass]="{'bgColorGreen': lastScore.quater_new == 1, 'bgColorWhite ': lastScore.quater_new != 1}"
+        <div class="circularMidQtr"
+          [ngClass]="{'bgColorGreen': lastScore.quater_new == 1, 'bgColorWhite ': lastScore.quater_new != 1}"
           *ngIf="statusName != 'COMPLETE' ">
           Q1
         </div>
@@ -202,7 +214,8 @@
 
         </div>
 
-        <div class="circularMidQtr1" [ngClass]="{'bgColorGreen': lastScore.quater_new == 2, 'bgColorWhite': lastScore.quater_new != 2}"
+        <div class="circularMidQtr1"
+          [ngClass]="{'bgColorGreen': lastScore.quater_new == 2, 'bgColorWhite': lastScore.quater_new != 2}"
           *ngIf="statusName != 'COMPLETE' ">
           Q2
         </div>
@@ -225,7 +238,8 @@
 
         </div>
 
-        <div class="circularMidQtr" [ngClass]="{'bgColorGreen': lastScore.quater_new == 3, 'bgColorWhite': lastScore.quater_new != 3}"
+        <div class="circularMidQtr"
+          [ngClass]="{'bgColorGreen': lastScore.quater_new == 3, 'bgColorWhite': lastScore.quater_new != 3}"
           *ngIf="statusName != 'COMPLETE' ">
           Q3
         </div>
@@ -249,7 +263,8 @@
 
         </div>
 
-        <div class="circularMidQtr1" [ngClass]="{'bgColorGreen': lastScore.quater_new == 4, 'bgColorWhite': lastScore.quater_new != 4}"
+        <div class="circularMidQtr1"
+          [ngClass]="{'bgColorGreen': lastScore.quater_new == 4, 'bgColorWhite': lastScore.quater_new != 4}"
           *ngIf="statusName != 'COMPLETE' ">
           Q4
         </div>
@@ -271,28 +286,30 @@
     </div>
     <!-- Goalkickers list  -->
     <div>
-        <div style="
+      <div style="
         height: 30px;
         background-color: #e0e0e0;
         text-align: center;
         vertical-align: middle;
         display: flex;">
-          <p style="margin: auto;
+        <p style="margin: auto;
           font-size: 14px;
           font-family: Gotham-Medium;
           color: grey;">GOAL KICKERS</p>
-        </div>
+      </div>
       <ion-row>
         <!-- home team -->
         <ion-col class="colone">
           <p *ngFor="let hplyr of HomeGoalKickers" class="jd_home_bstplyr">
-            {{hplyr.player_name.split(" ").length < 3 ? (hplyr.player_name.substring(0, 1)+'. '+hplyr.player_name.split(" ")[1]) : (hplyr.player_name.substring(0, 1)+'. '+hplyr.player_name.split(" ")[2]) }} {{hplyr.goal}}
+            {{hplyr.player_name.split(" ").length < 3 ? (hplyr.player_name.substring(0, 1)+'. '+hplyr.player_name.split(" ")[1]) : (hplyr.player_name.substring(0, 1)+'. '+hplyr.player_name.split(" ")[2]) }}
+            {{hplyr.goal}}
           </p>
         </ion-col>
         <!-- away team -->
         <ion-col class="coltwo">
           <p *ngFor="let awplyr of  AwayGoalKickers" class="jd_away_bstplyr">
-            {{ awplyr.player_name.split(" ").length < 3 ? (awplyr.player_name.substring(0, 1)+'. '+awplyr.player_name.split(" ")[1]) : (awplyr.player_name.substring(0, 1)+'. '+awplyr.player_name.split(" ")[2]) }} {{awplyr.goal}}</p>
+            {{ awplyr.player_name.split(" ").length < 3 ? (awplyr.player_name.substring(0, 1)+'. '+awplyr.player_name.split(" ")[1]) : (awplyr.player_name.substring(0, 1)+'. '+awplyr.player_name.split(" ")[2]) }}
+            {{awplyr.goal}}</p>
         </ion-col>
       </ion-row>
     </div>
@@ -312,7 +329,7 @@
         <!-- home team -->
         <ion-col class="colthree">
           <p *ngFor="let bplyr of HomeBestplayers" class="jd_home_bstplyr">
-              {{ bplyr.split(" ").length < 3 ? (bplyr.substring(0, 1)+'. '+bplyr.split(" ")[1]) : (bplyr.substring(0, 1)+'. '+bplyr.split(" ")[2]) }}
+            {{ bplyr.split(" ").length < 3 ? (bplyr.substring(0, 1)+'. '+bplyr.split(" ")[1]) : (bplyr.substring(0, 1)+'. '+bplyr.split(" ")[2]) }}
             <!-- {{ (bplyr.trim().length >= 18) ? (bplyr | slice:0:10)+'..' : bplyr }} -->
           </p>
         </ion-col>
@@ -339,78 +356,86 @@
       <div class="Grapgh-Border-Ends"></div>
     </div>
     <div class="jb-class-back">
-      <div class='graph' id="scoreChart" style="height:200px; width:inherit !important;  margin-left:35px; vertical-align: middle;font-size:17px;margin-top: 80px;"></div>
+      <div class='graph' id="scoreChart"
+        style="height:200px; width:inherit !important;  margin-left:35px; vertical-align: middle;font-size:17px;margin-top: 80px;">
+      </div>
     </div>
-    <div class="border-under-graph">        </div>
-      <div class="border-top-graph">        </div>
- <div class="border-left-graph">    </div>
-    <div class="border-right-graph">    </div>
+    <div class="border-under-graph"> </div>
+    <div class="border-top-graph"> </div>
+    <div class="border-left-graph"> </div>
+    <div class="border-right-graph"> </div>
     <div class="HomeTeam_qScore" *ngIf="graphImgShowHide==1">
-      <span class="hmq1" >{{q1HomeScore}}</span>
-       <!-- hometeam q1 -->
-       <span class="hmq1" *ngIf="HomeTeamScore != ''">{{q1HomeScore}}</span>
-       <span class="hmq1"  *ngIf="HomeTeamScore == ''">0.0</span>
-       <!--  -->
-       <!-- hometeam q2 -->
-       <span class="hmq2" *ngIf="HomeTeamScore != '' &&  lastScore.quater_new >=2">{{q2HomeScore}}</span>
-       <span class="hmq2"  *ngIf="HomeTeamScore == ''  && lastScore.quater_new>=2">0.0</span>
-       <span class="hmq2"  *ngIf="lastScore.quater_new  < 2">-</span>
-       <!--  -->
+      <span class="hmq1">{{q1HomeScore}}</span>
+      <!-- hometeam q1 -->
+      <span class="hmq1" *ngIf="HomeTeamScore != ''">{{q1HomeScore}}</span>
+      <span class="hmq1" *ngIf="HomeTeamScore == ''">0.0</span>
+      <!--  -->
+      <!-- hometeam q2 -->
+      <span class="hmq2" *ngIf="HomeTeamScore != '' &&  lastScore.quater_new >=2">{{q2HomeScore}}</span>
+      <span class="hmq2" *ngIf="HomeTeamScore == ''  && lastScore.quater_new>=2">0.0</span>
+      <span class="hmq2" *ngIf="lastScore.quater_new  < 2">-</span>
+      <!--  -->
       <!-- hometeam q3 -->
       <span class="hmq3" *ngIf="HomeTeamScore != '' &&  lastScore.quater_new >=3">{{q3HomeScore}}</span>
-      <span class="hmq3"  *ngIf="HomeTeamScore == ''  && lastScore.quater_new>=3">0.0</span>
-      <span class="hmq3"  *ngIf="lastScore.quater_new  < 3">-</span>
+      <span class="hmq3" *ngIf="HomeTeamScore == ''  && lastScore.quater_new>=3">0.0</span>
+      <span class="hmq3" *ngIf="lastScore.quater_new  < 3">-</span>
       <!--  -->
-       <!-- hometeam q4 -->
-       <span class="hmq4" *ngIf="HomeTeamScore != '' &&  lastScore.quater_new >=4">{{q4HomeScore}}</span>
-       <span class="hmq4"  *ngIf="HomeTeamScore == ''  && lastScore.quater_new>=4">0.0</span>
-       <span class="hmq4"  *ngIf="lastScore.quater_new  < 4">-</span>
-       <!--  -->
+      <!-- hometeam q4 -->
+      <span class="hmq4" *ngIf="HomeTeamScore != '' &&  lastScore.quater_new >=4">{{q4HomeScore}}</span>
+      <span class="hmq4" *ngIf="HomeTeamScore == ''  && lastScore.quater_new>=4">0.0</span>
+      <span class="hmq4" *ngIf="lastScore.quater_new  < 4">-</span>
+      <!--  -->
     </div>
     <div class="AwayTeam_qScore" *ngIf="graphImgShowHide==1">
-         <!-- Awayteam q1 -->
-         <span class="awq1" *ngIf="awayTeamScore != ''">{{q1AwayScore}}</span>
-         <span class="awq1"  *ngIf="awayTeamScore == ''">0.0</span>
-         <!--  -->
-         <!-- hometeam q2 -->
-         <span class="awq2" *ngIf="awayTeamScore != '' &&  lastScore.quater_new >=2">{{q2AwayScore}}</span>
-         <span class="awq2"  *ngIf="awayTeamScore == ''  && lastScore.quater_new>=2">0.0</span>
-         <span class="awq2"  *ngIf="lastScore.quater_new  < 2">-</span>
-         <!--  -->
-        <!-- hometeam q3 -->
-        <span class="awq3" *ngIf="awayTeamScore != '' &&  lastScore.quater_new >=3">{{q3AwayScore}}</span>
-        <span class="awq3"  *ngIf="awayTeamScore == ''  && lastScore.quater_new>=3">0.0</span>
-        <span class="awq3"  *ngIf="lastScore.quater_new  < 3">-</span>
-        <!--  -->
-         <!-- hometeam q4 -->
-         <span class="awq4" *ngIf="awayTeamScore != '' &&  lastScore.quater_new >=4">{{q4AwayScore}}</span>
-         <span class="awq4"  *ngIf="awayTeamScore == ''  && lastScore.quater_new>=4">0.0</span>
-         <span class="awq4"  *ngIf="lastScore.quater_new  < 4">-</span>
-         <!--  -->
+      <!-- Awayteam q1 -->
+      <span class="awq1" *ngIf="awayTeamScore != ''">{{q1AwayScore}}</span>
+      <span class="awq1" *ngIf="awayTeamScore == ''">0.0</span>
+      <!--  -->
+      <!-- hometeam q2 -->
+      <span class="awq2" *ngIf="awayTeamScore != '' &&  lastScore.quater_new >=2">{{q2AwayScore}}</span>
+      <span class="awq2" *ngIf="awayTeamScore == ''  && lastScore.quater_new>=2">0.0</span>
+      <span class="awq2" *ngIf="lastScore.quater_new  < 2">-</span>
+      <!--  -->
+      <!-- hometeam q3 -->
+      <span class="awq3" *ngIf="awayTeamScore != '' &&  lastScore.quater_new >=3">{{q3AwayScore}}</span>
+      <span class="awq3" *ngIf="awayTeamScore == ''  && lastScore.quater_new>=3">0.0</span>
+      <span class="awq3" *ngIf="lastScore.quater_new  < 3">-</span>
+      <!--  -->
+      <!-- hometeam q4 -->
+      <span class="awq4" *ngIf="awayTeamScore != '' &&  lastScore.quater_new >=4">{{q4AwayScore}}</span>
+      <span class="awq4" *ngIf="awayTeamScore == ''  && lastScore.quater_new>=4">0.0</span>
+      <span class="awq4" *ngIf="lastScore.quater_new  < 4">-</span>
+      <!--  -->
     </div>
     <div class="advContainer " *ngIf="graphImgShowHide==1">
-      <img src="{{path}}{{cutPath(advertisementHeader[0].ad_image)}}" (click)="goToAddSite(advertisementHeader[0].ad_url);">
+      <img src="{{path}}{{cutPath(advertisementHeader[0].ad_image)}}"
+        (click)="goToAddSite(advertisementHeader[0].ad_url);">
     </div>
-    <ion-row class="row teamStates-List animated fadeInUp onlyForAction ink" *ngFor="let data of actionScoreFeed1; let i=index">
+    <ion-row class="row teamStates-List animated fadeInUp onlyForAction ink"
+      *ngFor="let data of actionScoreFeed1; let i=index">
       <ion-col class="col">
         <div class="list jb-list">
           <a class="item item-thumbnail-left newsList-CustomCSS ONTeam-Select onlyForAction">
-            <img src="img/team1.png" class="ActionLogoImg newsList-SideImage-CSS img-storke " *ngIf="data.team_type=='null'"
+            <img src="img/team1.png" class="ActionLogoImg newsList-SideImage-CSS img-storke "
+              *ngIf="data.team_type=='null'" style="max-width:50px">
+
+            <img src="{{path}}{{cutPath(homeTeamData.team_image)}}"
+              class="ActionLogoImg newsList-SideImage-CSS img-storke" *ngIf="data.team_type=='home'"
               style="max-width:50px">
 
-            <img src="{{path}}{{cutPath(homeTeamData.team_image)}}" class="ActionLogoImg newsList-SideImage-CSS img-storke"
-              *ngIf="data.team_type=='home'" style="max-width:50px">
-
-            <img src="{{path}}{{cutPath(awayTeamData.team_image)}}" class="ActionLogoImg newsList-SideImage-CSS img-storke"
-              *ngIf="data.team_type=='away'" style="max-width:50px">
+            <img src="{{path}}{{cutPath(awayTeamData.team_image)}}"
+              class="ActionLogoImg newsList-SideImage-CSS img-storke" *ngIf="data.team_type=='away'"
+              style="max-width:50px">
             <h2>{{data.stat_title}}
-              <span style="font-family:Gotham-Medium;color:#76797f;" *ngIf="data.player_name"> {{data.player_name}}</span>
+              <span style="font-family:Gotham-Medium;color:#76797f;" *ngIf="data.player_name">
+                {{data.player_name}}</span>
               <!-- <span style="font-family:Gotham-Medium;color: #c3c6cc;" *ngIf="data.player_name.length > 14"> {{data.player_name }}</span>    -->
             </h2>
             <p style="padding-top:5px;">Q{{data.quater}} {{data.act_time}}</p>
-            <div *ngIf="data.player_image != '/web' && data.player_image != '' && data.player_image != '/web/images/default_player.png'">
-            <img class="jd_scorefd_Pimg" src="{{path}}{{cutPath(data.player_image)}}">
-          </div>
+            <div
+              *ngIf="data.player_image != '/web' && data.player_image != '' && data.player_image != '/web/images/default_player.png'">
+              <img class="jd_scorefd_Pimg" src="{{path}}{{cutPath(data.player_image)}}">
+            </div>
           </a>
         </div>
       </ion-col>
@@ -423,100 +448,105 @@
     <div *ngIf="statschoose=='team' && !ShowCoach">
       <ul class="list compitationList">
         <li class="item ink">
-            <div class="row text-center">
-                <ion-col col-5 class="col teamCol onlyScore">
-                  <div class="jb-inner-img"><span class="helper"></span>
-                    <img style="max-width: 70px;" src="{{path}}{{cutPath(homeTeamAbbr.team_image)}}" class="full-image img-storke"></div>
-                  <p class="jd_t"  style="margin:auto; overflow: visible !important;"> {{homeTeamAbbr.team_name}}</p>
-                  <h3 style="font-size: 24px !important; padding-top: 15px;" class="jd-custom-scoretxt">{{newTotalHomeTeamScore}}</h3>
-                </ion-col>
-                <ion-col col-2 class="col teamCenterDiv">
-                  <div class="dispTable">
-                    <div class="dispTableCell">
-                      <div class="teamScoreContainer" style="padding-top: 45px !important;">
-                        <span class="Jd_span">VS</span>
-                      </div>
-                    </div>
+          <div class="row text-center">
+            <ion-col col-5 class="col teamCol onlyScore">
+              <div class="jb-inner-img"><span class="helper"></span>
+                <img style="max-width: 70px;" src="{{path}}{{cutPath(homeTeamAbbr.team_image)}}"
+                  class="full-image img-storke"></div>
+              <p class="jd_t" style="margin:auto; overflow: visible !important;"> {{homeTeamAbbr.team_name}}</p>
+              <h3 style="font-size: 24px !important; padding-top: 15px;" class="jd-custom-scoretxt">
+                {{newTotalHomeTeamScore}}</h3>
+            </ion-col>
+            <ion-col col-2 class="col teamCenterDiv">
+              <div class="dispTable">
+                <div class="dispTableCell">
+                  <div class="teamScoreContainer" style="padding-top: 45px !important;">
+                    <span class="Jd_span">VS</span>
                   </div>
-                </ion-col>
-                <ion-col col-5 class="col teamCol onlyScore">
-                  <div class="jb-inner-img"><span class="helper"></span>
-                    <img style="max-width: 70px;" src="{{path}}{{cutPath(awayTeamAbbr.team_image)}}" class="full-image img-storke"></div>
-                    <p class="jd_t" style="margin:auto; overflow: visible !important;">{{awayTeamAbbr.team_name}}</p>
-                    <h3 style="font-size: 24px !important; padding-top: 15px;" class="jd-custom-scoretxt">{{newTotalAwayTeamScore}}</h3>
-                </ion-col>
+                </div>
               </div>
+            </ion-col>
+            <ion-col col-5 class="col teamCol onlyScore">
+              <div class="jb-inner-img"><span class="helper"></span>
+                <img style="max-width: 70px;" src="{{path}}{{cutPath(awayTeamAbbr.team_image)}}"
+                  class="full-image img-storke"></div>
+              <p class="jd_t" style="margin:auto; overflow: visible !important;">{{awayTeamAbbr.team_name}}</p>
+              <h3 style="font-size: 24px !important; padding-top: 15px;" class="jd-custom-scoretxt">
+                {{newTotalAwayTeamScore}}</h3>
+            </ion-col>
+          </div>
         </li>
       </ul>
       <div class="advContainer3">
         <img src="{{path}}{{cutPath(adv[0].ad_image)}}" (click)="goToAddSite(adv[0].ad_url);">
       </div>
       <div style="padding-top: 30px;">
-      <div *ngFor="let value of modifiedStateSeq;let key=index;">
-        <div *ngIf="value.stat_abbrevation!='RB'">
-          <div class="">
-            <p class="nomalFormMidTitle" style="padding-bottom: 5px;">
-              <span style="font-family: Gotham-Medium !important;">{{value.stat_name}}</span>
-            </p>
+        <div *ngFor="let value of modifiedStateSeq;let key=index;">
+          <div *ngIf="value.stat_abbrevation!='RB'">
+            <div class="">
+              <p class="nomalFormMidTitle" style="padding-bottom: 5px;">
+                <span style="font-family: Gotham-Medium !important;">{{value.stat_name}}</span>
+              </p>
 
-            <ion-row class="row progressBarstyle" style="padding-bottom: 5px;">
-              <ion-col class="col col-40">
-                <div class="fillBar greenFill" [style.background-color]="value.homeTeamColor" [style.width]="value.homeTeamWidth"
-                  style="font-size:19px; font-family:Gotham-Medium;">
-                  {{homeTeamScoreStat[value.stat_abbrevation]}}
-                </div>
-              </ion-col>
-
-              <ion-col class="col col-40">
-                <div class="fillBar" [style.background-color]="value.awayTeamColor" [style.width]="value.awayTeamWidth"
-                  style="font-size:19px; font-family:Gotham-Medium;">
-                  {{awayTeamScoreStat[value.stat_abbrevation]}}
-                </div>
-              </ion-col>
-            </ion-row>
-
-          </div>
-          <div class="" *ngIf="value.stat_abbrevation =='I50'">
-            <p class="nomalFormMidTitle">
-              <span style="font-family: Gotham-Medium !important;">EFF Inside 50s</span>
-            </p>
-            <ion-row class="row progressBarstyle">
-              <ion-col col-5 class="col col-40">
-                <div class="c100 p{{homeEFFWidth}} {{hColor}}" style="float:right;margin-right: 7px;">
-                  <!-- <span> {{ EFFCalculattion(homeTeamScoreStat[value.stat_abbrevation],homeTeamScoreStat['G'], homeTeamScoreStat['B'], homeTeamScoreStat['RB'], homeTeamScoreStat['I50'], 'home')| number:0}}%</span>		 -->
-                  <span> {{ homeEFF }}%</span>
-                  <div class="slice">
-                    <div class="bar1"></div>
-                    <div class="fill"></div>
+              <ion-row class="row progressBarstyle" style="padding-bottom: 5px;">
+                <ion-col class="col col-40">
+                  <div class="fillBar greenFill" [style.background-color]="value.homeTeamColor"
+                    [style.width]="value.homeTeamWidth" style="font-size:19px; font-family:Gotham-Medium;">
+                    {{homeTeamScoreStat[value.stat_abbrevation]}}
                   </div>
-                </div>
-              </ion-col>
+                </ion-col>
 
-              <ion-col col-2 class="col col-10">
-                <!-- <div class="height-Border"></div> -->
-              </ion-col>
-              <ion-col col-5 class="col col-40">
-                <div class="c100 p{{awayEFFWidth}} {{aColor}}" style=" margin-left: 9px;">
-                  <span>{{ awayEFF }}%</span>
-                  <div class="slice">
-                    <div class="bar1"></div>
-                    <div class="fill"></div>
+                <ion-col class="col col-40">
+                  <div class="fillBar" [style.background-color]="value.awayTeamColor"
+                    [style.width]="value.awayTeamWidth" style="font-size:19px; font-family:Gotham-Medium;">
+                    {{awayTeamScoreStat[value.stat_abbrevation]}}
                   </div>
-                </div>
-              </ion-col>
+                </ion-col>
+              </ion-row>
 
-            </ion-row>
+            </div>
+            <div class="" *ngIf="value.stat_abbrevation =='I50'">
+              <p class="nomalFormMidTitle">
+                <span style="font-family: Gotham-Medium !important;">EFF Inside 50s</span>
+              </p>
+              <ion-row class="row progressBarstyle">
+                <ion-col col-5 class="col col-40">
+                  <div class="c100 p{{homeEFFWidth}} {{hColor}}" style="float:right;margin-right: 7px;">
+                    <!-- <span> {{ EFFCalculattion(homeTeamScoreStat[value.stat_abbrevation],homeTeamScoreStat['G'], homeTeamScoreStat['B'], homeTeamScoreStat['RB'], homeTeamScoreStat['I50'], 'home')| number:0}}%</span>		 -->
+                    <span> {{ homeEFF }}%</span>
+                    <div class="slice">
+                      <div class="bar1"></div>
+                      <div class="fill"></div>
+                    </div>
+                  </div>
+                </ion-col>
 
+                <ion-col col-2 class="col col-10">
+                  <!-- <div class="height-Border"></div> -->
+                </ion-col>
+                <ion-col col-5 class="col col-40">
+                  <div class="c100 p{{awayEFFWidth}} {{aColor}}" style=" margin-left: 9px;">
+                    <span>{{ awayEFF }}%</span>
+                    <div class="slice">
+                      <div class="bar1"></div>
+                      <div class="fill"></div>
+                    </div>
+                  </div>
+                </ion-col>
+
+              </ion-row>
+
+            </div>
           </div>
         </div>
       </div>
-      </div>
     </div>
     <div *ngIf="statschoose=='Player' && !ShowCoach" class="jb-plaer">
-        <!-- <div class="jd_advContainer2" *ngIf="showAd">
+      <!-- <div class="jd_advContainer2" *ngIf="showAd">
             <img src="{{path}}{{cutPath(adv[0].ad_image)}}" (click)="goToAddSite(adv[0].ad_url);">
           </div> -->
-      <table [id]="playerStatsTable0" class="stripe row-border order-column playerStatsTable " cellspacing="0" *ngIf="showDataTable==true">
+      <table [id]="playerStatsTable0" class="stripe row-border order-column playerStatsTable " cellspacing="0"
+        *ngIf="showDataTable==true">
         <thead class="tst-left">
           <tr>
             <th class="jb-sorting">
@@ -524,63 +554,82 @@
                 All
               </button>
 
-              <button [id]="btn10" class="button button-clear playerStatLeftTeam homeTeam activated1" (click)="sortBYType('home')">
+              <button [id]="btn10" class="button button-clear playerStatLeftTeam homeTeam activated1"
+                (click)="sortBYType('home')">
                 <img src="{{path}}{{cutPath(homeTeam.team_image)}}" class="img-storke" />
               </button>
 
-              <button [id]="btn20" class="button button-clear playerStatRightTeam awayTeam1 activated1 " (click)="sortBYType('away')">
+              <button [id]="btn20" class="button button-clear playerStatRightTeam awayTeam1 activated1 "
+                (click)="sortBYType('away')">
                 <img src="{{path}}{{cutPath(awayTeam.team_image)}}" class="img-storke" />
               </button>
             </th>
 
-            <th class="jb-sorting-gb GB" >
-              <button [ngClass]="{'jd_active_sort': jd_active == 'GB'}" (click)="sortBY('GB')" [id]="GB0" class="button button-clear tableColumSortStyle gbClass jd_gb">
+            <th class="jb-sorting-gb GB">
+              <button [ngClass]="{'jd_active_sort': jd_active == 'GB'}" (click)="sortBY('GB')" [id]="GB0"
+                class="button button-clear tableColumSortStyle gbClass jd_gb">
                 G.B
               </button>
             </th>
             <th [id]="buttonId0" class="D">
-              <button [ngClass]="{'jd_active_sort': jd_active == 'D'}" (click)="sortBY('D')" class="button button-clear tableColumSortStyle jd_mid">
+              <button [ngClass]="{'jd_active_sort': jd_active == 'D'}" (click)="sortBY('D')"
+                class="button button-clear tableColumSortStyle jd_mid">
                 D
               </button>
             </th>
             <th id='K' class="K">
-              <button  [ngClass]="{'jd_active_sort': jd_active == 'K'}" (click)="sortBY('K')" class="button button-clear tableColumSortStyle jd_mid">
+              <button [ngClass]="{'jd_active_sort': jd_active == 'K'}" (click)="sortBY('K')"
+                class="button button-clear tableColumSortStyle jd_mid">
                 K
               </button>
             </th>
             <th (click)="sortBY('H')" class="H">
-              <button [ngClass]="{'jd_active_sort': jd_active == 'H'}" class="button button-clear tableColumSortStyle jd_mid">
+              <button [ngClass]="{'jd_active_sort': jd_active == 'H'}"
+                class="button button-clear tableColumSortStyle jd_mid">
                 H
               </button>
             </th>
+            <th (click)="sortBY('FF')" class="FF">
+              <button [ngClass]="{'jd_active_sort': jd_active == 'FF'}"
+                class="button button-clear tableColumSortStyle jd_mid">
+                FF
+              </button>
+            </th>
             <th (click)="sortBY('M')" class="M">
-              <button [ngClass]="{'jd_active_sort': jd_active == 'M'}" class="button button-clear tableColumSortStyle jd_mid">
+              <button [ngClass]="{'jd_active_sort': jd_active == 'M'}"
+                class="button button-clear tableColumSortStyle jd_mid">
                 M
               </button>
             </th>
             <th (click)="sortBY('T')" class="T">
-              <button [ngClass]="{'jd_active_sort': jd_active == 'T'}" class="button button-clear tableColumSortStyle jd_mid">
+              <button [ngClass]="{'jd_active_sort': jd_active == 'T'}"
+                class="button button-clear tableColumSortStyle jd_mid">
                 T
               </button>
             </th>
             <th (click)="sortBY('HO')" class="HO">
-              <button [ngClass]="{'jd_active_sort': jd_active == 'HO'}" class="button button-clear tableColumSortStyle jd_mid">
+              <button [ngClass]="{'jd_active_sort': jd_active == 'HO'}"
+                class="button button-clear tableColumSortStyle jd_mid">
                 HO
               </button>
             </th>
             <th (click)="sortBY('I50')" class="I50">
-              <button [ngClass]="{'jd_active_sort': jd_active == 'I50'}" class="button button-clear tableColumSortStyle jd_bEnd">
+              <button [ngClass]="{'jd_active_sort': jd_active == 'I50'}"
+                class="button button-clear tableColumSortStyle jd_bEnd">
                 I50
               </button>
             </th>
+
           </tr>
 
         </thead>
         <tbody class=''>
           <tr *ngFor="let obj of homeTeamPlayers1;let key=index" id="jg-row" (click)="clickhunk()">
-            <td [attr.data-t]="obj.type" [attr.data-t1]="obj.player_id" style="text-align:left !important;" (click)="clickhunk()" >
+            <td [attr.data-t]="obj.type" [attr.data-t1]="obj.player_id" style="text-align:left !important;"
+              (click)="clickhunk()">
               <div class="ladderTableLeftSide" *ngIf="obj.type=='home'" (click)="clickhunk()">
-                <img src="{{path1}}{{baseUrl}}{{homeTeamImages[0].image_value}}" class="laderTeamIcon" (click)="clickhunk()" />
+                <img src="{{path1}}{{baseUrl}}{{homeTeamImages[0].image_value}}" class="laderTeamIcon"
+                  (click)="clickhunk()" />
                 <div class="Player_number" (click)="clickhunk()">
                   <span>{{obj.player_number}}</span>
                 </div>
@@ -588,7 +637,8 @@
               </div>
 
               <div class="ladderTableLeftSide" *ngIf="obj.type=='away'" (click)="clickhunk()">
-                <img src="{{path1}}{{baseUrl}}{{awayTeamImages[0].image_value}}" class="laderTeamIcon" (click)="clickhunk()" />
+                <img src="{{path1}}{{baseUrl}}{{awayTeamImages[0].image_value}}" class="laderTeamIcon"
+                  (click)="clickhunk()" />
                 <div class="Player_number">
                   <span>{{obj.player_number}}</span>
                 </div>
@@ -601,6 +651,7 @@
             <td [innerHTML]="obj.D"> </td>
             <td [innerHTML]="obj.K"> </td>
             <td [innerHTML]="obj.H"> </td>
+            <td [innerHTML]="obj.FF"> </td>
             <td [innerHTML]="obj.M"> </td>
             <td [innerHTML]="obj.T"> </td>
             <td [innerHTML]="obj.HO"> </td>
@@ -610,30 +661,30 @@
         </tbody>
         <tfoot>
           <tr>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
           </tr>
           <tr>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
           </tr>
           <tr>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
           </tr>
-      </tfoot>
+        </tfoot>
         <!-- <tbody class='' style="visibility: hidden;">
                         <tr *ngFor="let obj of homeTeamPlayers1;let key=index">
                          <td [attr.data-t]="obj.type" *ngIf="key<2" style="text-align:left !important;">
@@ -676,16 +727,20 @@
       <!-- sort with quater functions -->
       <div class="jd_sort_Coach">
         <ion-row class="jd_sort_rwCoach">
-          <ion-col [ngClass]="{'jd_selectedOptn': CoachQ.indexOf('all') > -1}" (click)="CoachSort('all')" col-3 class="jd_btn_border me">
+          <ion-col [ngClass]="{'jd_selectedOptn': CoachQ.indexOf('all') > -1}" (click)="CoachSort('all')" col-3
+            class="jd_btn_border me">
             <p class="jd_sort_btnsCoach1">All</p>
           </ion-col>
-          <ion-col [ngClass]="{'jd_selectedOptn': CoachQ.indexOf(1) > -1 }" (click)="CoachSort(1)" class="jd_btn_border">
+          <ion-col [ngClass]="{'jd_selectedOptn': CoachQ.indexOf(1) > -1 }" (click)="CoachSort(1)"
+            class="jd_btn_border">
             <p class="jd_sort_btnsCoach1">Q1</p>
           </ion-col>
-          <ion-col [ngClass]="{'jd_selectedOptn': CoachQ.indexOf(2) > -1 }" (click)="CoachSort(2)" class="jd_btn_border">
+          <ion-col [ngClass]="{'jd_selectedOptn': CoachQ.indexOf(2) > -1 }" (click)="CoachSort(2)"
+            class="jd_btn_border">
             <p class="jd_sort_btnsCoach1">Q2</p>
           </ion-col>
-          <ion-col [ngClass]="{'jd_selectedOptn': CoachQ.indexOf(3) > -1 }" (click)="CoachSort(3)" class="jd_btn_border">
+          <ion-col [ngClass]="{'jd_selectedOptn': CoachQ.indexOf(3) > -1 }" (click)="CoachSort(3)"
+            class="jd_btn_border">
             <p class="jd_sort_btnsCoach1">Q3</p>
           </ion-col>
           <ion-col [ngClass]="{'jd_selectedOptn': CoachQ.indexOf(4) > -1 }" (click)="CoachSort(4)" class="me2">
@@ -697,7 +752,8 @@
       <div class="jd_advContainer1" *ngIf="showAd">
         <img src="{{path}}{{cutPath(adv[0].ad_image)}}" (click)="goToAddSite(adv[0].ad_url);">
       </div>
-      <table [id]="playerStatsTable0" class="stripe row-border order-column playerStatsTable " cellspacing="0" *ngIf="showDataTable">
+      <table [id]="playerStatsTable0" class="stripe row-border order-column playerStatsTable " cellspacing="0"
+        *ngIf="showDataTable">
         <thead class="tst-left">
           <tr>
             <th class="jb-sorting">
@@ -705,63 +761,82 @@
                 All
               </button>
 
-              <button [id]="btn10" class="button button-clear playerStatLeftTeam homeTeam activated1" (click)="sortBYType('home')">
+              <button [id]="btn10" class="button button-clear playerStatLeftTeam homeTeam activated1"
+                (click)="sortBYType('home')">
                 <img src="{{path}}{{cutPath(homeTeam.team_image)}}" class="img-storke" />
               </button>
 
-              <button [id]="btn20" class="button button-clear playerStatRightTeam awayTeam1 activated1 " (click)="sortBYType('away')">
+              <button [id]="btn20" class="button button-clear playerStatRightTeam awayTeam1 activated1 "
+                (click)="sortBYType('away')">
                 <img src="{{path}}{{cutPath(awayTeam.team_image)}}" class="img-storke" />
               </button>
             </th>
 
-            <th class="jb-sorting-gb GB" >
-              <button [ngClass]="{'jd_active_sort': jd_active == 'GB'}" (click)="sortBY('GB')" [id]="GB0" class="button button-clear tableColumSortStyle gbClass jd_gb">
+            <th class="jb-sorting-gb GB">
+              <button [ngClass]="{'jd_active_sort': jd_active == 'GB'}" (click)="sortBY('GB')" [id]="GB0"
+                class="button button-clear tableColumSortStyle gbClass jd_gb">
                 G.B
               </button>
             </th>
             <th [id]="buttonId0" class="D">
-              <button [ngClass]="{'jd_active_sort': jd_active == 'D'}" (click)="sortBY('D')" class="button button-clear tableColumSortStyle jd_mid">
+              <button [ngClass]="{'jd_active_sort': jd_active == 'D'}" (click)="sortBY('D')"
+                class="button button-clear tableColumSortStyle jd_mid">
                 D
               </button>
             </th>
             <th id='K' class="K">
-              <button  [ngClass]="{'jd_active_sort': jd_active == 'K'}" (click)="sortBY('K')" class="button button-clear tableColumSortStyle jd_mid">
+              <button [ngClass]="{'jd_active_sort': jd_active == 'K'}" (click)="sortBY('K')"
+                class="button button-clear tableColumSortStyle jd_mid">
                 K
               </button>
             </th>
             <th (click)="sortBY('H')" class="H">
-              <button [ngClass]="{'jd_active_sort': jd_active == 'H'}" class="button button-clear tableColumSortStyle jd_mid">
+              <button [ngClass]="{'jd_active_sort': jd_active == 'H'}"
+                class="button button-clear tableColumSortStyle jd_mid">
                 H
               </button>
             </th>
+            <th (click)="sortBY('FF')" class="FF">
+              <button [ngClass]="{'jd_active_sort': jd_active == 'FF'}"
+                class="button button-clear tableColumSortStyle jd_bEnd">
+                FF
+              </button>
+            </th>
             <th (click)="sortBY('M')" class="M">
-              <button [ngClass]="{'jd_active_sort': jd_active == 'M'}" class="button button-clear tableColumSortStyle jd_mid">
+              <button [ngClass]="{'jd_active_sort': jd_active == 'M'}"
+                class="button button-clear tableColumSortStyle jd_mid">
                 M
               </button>
             </th>
             <th (click)="sortBY('T')" class="T">
-              <button [ngClass]="{'jd_active_sort': jd_active == 'T'}" class="button button-clear tableColumSortStyle jd_mid">
+              <button [ngClass]="{'jd_active_sort': jd_active == 'T'}"
+                class="button button-clear tableColumSortStyle jd_mid">
                 T
               </button>
             </th>
             <th (click)="sortBY('HO')" class="HO">
-              <button [ngClass]="{'jd_active_sort': jd_active == 'HO'}" class="button button-clear tableColumSortStyle jd_mid">
+              <button [ngClass]="{'jd_active_sort': jd_active == 'HO'}"
+                class="button button-clear tableColumSortStyle jd_mid">
                 HO
               </button>
             </th>
             <th (click)="sortBY('I50')" class="I50">
-              <button [ngClass]="{'jd_active_sort': jd_active == 'I50'}" class="button button-clear tableColumSortStyle jd_bEnd">
+              <button [ngClass]="{'jd_active_sort': jd_active == 'I50'}"
+                class="button button-clear tableColumSortStyle jd_bEnd">
                 I50
               </button>
             </th>
+
           </tr>
 
         </thead>
         <tbody class=''>
           <tr *ngFor="let obj of homeTeamPlayers1;let key=index" id="jg-row" (click)="clickhunk()">
-            <td [attr.data-t]="obj.type" [attr.data-t1]="obj.player_id" style="text-align:left !important;" (click)="clickhunk()" >
+            <td [attr.data-t]="obj.type" [attr.data-t1]="obj.player_id" style="text-align:left !important;"
+              (click)="clickhunk()">
               <div class="ladderTableLeftSide" *ngIf="obj.type=='home'" (click)="clickhunk()">
-                <img src="{{path1}}{{baseUrl}}{{homeTeamImages[0].image_value}}" class="laderTeamIcon" (click)="clickhunk()" />
+                <img src="{{path1}}{{baseUrl}}{{homeTeamImages[0].image_value}}" class="laderTeamIcon"
+                  (click)="clickhunk()" />
                 <div class="Player_number" (click)="clickhunk()">
                   <span>{{obj.player_number}}</span>
                 </div>
@@ -769,7 +844,8 @@
               </div>
 
               <div class="ladderTableLeftSide" *ngIf="obj.type=='away'" (click)="clickhunk()">
-                <img src="{{path1}}{{baseUrl}}{{awayTeamImages[0].image_value}}" class="laderTeamIcon" (click)="clickhunk()" />
+                <img src="{{path1}}{{baseUrl}}{{awayTeamImages[0].image_value}}" class="laderTeamIcon"
+                  (click)="clickhunk()" />
                 <div class="Player_number">
                   <span>{{obj.player_number}}</span>
                 </div>
@@ -782,12 +858,12 @@
             <td [innerHTML]="obj.D"> </td>
             <td [innerHTML]="obj.K"> </td>
             <td [innerHTML]="obj.H"> </td>
+            <td [innerHTML]="obj.FF"></td>
             <td [innerHTML]="obj.M"> </td>
             <td [innerHTML]="obj.T"> </td>
             <td [innerHTML]="obj.HO"> </td>
             <td [innerHTML]="obj.I50"></td>
           </tr>
-
         </tbody>
       </table>
     </div>
@@ -800,9 +876,11 @@
           <div class="row text-center">
             <ion-col col-5 class="col teamCol onlyScore">
               <div class="jb-inner-img"><span class="helper"></span>
-                <img style="max-width: 90px;" src="{{path}}{{cutPath(homeTeamAbbr.team_image)}}" class="full-image img-storke"></div>
+                <img style="max-width: 90px;" src="{{path}}{{cutPath(homeTeamAbbr.team_image)}}"
+                  class="full-image img-storke"></div>
               <p class="jd_t" style="margin:auto; overflow: visible !important;"> {{homeTeamAbbr.team_name}}</p>
-              <h3 style="font-size: 24px !important; padding-top: 15px;" class="jd-custom-scoretxt">{{newTotalHomeTeamScore}}</h3>
+              <h3 style="font-size: 24px !important; padding-top: 15px;" class="jd-custom-scoretxt">
+                {{newTotalHomeTeamScore}}</h3>
             </ion-col>
             <ion-col col-2 class="col teamCenterDiv">
               <div class="dispTable">
@@ -822,9 +900,11 @@
             </ion-col>
             <ion-col col-5 class="col teamCol onlyScore">
               <div class="jb-inner-img"><span class="helper"></span>
-                <img style="max-width: 90px;" src="{{path}}{{cutPath(awayTeamAbbr.team_image)}}" class="full-image img-storke"></div>
+                <img style="max-width: 90px;" src="{{path}}{{cutPath(awayTeamAbbr.team_image)}}"
+                  class="full-image img-storke"></div>
               <p class="jd_t" style="margin:auto; overflow: visible !important;">{{awayTeamAbbr.team_name}}</p>
-              <h3 style="font-size: 24px !important; padding-top: 15px;" class="jd-custom-scoretxt">{{newTotalAwayTeamScore}}</h3>
+              <h3 style="font-size: 24px !important; padding-top: 15px;" class="jd-custom-scoretxt">
+                {{newTotalAwayTeamScore}}</h3>
             </ion-col>
           </div>
         </li>
@@ -836,19 +916,24 @@
       <!-- sort with quater functions -->
       <div class="jd_sort_btns">
         <ion-row class="jd_sort_rw">
-          <ion-col [ngClass]="{'jd_selectedOptn': selectedOption.indexOf('all') > -1 }" (click)="SelectedSort('all')" col-3 class="jd_btn_border me">
+          <ion-col [ngClass]="{'jd_selectedOptn': selectedOption.indexOf('all') > -1 }" (click)="SelectedSort('all')"
+            col-3 class="jd_btn_border me">
             <p class="jd_sort_btn">All</p>
           </ion-col>
-          <ion-col [ngClass]="{'jd_selectedOptn': selectedOption.indexOf(1) > -1}" (click)="SelectedSort(1)" class="jd_btn_border">
+          <ion-col [ngClass]="{'jd_selectedOptn': selectedOption.indexOf(1) > -1}" (click)="SelectedSort(1)"
+            class="jd_btn_border">
             <p class="jd_sort_btn">Q1</p>
           </ion-col>
-          <ion-col [ngClass]="{'jd_selectedOptn': selectedOption.indexOf(2) > -1}" (click)="SelectedSort(2)" class="jd_btn_border">
+          <ion-col [ngClass]="{'jd_selectedOptn': selectedOption.indexOf(2) > -1}" (click)="SelectedSort(2)"
+            class="jd_btn_border">
             <p class="jd_sort_btn">Q2</p>
           </ion-col>
-          <ion-col [ngClass]="{'jd_selectedOptn': selectedOption.indexOf(3) > -1}" (click)="SelectedSort(3)" class="jd_btn_border">
+          <ion-col [ngClass]="{'jd_selectedOptn': selectedOption.indexOf(3) > -1}" (click)="SelectedSort(3)"
+            class="jd_btn_border">
             <p class="jd_sort_btn">Q3</p>
           </ion-col>
-          <ion-col [ngClass]="{'jd_selectedOptn': selectedOption.indexOf(4) > -1}" (click)="SelectedSort(4)" class="me2">
+          <ion-col [ngClass]="{'jd_selectedOptn': selectedOption.indexOf(4) > -1}" (click)="SelectedSort(4)"
+            class="me2">
             <p class="jd_sort_btn">Q4</p>
           </ion-col>
         </ion-row>
@@ -864,17 +949,22 @@
 
             <ion-row class="row progressBarstyle" style="padding-bottom: 5px;">
               <ion-col col-5 no-padding>
-                <div class="fillBar greenFill" [style.background-color]="value.homeTeamColor" [style.width]="value.homeTeamWidth"
+                <div class="fillBar greenFill" [style.background-color]="value.homeTeamColor"
+                  [style.width]="value.homeTeamWidth"
                   style="font-size:19px; font-family:Gotham-Medium; margin-top: 6px; margin-right: -4px;">
                   {{homeTeamScoreStat[value.stat_abbrevation]}}
                 </div>
               </ion-col>
               <ion-col no-padding>
                 <div *ngIf="isToggled" class="jd_scoreCycle" [style.border-color]="value.awayTeamColor">
-                  <p class="jd_scoreBoard" [innerHTML]="StatDiff(homeTeamScoreStat[value.stat_abbrevation], awayTeamScoreStat[value.stat_abbrevation])"></p>
+                  <p class="jd_scoreBoard"
+                    [innerHTML]="StatDiff(homeTeamScoreStat[value.stat_abbrevation], awayTeamScoreStat[value.stat_abbrevation])">
+                  </p>
                 </div>
                 <div *ngIf="!isToggled" class="jd_scoreCycle" [style.border-color]="value.homeTeamColor">
-                  <p class="jd_scoreBoard" [innerHTML]="StatDiff2(homeTeamScoreStat[value.stat_abbrevation], awayTeamScoreStat[value.stat_abbrevation])"></p>
+                  <p class="jd_scoreBoard"
+                    [innerHTML]="StatDiff2(homeTeamScoreStat[value.stat_abbrevation], awayTeamScoreStat[value.stat_abbrevation])">
+                  </p>
                 </div>
               </ion-col>
               <ion-col col-5 no-padding>
@@ -930,10 +1020,10 @@
     <!-- teamCoach tab ends -->
   </div>
 </ion-content>
-<ion-footer  *ngIf="statschoose=='Player' && type!='ACTION' && type!='SCORE'">
+<ion-footer *ngIf="statschoose=='Player' && type!='ACTION' && type!='SCORE'">
   <ion-toolbar class="jb-toolbar">
     <div class="jb-adv jd_footradv">
-        <img src="{{path}}{{cutPath(adv[0].ad_image)}}" (click)="goToAddSite(adv[0].ad_url);">
+      <img src="{{path}}{{cutPath(adv[0].ad_image)}}" (click)="goToAddSite(adv[0].ad_url);">
     </div>
   </ion-toolbar>
 </ion-footer>
