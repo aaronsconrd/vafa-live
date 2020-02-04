@@ -589,12 +589,6 @@
                 H
               </button>
             </th>
-            <th (click)="sortBY('FF')" class="FF">
-              <button [ngClass]="{'jd_active_sort': jd_active == 'FF'}"
-                class="button button-clear tableColumSortStyle jd_mid">
-                FF
-              </button>
-            </th>
             <th (click)="sortBY('M')" class="M">
               <button [ngClass]="{'jd_active_sort': jd_active == 'M'}"
                 class="button button-clear tableColumSortStyle jd_mid">
@@ -605,6 +599,12 @@
               <button [ngClass]="{'jd_active_sort': jd_active == 'T'}"
                 class="button button-clear tableColumSortStyle jd_mid">
                 T
+              </button>
+            </th>
+            <th (click)="sortBY('FF')" class="FF">
+              <button [ngClass]="{'jd_active_sort': jd_active == 'FF'}"
+                class="button button-clear tableColumSortStyle jd_mid">
+                FF
               </button>
             </th>
             <th (click)="sortBY('HO')" class="HO">
@@ -651,9 +651,9 @@
             <td [innerHTML]="obj.D"> </td>
             <td [innerHTML]="obj.K"> </td>
             <td [innerHTML]="obj.H"> </td>
-            <td [innerHTML]="obj.FF"> </td>
             <td [innerHTML]="obj.M"> </td>
             <td [innerHTML]="obj.T"> </td>
+            <td [innerHTML]="obj.FF"> </td>
             <td [innerHTML]="obj.HO"> </td>
             <td [innerHTML]="obj.I50"></td>
           </tr>
@@ -796,12 +796,6 @@
                 H
               </button>
             </th>
-            <th (click)="sortBY('FF')" class="FF">
-              <button [ngClass]="{'jd_active_sort': jd_active == 'FF'}"
-                class="button button-clear tableColumSortStyle jd_bEnd">
-                FF
-              </button>
-            </th>
             <th (click)="sortBY('M')" class="M">
               <button [ngClass]="{'jd_active_sort': jd_active == 'M'}"
                 class="button button-clear tableColumSortStyle jd_mid">
@@ -812,6 +806,12 @@
               <button [ngClass]="{'jd_active_sort': jd_active == 'T'}"
                 class="button button-clear tableColumSortStyle jd_mid">
                 T
+              </button>
+            </th>
+            <th (click)="sortBY('FF')" class="FF">
+              <button [ngClass]="{'jd_active_sort': jd_active == 'FF'}"
+                class="button button-clear tableColumSortStyle jd_bEnd">
+                FF
               </button>
             </th>
             <th (click)="sortBY('HO')" class="HO">
@@ -858,9 +858,9 @@
             <td [innerHTML]="obj.D"> </td>
             <td [innerHTML]="obj.K"> </td>
             <td [innerHTML]="obj.H"> </td>
-            <td [innerHTML]="obj.FF"></td>
             <td [innerHTML]="obj.M"> </td>
             <td [innerHTML]="obj.T"> </td>
+            <td [innerHTML]="obj.FF"></td>
             <td [innerHTML]="obj.HO"> </td>
             <td [innerHTML]="obj.I50"></td>
           </tr>
