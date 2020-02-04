@@ -371,14 +371,14 @@ export class InnermatchcenterPage {
         //ADVERTISEMENT::
         this.advertisementHeader = res.adv.headerAdv;
         this.advertisementFooter = res.adv.footerAdv[0];
-        console.log(this.advertisementHeader);
-        console.log(this.advertisementFooter)
+        // console.log(this.advertisementHeader);
+        // console.log(this.advertisementFooter)
         this.lastScore = res.lastScore;
-        console.log(this.lastScore);
+        // console.log(this.lastScore);
         this.homeTeamAbbr = res.homeTeam;
         this.awayTeamAbbr = res.awayTeam;
-        console.log(this.homeTeamAbbr);
-        console.log(this.awayTeamAbbr)
+        // console.log(this.homeTeamAbbr);
+        // console.log(this.awayTeamAbbr)
 
         this.homeTeamImg = res.homeTeamImages;
         this.awayTeamImg = res.awayTeamImages;
@@ -1041,6 +1041,7 @@ export class InnermatchcenterPage {
 
         }
         //END:DISPLAY TEAM WIN STATUS
+        
         this.showcontent = 'show';
         this.cmnfun.HideLoading();
         this.scoreid = setInterval(() => {
