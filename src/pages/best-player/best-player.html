@@ -1,0 +1,119 @@
+<!--
+  Generated template for the BestPlayerPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Best-player</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-row>
+    <ion-col col-12 text-center><span>Best Players</span></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-6 text-right class="titlePage"><span>Home Team</span></ion-col>
+    <ion-col col-6 class="titlePage"><span class="awayTeam">Away Team</span></ion-col>
+  </ion-row>
+  <!-- <ion-row>
+    <ion-col col-2>
+      <div>Initial</div>
+    </ion-col>
+    <ion-col col-10>
+      <div>Surname</div>
+    </ion-col>
+  </ion-row> -->
+  <form (ngSubmit)="logForm()" [formGroup]="group">
+
+    <!-- <ion-row>
+      <ion-col col-2>
+        <ion-input type="text" value="" class="textField" formControlName="initial"></ion-input>
+      </ion-col>
+      <ion-col col-10>
+        <ion-input type="text" value="" class="textField" formControlName="surname"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-2>
+        <ion-input type="text" value="" class="textField"></ion-input>
+      </ion-col>
+      <ion-col col-10>
+        <ion-input type="text" value="" class="textField"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-2>
+        <ion-input type="text" value="" class="textField"></ion-input>
+      </ion-col>
+      <ion-col col-10>
+        <ion-input type="text" value="" class="textField"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-2>
+        <ion-input type="text" value="" class="textField"></ion-input>
+      </ion-col>
+      <ion-col col-10>
+        <ion-input type="text" value="" class="textField"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-2>
+        <ion-input type="text" value="" class="textField"></ion-input>
+      </ion-col>
+      <ion-col col-10>
+        <ion-input type="text" value="" class="textField"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-2>
+        <ion-input type="text" value="" class="textField"></ion-input>
+      </ion-col>
+      <ion-col col-10>
+        <ion-input type="text" value="" class="textField"></ion-input>
+      </ion-col>
+    </ion-row> -->
+
+   <table id="BestPlayerTable">
+     <thead>
+       <tr>
+         <th style="width: 15%;">Initial</th>
+         <th style="text-align: start;">Surname</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+        <td><ion-input type="text" value="" class="textField" formControlName="initial"></ion-input></td>
+        <td><ion-input type="text" value="" class="textField" formControlName="surname"></ion-input></td>
+       </tr>
+       <tr>
+        <td><ion-input type="text" value="" class="textField" formControlName="initial"></ion-input></td>
+        <td><ion-input type="text" value="" class="textField" formControlName="surname"></ion-input></td>
+       </tr>
+       <tr>
+        <td><ion-input type="text" value="" class="textField" formControlName="initial"></ion-input></td>
+        <td><ion-input type="text" value="" class="textField" formControlName="surname"></ion-input></td>
+       </tr>
+       <tr>
+        <td><ion-input type="text" value="" class="textField" formControlName="initial"></ion-input></td>
+        <td><ion-input type="text" value="" class="textField" formControlName="surname"></ion-input></td>
+       </tr>
+       <tr>
+        <td><ion-input type="text" value="" class="textField" formControlName="initial"></ion-input></td>
+        <td><ion-input type="text" value="" class="textField" formControlName="surname"></ion-input></td>
+       </tr>
+       <tr>
+        <td><ion-input type="text" value="" class="textField" formControlName="initial"></ion-input></td>
+        <td><ion-input type="text" value="" class="textField" formControlName="surname"></ion-input></td>
+       </tr>
+     </tbody>
+   </table>
+    <button ion-button type="submit" block color="secondary" [disabled]="!group.valid">Save</button>
+  </form>
+</ion-content>

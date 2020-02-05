@@ -1,0 +1,17 @@
+.awayTeam{
+    color: #3880ff;
+}
+.titlePage{
+    font-weight: 900;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+ion-input {
+    input {
+      text-align: left;
+      /* IF YOU ALSO WANT TO PUSH PLACHEHOLDER TO THE RIGHT USE THE FOLLOWING, IF NOT JUST DELETE THE ::-webkit-input-placeholder*/
+      ::-webkit-input-placeholder {
+        text-align: left;
+      }
+    }
+  }
