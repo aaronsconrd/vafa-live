@@ -1,35 +1,29 @@
-// .textField{
-//     border: solid 2px;
-//     padding-right: 10px;
-// }
-.awayTeam{
-    color: #3880ff;
-}
-.titlePage{
-    font-weight: 900;
-    padding-top: 5%;
-    padding-bottom: 5%;
-}
-ion-input {
-    input {
-      text-align: left;
-      /* IF YOU ALSO WANT TO PUSH PLACHEHOLDER TO THE RIGHT USE THE FOLLOWING, IF NOT JUST DELETE THE ::-webkit-input-placeholder*/
-      ::-webkit-input-placeholder {
+.best-player{
+  .awayTeam{
+      color: #3880ff;
+  }
+  #BestPlayerTable{
+    .tableHeading{
+      text-align: center;
+    }
+    .setPadding{
+      padding-left: 20px;
+    }
+    ion-input {
+      input {
         text-align: left;
+        /* IF YOU ALSO WANT TO PUSH PLACHEHOLDER TO THE RIGHT USE THE FOLLOWING, IF NOT JUST DELETE THE ::-webkit-input-placeholder*/
+        ::-webkit-input-placeholder {
+          text-align: left;
+        }
       }
     }
+    .item-md .item-ios{
+      padding-left: 0px;
+    }
   }
-// table.dataTable thead th {
-//     background-color: #efeff1;
-//     color: #04235c;
-//     font-family: Gotham-Medium;
-//     font-size: 12px;
-// }
+  .btnSave{
+    margin-top: 25px !important;
+  }
+}
 
-// table.dataTable.stripe tbody tr td {
-//     background-color: white !important;
-//     color: #04235c;
-//     font-family: Gotham-Medium;
-//     font-size: 11px;
-//     text-align: center;
-// }

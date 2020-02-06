@@ -20,7 +20,8 @@ export class GoalKickersPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
     this.group = this.formBuilder.group({
       initial: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(1)]],
-      surname: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]]
+      surname: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+      goals:['', [Validators.required,]]
     });
   }
   logForm() {
@@ -29,5 +30,4 @@ export class GoalKickersPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad GoalKickersPage');
   }
-
 }
