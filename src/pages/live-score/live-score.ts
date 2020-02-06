@@ -33,12 +33,63 @@ export class LiveScorePage {
   hasFinished: any;
   remainingTime: any;
   displayTime: any;
+  Ghome: any = 9;
+  Bhome: any = 2;
+  Gaway: any = 6;
+  Baway: any = 8;
   constructor(public navCtrl: NavController, public navParams: NavParams, public screenOrientation: ScreenOrientation, private alertCtrl: AlertController) {
   }
 
 
-  scoreBtn() {
-    this.scoreConfirm();
+  scoreBtn(event) {
+    console.log('val', event.path[2].id);
+    let selId = event.path[2].id;
+    console.log('time', this.timeInSeconds);
+    console.log('remaining', this.remainingTime);
+    if (this.timeInSeconds == this.remainingTime) {
+      this.scoreConfirm();
+    } else {
+      switch (selId) {
+        case 'GhomeA': {
+
+          this.Ghome = this.Ghome + 1;
+          break;
+        }
+        case 'BhomeA': {
+
+          this.Bhome = this.Bhome + 1;
+          break;
+        }
+        case 'GhomeM': {
+
+          this.Ghome = this.Ghome - 1;
+          break;
+        }
+        case 'BhomeM': {
+
+          this.Bhome = this.Bhome - 1;
+          break;
+        }
+        case 'GawayA': {
+          this.Gaway = this.Gaway + 1;
+          break;
+        }
+        case 'BawayA': {
+
+          this.Baway = this.Baway + 1;
+          break;
+        }
+        case 'GawayM': {
+
+          this.Gaway = this.Gaway - 1;
+          break;
+        }
+        case 'BawayM': {
+          this.Baway = this.Baway - 1;
+          break;
+        }
+      }
+    }
   }
   scoreConfirm() {
     let alert = this.alertCtrl.create({
@@ -79,19 +130,36 @@ export class LiveScorePage {
         {
           text: 'Yes',
           handler: () => {
-            this.hideMe = !this.hideMe;
-            this.hidePlay = !this.hidePlay;
-            this.hideQuarter = !this.hideQuarter;
-            this.showQuarter = !this.showQuarter;
-            this.htPoint = !this.htPoint;
-            this.atPoint = !this.atPoint;
-            this.Point = !this.Point;
-            if (this.flag == false) {
-              this.initTimer();
-              this.startTimer();
-              this.flag = true;
-            } else {
-              this.startTimer();
+            if(this.timeInSeconds == this.remainingTime){
+              this.hideMe = !this.hideMe;
+              this.hidePlay = !this.hidePlay;
+              this.hideQuarter = !this.hideQuarter;
+              this.showQuarter = !this.showQuarter;
+              this.htPoint = !this.htPoint;
+              this.atPoint = !this.atPoint;
+              this.Point = !this.Point;
+              if (this.flag == false) {
+                this.initTimer();
+                this.startTimer();
+                this.flag = true;
+              } else {
+                this.startTimer();
+              }
+            }else{
+              this.hideMe = !this.hideMe;
+              this.hidePlay = !this.hidePlay;
+              this.hideQuarter = this.hideQuarter;
+              this.showQuarter = this.showQuarter;
+              this.htPoint = this.htPoint;
+              this.atPoint = this.atPoint;
+              this.Point = this.Point;
+              if (this.flag == false) {
+                this.initTimer();
+                this.startTimer();
+                this.flag = true;
+              } else {
+                this.startTimer();
+              }
             }
           }
         }
@@ -205,7 +273,7 @@ export class LiveScorePage {
       else {
         this.hasFinished = true;
       }
-      console.log(':::', this.remainingTime);
+      // console.log(':::', this.remainingTime);
       if (this.remainingTime == 0) {
         this.endConfirm();
       }
@@ -250,9 +318,9 @@ export class LiveScorePage {
     console.log('ionViewDidLoad LiveScorePage');
     this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
     // console.log('...', this.screenOrientation.type);
-    this.timeInSeconds = 10;
+    this.timeInSeconds = 25;
     this.initTimer();
-    this.scoresConfirm();
+    // this.scoresConfirm();
   }
   ionViewDidLeave() {
     this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
