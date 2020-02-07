@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
-import { FileTransfer } from '@ionic-native/file-transfer';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 /**
  * Generated class for the LiveScorePage page.
@@ -42,31 +40,24 @@ export class LiveScorePage {
 
 
   scoreBtn(event) {
-    console.log('val', event.path[2].id);
     let selId = event.path[2].id;
-    console.log('time', this.timeInSeconds);
-    console.log('remaining', this.remainingTime);
     if (this.timeInSeconds == this.remainingTime) {
       this.scoreConfirm();
     } else {
       switch (selId) {
         case 'GhomeA': {
-
           this.Ghome = this.Ghome + 1;
           break;
         }
         case 'BhomeA': {
-
           this.Bhome = this.Bhome + 1;
           break;
         }
         case 'GhomeM': {
-
           this.Ghome = this.Ghome - 1;
           break;
         }
         case 'BhomeM': {
-
           this.Bhome = this.Bhome - 1;
           break;
         }
@@ -75,12 +66,10 @@ export class LiveScorePage {
           break;
         }
         case 'BawayA': {
-
           this.Baway = this.Baway + 1;
           break;
         }
         case 'GawayM': {
-
           this.Gaway = this.Gaway - 1;
           break;
         }
@@ -94,7 +83,6 @@ export class LiveScorePage {
   scoreConfirm() {
     let alert = this.alertCtrl.create({
       title: 'Start Timer/ Match to enter scores',
-      // message: 'Do you want to buy this book?',
       cssClass: 'CusttoastCtrl',
       buttons: [
         {
@@ -111,14 +99,12 @@ export class LiveScorePage {
 
   play() {
     this.playConfirm();
-    console.log('play', this.displayTime);
   }
 
   playConfirm() {
     let alert = this.alertCtrl.create({
       title: 'Do you want to Start this quarter',
       cssClass: 'CusttoastCtrl',
-      // message: 'Do you want to buy this book?',
       buttons: [
         {
           text: 'No',
@@ -130,7 +116,7 @@ export class LiveScorePage {
         {
           text: 'Yes',
           handler: () => {
-            if(this.timeInSeconds == this.remainingTime){
+            if (this.timeInSeconds == this.remainingTime) {
               this.hideMe = !this.hideMe;
               this.hidePlay = !this.hidePlay;
               this.hideQuarter = !this.hideQuarter;
@@ -145,7 +131,7 @@ export class LiveScorePage {
               } else {
                 this.startTimer();
               }
-            }else{
+            } else {
               this.hideMe = !this.hideMe;
               this.hidePlay = !this.hidePlay;
               this.hideQuarter = this.hideQuarter;
@@ -172,8 +158,6 @@ export class LiveScorePage {
     this.hideMe = !this.hideMe;
     this.hidePlay = !this.hidePlay;
     this.runTimer = false;
-    console.log('pause', this.displayTime);
-
   }
   stop() {
     this.stopConfirm();
@@ -182,7 +166,6 @@ export class LiveScorePage {
   stopConfirm() {
     let alert = this.alertCtrl.create({
       title: 'Do you want to end this quarter',
-      // message: 'Do you want to buy this book?',
       cssClass: 'CusttoastCtrl',
       buttons: [
         {
@@ -255,13 +238,6 @@ export class LiveScorePage {
     this.timerTick();
   }
 
-  //  pauseTimer() {
-  //    this.runTimer = false;
-  //  }
-  //  resumeTimer() {
-  //    this.startTimer();
-  //  }
-
   timerTick() {
     setTimeout(() => {
       if (!this.runTimer) { return; }
@@ -273,7 +249,6 @@ export class LiveScorePage {
       else {
         this.hasFinished = true;
       }
-      // console.log(':::', this.remainingTime);
       if (this.remainingTime == 0) {
         this.endConfirm();
       }
@@ -301,35 +276,31 @@ export class LiveScorePage {
   }
 
   getSecondsAsDigitalClock(inputSeconds: number) {
-    var sec_num = parseInt(inputSeconds.toString(), 10); // don't forget the second param
-    var hours = Math.floor(sec_num / 3600);
-    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
-    var seconds = sec_num - (hours * 3600) - (minutes * 60);
-    var hoursString = '';
-    var minutesString = '';
-    var secondsString = '';
-    //  hoursString = (hours < 10) ? "0" + hours : hours.toString();
+    let sec_num = parseInt(inputSeconds.toString(), 10); // don't forget the second param
+    let hours = Math.floor(sec_num / 3600);
+    let minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+    let seconds = sec_num - (hours * 3600) - (minutes * 60);
+    let hoursString = '';
+    let minutesString = '';
+    let secondsString = '';
     minutesString = (minutes < 10) ? "0" + minutes : minutes.toString();
     secondsString = (seconds < 10) ? "0" + seconds : seconds.toString();
     return minutesString + ':' + secondsString;
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LiveScorePage');
     this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
-    // console.log('...', this.screenOrientation.type);
     this.timeInSeconds = 25;
     this.initTimer();
-    // this.scoresConfirm();
   }
+
   ionViewDidLeave() {
     this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
   }
+
   scoresConfirm() {
     let confirm = this.alertCtrl.create({
       cssClass: 'CusttoastCtrl',
-      // title: 'End Quarter',
-      // message: 'Do you want to buy this book?',
       buttons: [
         {
           text: 'UPDATE SCORES',

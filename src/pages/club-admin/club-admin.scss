@@ -1,27 +1,27 @@
-.club-admin{
-    background-color: black;
-    @media (max-width:767px){
-        .scroll-content{
-            top: 15% !important;
-        }
+.club-admin {
+  background-color: black;
+  @media (max-width: 767px) {
+    .scroll-content {
+      top: 15% !important;
+      margin-top: 0px !important;
     }
-    .scroll-content{
-        top: 20%;
+  }
+  .title {
+    color: color($colors, white_color);
+  }
+  .pinDiv {
+    padding-top: 35px;
+    padding-bottom: 20px;
+    ion-icon {
+      color: color($colors, white_color);
     }
-    .title{
-        color: white;
-    }
-    .pinDiv{
-       padding-top: 35px;
-       padding-bottom: 20px; 
-       ion-icon{
-           color: white;
-       }
-    }
-    .numButton{
-        color: color($colors,white_color);
-        border: solid;
-        border-color: white;
-        background: transparent;
-    }
+  }
+  .numButton {
+    width: 60px;
+    height: 60px;
+    color: color($colors, white_color);
+    border: solid;
+    border-color: color($colors, white_color);
+    background: transparent;
+  }
 }

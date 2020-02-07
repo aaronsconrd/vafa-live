@@ -48,7 +48,7 @@ export class MyApp {
   rootPage: any;
   disableLogin: any = 0;
   isLogin: any = 0;
-  pages: Array<{ title: string, component: any, img: any, itemseleted: any,icon:any }>;
+  pages: Array<{ title: string, component: any, img: any, itemseleted: any, icon: any }>;
   seletedTitle: any = 'News';
   accountselect: any = 'notseleted';
   statselect: any = 'notseleted';
@@ -85,14 +85,14 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'News', component: HomePage, img: 'assets/imgs/menuIcon/newsIcon.png', itemseleted: 'seleted',icon:'' },
-      { title: 'Match Centre', component: MatchcenterPage, img: 'assets/imgs/menuIcon/machCEnterIconNew.png', itemseleted: 'notseleted',icon:'' },
-      { title: 'Fixtures', component: FixturePage, img: 'assets/imgs/menuIcon/FixturesIcon.png', itemseleted: 'notseleted',icon:'' },
-      { title: 'Post Match', component: PostmatchPage, img: 'assets/imgs/menuIcon/PostMatchIcon.png', itemseleted: 'notseleted' ,icon:''},
-      { title: 'Ladder', component: LadderPage, img: 'assets/imgs/menuIcon/LadderIcon.png', itemseleted: 'notseleted',icon:'' },
-      { title: 'Match Report', component: MatchreportPage, img: 'assets/imgs/menuIcon/MatchReportIcon.png', itemseleted: 'notseleted' ,icon:''},
-      { title: 'Goal Kickers', component: GoalkickersPage, img: 'assets/imgs/menuIcon/GoalKickersIcon.png', itemseleted: 'notseleted',icon:'' },
-      { title: 'Club Admin', component: ClubAdminPage, img: '', itemseleted: 'notseleted' ,icon:'information-circle'},
+      { title: 'News', component: HomePage, img: 'assets/imgs/menuIcon/newsIcon.png', itemseleted: 'seleted', icon: '' },
+      { title: 'Match Centre', component: MatchcenterPage, img: 'assets/imgs/menuIcon/machCEnterIconNew.png', itemseleted: 'notseleted', icon: '' },
+      { title: 'Fixtures', component: FixturePage, img: 'assets/imgs/menuIcon/FixturesIcon.png', itemseleted: 'notseleted', icon: '' },
+      { title: 'Post Match', component: PostmatchPage, img: 'assets/imgs/menuIcon/PostMatchIcon.png', itemseleted: 'notseleted', icon: '' },
+      { title: 'Ladder', component: LadderPage, img: 'assets/imgs/menuIcon/LadderIcon.png', itemseleted: 'notseleted', icon: '' },
+      { title: 'Match Report', component: MatchreportPage, img: 'assets/imgs/menuIcon/MatchReportIcon.png', itemseleted: 'notseleted', icon: '' },
+      { title: 'Goal Kickers', component: GoalkickersPage, img: 'assets/imgs/menuIcon/GoalKickersIcon.png', itemseleted: 'notseleted', icon: '' },
+      { title: 'Club Admin', component: ClubAdminPage, img: '', itemseleted: 'notseleted', icon: 'information-circle' },
       // { title: 'Player Stats', component: 'PlayerStatPage', icon: 'assets/imgs/menuIcon/PlayerStatsIconWhiteBg.png', itemseleted: 'notseleted' },
       // { title: 'Team Stats', component: TeamstatPage, icon: 'assets/imgs/menuIcon/TeamStatsIcon.png', itemseleted: 'notseleted' },
       // { title: '1 on 1', component: 'OnetoonePage', icon: 'assets/imgs/menuIcon/1on1Icon.png', itemseleted: 'notseleted' }
@@ -103,7 +103,7 @@ export class MyApp {
   initializeApp() {
     this.Storage.get('firsttime').then((val) => {
       if (val) {
-        this.rootPage = LiveScorePage;
+        this.rootPage = HomePage;
         this.splashScreen.hide();
         this.Storage.get('MydeviceID').then((val) => {
           if (val) {

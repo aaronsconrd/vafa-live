@@ -9,7 +9,7 @@
     <button ion-button menuToggle>
       <ion-icon name="appicons-menu"></ion-icon>
     </button>
-    <ion-title text-center>live-score</ion-title>
+    <ion-title text-center>Live Score</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -17,15 +17,21 @@
   <ion-grid class="Team">
     <ion-row>
       <ion-col col-4>Home Team</ion-col>
-      <ion-col col-4 *ngIf="hidePlay"><button ion-button class="exitButton" (click)="play()">
+      <ion-col col-4 *ngIf="hidePlay">
+        <button ion-button class="exitButton" (click)="play()">
           <ion-icon name="play" icon-center></ion-icon>
-        </button></ion-col>
-      <ion-col *ngIf="hideMe"><button ion-button class="exitButton" (click)="pause()">
+        </button>
+      </ion-col>
+      <ion-col *ngIf="hideMe">
+        <button ion-button class="exitButton" (click)="pause()">
           <ion-icon name="pause" icon-center></ion-icon>
-        </button></ion-col>
-      <ion-col *ngIf="hideMe"><button ion-button class="exitButton" (click)="stop()">
+        </button>
+      </ion-col>
+      <ion-col *ngIf="hideMe">
+        <button ion-button class="exitButton" (click)="stop()">
           <ion-icon name="stop" icon-center></ion-icon>
-        </button></ion-col>
+        </button>
+      </ion-col>
       <ion-col col-4>Away Team</ion-col>
     </ion-row>
     <ion-row>
@@ -39,7 +45,7 @@
       <ion-col col-12 align-self-center *ngIf="hideQuarter">Start Game</ion-col>
       <ion-col col-12 align-self-center *ngIf="showQuarter">Quarter : 3</ion-col>
     </ion-row>
-    <ion-row class="IconSize" >
+    <ion-row class="IconSize">
       <ion-col col-2><button id="GhomeA" ion-button clear (click)="scoreBtn($event)">
           <ion-icon name="add" color="secondary"></ion-icon>
         </button></ion-col>

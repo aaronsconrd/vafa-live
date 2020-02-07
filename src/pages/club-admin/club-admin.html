@@ -4,22 +4,14 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<!-- <ion-header>
-
-    <ion-navbar>
-        <ion-title>club-admin</ion-title>
-    </ion-navbar>
-
-</ion-header> -->
-
 <ion-header class="custBar">
     <ion-navbar>
-      <button ion-button menuToggle>
-        <ion-icon name="appicons-menu"></ion-icon>
-      </button>
-      <ion-title text-center>club Admin</ion-title>
+        <button ion-button menuToggle>
+            <ion-icon name="appicons-menu"></ion-icon>
+        </button>
+        <ion-title text-center>Club Admin</ion-title>
     </ion-navbar>
-  </ion-header>
+</ion-header>
 
 <ion-content class="club-admin" padding>
     <h6 text-center margin-vertical class="title">{{ pagetitle }}</h6>
@@ -31,7 +23,7 @@
     </div>
     <ion-grid text-center>
         <ion-row>
-            <ion-col class="">
+            <ion-col>
                 <button ion-button class="numButton" large round (click)="handleInput('1')">1</button>
             </ion-col>
             <ion-col>
@@ -69,8 +61,7 @@
             </ion-col>
             <ion-col>
                 <button ion-button class="numButton" large round (click)="remove('0')">
-                    <ion-icon name="backspace">
-                    </ion-icon>
+                    <ion-icon name="backspace"></ion-icon>
                 </button>
             </ion-col>
         </ion-row>
