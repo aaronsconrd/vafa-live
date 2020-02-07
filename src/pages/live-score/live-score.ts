@@ -39,12 +39,12 @@ export class LiveScorePage {
   }
 
 
-  scoreBtn(event) {
-    let selId = event.path[2].id;
+  scoreBtn(event: string) {
+    // let selId = event.path[2].id;
     if (this.timeInSeconds == this.remainingTime) {
       this.scoreConfirm();
     } else {
-      switch (selId) {
+      switch (event) {
         case 'GhomeA': {
           this.Ghome = this.Ghome + 1;
           break;
@@ -201,8 +201,6 @@ export class LiveScorePage {
     let alert = this.alertCtrl.create({
       title: 'Are you sure you want to exit',
       cssClass: 'CusttoastCtrl',
-
-      // message: 'Do you want to buy this book?',
       buttons: [
         {
           text: 'No',
@@ -215,6 +213,7 @@ export class LiveScorePage {
           text: 'Yes',
           handler: () => {
             console.log('Buy clicked');
+            this.scoresConfirm();
           }
         }
       ]
@@ -284,7 +283,6 @@ export class LiveScorePage {
     let hours = Math.floor(sec_num / 3600);
     let minutes = Math.floor((sec_num - (hours * 3600)) / 60);
     let seconds = sec_num - (hours * 3600) - (minutes * 60);
-    let hoursString = '';
     let minutesString = '';
     let secondsString = '';
     minutesString = (minutes < 10) ? "0" + minutes : minutes.toString();

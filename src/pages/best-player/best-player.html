@@ -16,7 +16,6 @@
 
 
 <ion-content class="best-player" padding>
-
   <ion-row>
     <ion-col col-6 text-right>
       <h6>Home Team</h6>
@@ -25,69 +24,11 @@
       <h6 class="awayTeam">Away Team</h6>
     </ion-col>
   </ion-row>
-  <!-- <ion-row>
-    <ion-col col-2>
-      <div>Initial</div>
-    </ion-col>
-    <ion-col col-10>
-      <div>Surname</div>
-    </ion-col>
-  </ion-row> -->
-  <form (ngSubmit)="logForm()" [formGroup]="group">
-
-    <!-- <ion-row>
-      <ion-col col-2>
-        <ion-input type="text" value="" class="textField" formControlName="initial"></ion-input>
-      </ion-col>
-      <ion-col col-10>
-        <ion-input type="text" value="" class="textField" formControlName="surname"></ion-input>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-2>
-        <ion-input type="text" value="" class="textField"></ion-input>
-      </ion-col>
-      <ion-col col-10>
-        <ion-input type="text" value="" class="textField"></ion-input>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-2>
-        <ion-input type="text" value="" class="textField"></ion-input>
-      </ion-col>
-      <ion-col col-10>
-        <ion-input type="text" value="" class="textField"></ion-input>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-2>
-        <ion-input type="text" value="" class="textField"></ion-input>
-      </ion-col>
-      <ion-col col-10>
-        <ion-input type="text" value="" class="textField"></ion-input>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-2>
-        <ion-input type="text" value="" class="textField"></ion-input>
-      </ion-col>
-      <ion-col col-10>
-        <ion-input type="text" value="" class="textField"></ion-input>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-2>
-        <ion-input type="text" value="" class="textField"></ion-input>
-      </ion-col>
-      <ion-col col-10>
-        <ion-input type="text" value="" class="textField"></ion-input>
-      </ion-col>
-    </ion-row> -->
-
+  <form (ngSubmit)="logForm(group)" [formGroup]="group">
     <table id="BestPlayerTable">
       <thead>
         <tr>
-          <th class="tableHeading" style="width: 15%;">Initial</th>
+          <th class="tableHeading setInitialWidth">Initial</th>
           <th class="tableHeading setPadding">Surname</th>
         </tr>
       </thead>

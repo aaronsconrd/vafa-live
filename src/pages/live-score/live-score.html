@@ -46,17 +46,21 @@
       <ion-col col-12 align-self-center *ngIf="showQuarter">Quarter : 3</ion-col>
     </ion-row>
     <ion-row class="IconSize">
-      <ion-col col-2><button id="GhomeA" ion-button clear (click)="scoreBtn($event)">
+      <ion-col col-2>
+        <button ion-button clear (click)="scoreBtn('GhomeA')">
           <ion-icon name="add" color="secondary"></ion-icon>
         </button></ion-col>
-      <ion-col col-2><button id="BhomeA" ion-button clear (click)="scoreBtn($event)">
+      <ion-col col-2>
+        <button ion-button clear (click)="scoreBtn('BhomeA')">
           <ion-icon name="add" color="secondary"></ion-icon>
         </button>
       </ion-col>
-      <ion-col col-2 offset-4><button ion-button id="GawayA" clear (click)="scoreBtn($event)">
+      <ion-col col-2 offset-4>
+        <button ion-button clear (click)="scoreBtn('GawayA')">
           <ion-icon name="add" color="secondary"></ion-icon>
         </button></ion-col>
-      <ion-col col-2><button id="BawayA" ion-button clear (click)="scoreBtn($event)">
+      <ion-col col-2>
+        <button ion-button clear (click)="scoreBtn('BawayA')">
           <ion-icon name="add" color="secondary"></ion-icon>
         </button></ion-col>
     </ion-row>
@@ -67,18 +71,26 @@
       <ion-col col-2>B</ion-col>
     </ion-row>
     <ion-row class="IconSize">
-      <ion-col col-2><button id="GhomeM" ion-button clear (click)="scoreBtn($event)">
+      <ion-col col-2>
+        <button ion-button clear (click)="scoreBtn('GhomeM')">
           <ion-icon name="remove" color="danger"></ion-icon>
-        </button></ion-col>
-      <ion-col col-2><button id="BhomeM" ion-button clear (click)="scoreBtn($event)">
+        </button>
+      </ion-col>
+      <ion-col col-2>
+        <button ion-button clear (click)="scoreBtn('BhomeM')">
           <ion-icon name="remove" color="danger"></ion-icon>
-        </button></ion-col>
-      <ion-col col-2 offset-4><button id="GawayM" ion-button clear (click)="scoreBtn($event)">
+        </button>
+      </ion-col>
+      <ion-col col-2 offset-4>
+        <button ion-button clear (click)="scoreBtn('GawayM')">
           <ion-icon name="remove" color="danger"></ion-icon>
-        </button></ion-col>
-      <ion-col col-2><button id="BawayM" ion-button clear (click)="scoreBtn($event)">
+        </button>
+      </ion-col>
+      <ion-col col-2>
+        <button ion-button clear (click)="scoreBtn('BawayM')">
           <ion-icon name="remove" color="danger"></ion-icon>
-        </button></ion-col>
+        </button>
+      </ion-col>
     </ion-row>
     <ion-row>
       <ion-col col-12 align-self-center><button ion-button class="exitButton" (click)="exit()">Exit</button></ion-col>
