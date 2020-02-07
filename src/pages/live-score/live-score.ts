@@ -51,22 +51,18 @@ export class LiveScorePage {
     } else {
       switch (selId) {
         case 'GhomeA': {
-
           this.Ghome = this.Ghome + 1;
           break;
         }
         case 'BhomeA': {
-
           this.Bhome = this.Bhome + 1;
           break;
         }
         case 'GhomeM': {
-
           this.Ghome = this.Ghome - 1;
           break;
         }
         case 'BhomeM': {
-
           this.Bhome = this.Bhome - 1;
           break;
         }
@@ -75,12 +71,10 @@ export class LiveScorePage {
           break;
         }
         case 'BawayA': {
-
           this.Baway = this.Baway + 1;
           break;
         }
         case 'GawayM': {
-
           this.Gaway = this.Gaway - 1;
           break;
         }
@@ -110,7 +104,24 @@ export class LiveScorePage {
   }
 
   play() {
-    this.playConfirm();
+            if(this.timeInSeconds == this.remainingTime){
+              this.playConfirm();
+  }   else{
+      this.hideMe = !this.hideMe;
+      this.hidePlay = !this.hidePlay;
+      this.hideQuarter = this.hideQuarter;
+      this.showQuarter = this.showQuarter;
+      this.htPoint = true;
+      this.atPoint = true;
+      this.Point = false;
+      if (this.flag == false) {
+        this.initTimer();
+        this.startTimer();
+        this.flag = true;
+      } else {
+        this.startTimer();
+      }
+    }
     console.log('play', this.displayTime);
   }
 
@@ -130,7 +141,6 @@ export class LiveScorePage {
         {
           text: 'Yes',
           handler: () => {
-            if(this.timeInSeconds == this.remainingTime){
               this.hideMe = !this.hideMe;
               this.hidePlay = !this.hidePlay;
               this.hideQuarter = !this.hideQuarter;
@@ -145,22 +155,6 @@ export class LiveScorePage {
               } else {
                 this.startTimer();
               }
-            }else{
-              this.hideMe = !this.hideMe;
-              this.hidePlay = !this.hidePlay;
-              this.hideQuarter = this.hideQuarter;
-              this.showQuarter = this.showQuarter;
-              this.htPoint = this.htPoint;
-              this.atPoint = this.atPoint;
-              this.Point = this.Point;
-              if (this.flag == false) {
-                this.initTimer();
-                this.startTimer();
-                this.flag = true;
-              } else {
-                this.startTimer();
-              }
-            }
           }
         }
       ]
@@ -189,6 +183,7 @@ export class LiveScorePage {
           text: 'No',
           role: 'cancel',
           handler: () => {
+            this.startTimer();
             console.log('Cancel clicked');
           }
         },
@@ -199,6 +194,8 @@ export class LiveScorePage {
             this.hideMe = !this.hideMe;
             this.hidePlay = !this.hidePlay;
             this.flag = false;
+            this.htPoint= !this.htPoint;
+            this.atPoint =!this.atPoint;
             this.Point = true;
           }
         }
