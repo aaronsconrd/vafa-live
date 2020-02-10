@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, AlertController } from 'ionic-angular';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 /**
@@ -35,12 +35,10 @@ export class LiveScorePage {
   Bhome: any = 2;
   Gaway: any = 6;
   Baway: any = 8;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public screenOrientation: ScreenOrientation, private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public screenOrientation: ScreenOrientation, private alertCtrl: AlertController) {
   }
 
-
   scoreBtn(event: string) {
-    // let selId = event.path[2].id;
     if (this.timeInSeconds == this.remainingTime) {
       this.scoreConfirm();
     } else {
@@ -116,7 +114,6 @@ export class LiveScorePage {
         this.startTimer();
       }
     }
-    console.log('play', this.displayTime);
   }
 
   playConfirm() {
@@ -160,10 +157,12 @@ export class LiveScorePage {
     this.hidePlay = !this.hidePlay;
     this.runTimer = false;
   }
+
   stop() {
     this.stopConfirm();
     this.runTimer = false;
   }
+
   stopConfirm() {
     let alert = this.alertCtrl.create({
       title: 'Do you want to end this quarter',
@@ -194,9 +193,6 @@ export class LiveScorePage {
     alert.present();
   }
 
-  exit() {
-    this.exitConfirm();
-  }
   exitConfirm() {
     let alert = this.alertCtrl.create({
       title: 'Are you sure you want to exit',
@@ -261,7 +257,6 @@ export class LiveScorePage {
     let alert = this.alertCtrl.create({
       title: 'End Quarter',
       cssClass: 'CusttoastCtrl',
-      // message: 'Do you want to buy this book?',
       buttons: [
         {
           text: 'Ok',
@@ -306,29 +301,29 @@ export class LiveScorePage {
       buttons: [
         {
           text: 'UPDATE SCORES',
-          role: 'cancel',
           handler: () => {
-            console.log('Cancel clicked');
+            console.log('UPDATE SCORES CLICK');
           }
         },
         {
           text: 'UPDATE BEST PLAYERS',
           handler: () => {
             this.navCtrl.push('BestPlayerPage');
-            console.log('Buy clicked');
+            console.log('UPDATE BEST PLAYERS CLICK');
           }
         },
         {
           text: 'UPDATE GOAL KICKERS',
           handler: () => {
             this.navCtrl.push('GoalKickersPage');
-            console.log('Buy clicked');
+            console.log('UPDATE GOAL KICKERS CLICK');
           }
         },
         {
           text: 'EXIT',
+          role: 'cancel',
           handler: () => {
-            console.log('Buy clicked');
+            console.log('EXIT clicked');
           }
         }
       ]
