@@ -36,6 +36,7 @@ export class ClubAdminPage {
       return this.checkPin();
     }
   }
+  
   checkPin() {
     // this.ajax.CheckPasscode(this.pin).subscribe((res) => {
     //   console.log('res', res)

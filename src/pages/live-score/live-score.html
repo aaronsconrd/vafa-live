@@ -14,7 +14,7 @@
 </ion-header>
 
 <ion-content class="live-score" padding>
-  <ion-grid class="Team">
+  <ion-grid class="team">
     <ion-row>
       <ion-col col-4>Home Team</ion-col>
       <ion-col col-4 *ngIf="hidePlay">
@@ -45,7 +45,7 @@
       <ion-col col-12 align-self-center *ngIf="hideQuarter">Start Game</ion-col>
       <ion-col col-12 align-self-center *ngIf="showQuarter">Quarter : 3</ion-col>
     </ion-row>
-    <ion-row class="IconSize">
+    <ion-row class="iconSize">
       <ion-col col-2>
         <button ion-button clear (click)="scoreBtn('GhomeA')">
           <ion-icon name="add" color="secondary"></ion-icon>
@@ -70,7 +70,7 @@
       <ion-col col-2 offset-4>G</ion-col>
       <ion-col col-2>B</ion-col>
     </ion-row>
-    <ion-row class="IconSize">
+    <ion-row class="iconSize">
       <ion-col col-2>
         <button ion-button clear (click)="scoreBtn('GhomeM')">
           <ion-icon name="remove" color="danger"></ion-icon>
@@ -93,7 +93,9 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col col-12 align-self-center><button ion-button class="exitButton" (click)="exit()">Exit</button></ion-col>
+      <ion-col col-12 align-self-center>
+        <button ion-button class="exitButton" (click)="exit()">Exit</button>
+      </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>

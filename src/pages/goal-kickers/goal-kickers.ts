@@ -21,7 +21,7 @@ export class GoalKickersPage {
     this.group = this.formBuilder.group({
       initial: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(1)]],
       surname: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
-      goals:['', [Validators.required,]]
+      goals: ['', [Validators.required]]
     });
   }
   logForm() {
