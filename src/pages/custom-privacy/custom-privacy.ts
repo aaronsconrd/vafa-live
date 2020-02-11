@@ -11,7 +11,7 @@ import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/fi
  * Ionic pages and navigation.
  */
 
-const PPLink = 'https://www.completesportsmanagement.com.au/privacy';
+// const PPLink = 'https://www.completesportsmanagement.com.au/privacy';
 
 @IonicPage()
 @Component({

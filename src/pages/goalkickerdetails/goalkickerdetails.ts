@@ -85,7 +85,7 @@ export class GoalkickerdetailsPage {
   }
   goToAddSite(ad_url) {
     this.ga.trackEvent('Advertisement', 'Viewed', 'Goal Kickers - Individual', 1);
-    const browser = this.inapp.create(ad_url);
+    this.inapp.create(ad_url);
   }
 
   getteamplayersgoalkickersdetails(res) {

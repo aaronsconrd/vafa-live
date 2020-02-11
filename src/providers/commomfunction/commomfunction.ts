@@ -1,18 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { LocalDataProvider } from '../local-data/local-data';
 import { ToastController, LoadingController, AlertController } from 'ionic-angular';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { Storage } from '@ionic/storage';
-import { HomePage } from '../../pages/home/home';
 
 import { Events } from 'ionic-angular';
 import 'rxjs/add/operator/map';
 import { environment } from '../../environments/environment';
-// import { Geolocation } from '@ionic-native/geolocation';
-// import { Storage } from '@ionic/storage';
-// import { AjaxProvider } from '../ajax/ajax';
-
 @Injectable()
 export class CommomfunctionProvider {
   loading: any;
@@ -26,10 +20,7 @@ export class CommomfunctionProvider {
     public alertCtrl: AlertController,
     public events: Events,
     public storage: Storage,
-    public loadingCtrl: LoadingController) {
-    console.log('Hello CommomfunctionProvider Provider');
-
-  }
+    public loadingCtrl: LoadingController) { }
 
   showToast(msg: string) {
     // let toast = this.toastCtrl.create({

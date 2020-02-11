@@ -83,7 +83,7 @@ export class HomePage {
   }
   goToAddSite(ad_url) {
     this.ga.trackEvent('Advertisement', 'Viewed', 'News', 1);
-    const browser = this.inapp.create(ad_url);
+    this.inapp.create(ad_url);
   }
 
   // path reset function

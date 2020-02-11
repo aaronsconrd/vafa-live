@@ -6,8 +6,6 @@ import { CommomfunctionProvider } from '../../providers/commomfunction/commomfun
 import { Events } from 'ionic-angular';
 import { HomePage } from '../../pages/home/home';
 import { LocalDataProvider } from '../../providers/local-data/local-data';
-import { NewaccountPage } from '../newaccount/newaccount';
-
 
 @IonicPage()
 @Component({
@@ -49,27 +47,27 @@ export class RegisteredpassPage {
 				console.log(res);
 				this.fulluserdetails = res;
 				if (this.fulluserdetails.code == 3) {
-					this.events.publish('userlogin',true);
+					this.events.publish('userlogin', true);
 					this.localData.StoreData(this.fulluserdetails.webuser);
 					this.Storage.set("userData", JSON.stringify(this.fulluserdetails.webuser));
 					this.Storage.set('checkLogin', this.fulluserdetails.webuser);
-					this.Storage.set('FullData',this.fulluserdetails);
+					this.Storage.set('FullData', this.fulluserdetails);
 
-					if(this.localData.LoginTo()=='LandingpagePage'){
+					if (this.localData.LoginTo() == 'LandingpagePage') {
 						this.navCtrl.push(this.localData.LoginTo());
-            }else{
-              if(this.localData.getBckpage() != '' && this.localData.getBckpage() != undefined){
-                let det = this.localData.getBckdata().details;
-                let yr = this.localData.getBckdata().year;
-                let pr = this.localData.getBckdata().parent;
-                this.localData.SetBack('','','','');
-                this.navCtrl.push('InnermatchcenterPage', { details: det, year :yr ,stats : true});
-              }else{
-                this.events.publish('menuchange2:changed', 'HomePage');
-                this.navCtrl.setRoot(HomePage);
-              }
+					} else {
+						if (this.localData.getBckpage() != '' && this.localData.getBckpage() != undefined) {
+							let det = this.localData.getBckdata().details;
+							let yr = this.localData.getBckdata().year;
+							// let pr = this.localData.getBckdata().parent;
+							this.localData.SetBack('', '', '', '');
+							this.navCtrl.push('InnermatchcenterPage', { details: det, year: yr, stats: true });
+						} else {
+							this.events.publish('menuchange2:changed', 'HomePage');
+							this.navCtrl.setRoot(HomePage);
+						}
 
-					  }
+					}
 
 				} else if (this.fulluserdetails.code == 4) {
 					let alert = this.alertCtrl.create({

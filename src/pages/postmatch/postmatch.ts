@@ -1,4 +1,4 @@
-import { Component, ViewChild, NgZone, ElementRef } from '@angular/core';
+import { Component, ViewChild, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, Slides, ModalController, Content, Platform } from 'ionic-angular';
 import { AjaxProvider } from '../../providers/ajax/ajax';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
@@ -16,9 +16,6 @@ import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/fi
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
-
-
 @IonicPage()
 @Component({
   selector: 'page-postmatch',

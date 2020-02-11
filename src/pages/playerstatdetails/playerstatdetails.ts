@@ -2,7 +2,6 @@ import { Component,ViewChild,NgZone  } from '@angular/core';
 import { IonicPage, NavController, NavParams,Platform } from 'ionic-angular';
 import { AjaxProvider } from '../../providers/ajax/ajax';
 import { Events } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
 import { Content } from 'ionic-angular';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
 // import { GoogleAnalytics } from '@ionic-native/google-analytics';
@@ -140,7 +139,7 @@ export class PlayerstatdetailsPage {
 
   goToAddSite(ad_url) {
     this.ga.trackEvent('Advertisement', 'Viewed', 'Player Stats Individual - Season', 1);
-    const browser = this.inapp.create(ad_url);
+    this.inapp.create(ad_url);
   }
 
    // sort player stat by quater function

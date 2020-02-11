@@ -1,4 +1,4 @@
-import { Component,ViewChild,ElementRef } from '@angular/core';
+import { Component,ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';

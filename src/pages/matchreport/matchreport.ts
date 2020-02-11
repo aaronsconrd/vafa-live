@@ -4,7 +4,6 @@ import { AjaxProvider } from '../../providers/ajax/ajax';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
 import { Events } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-// import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { Storage } from '@ionic/storage';
 import { environment } from '../../environments/environment';
 import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
@@ -147,31 +146,31 @@ export class MatchreportPage {
           //     }
           //   });
           // } else {
-            //
-            this.storage.get('UserTeamData').then((val) => {
-              if (val) {
-                let cntr = 0;
-                console.log("From storage:", val.selectedcompetition);
-                let storedId = val.selectedcompetition.competitions_name;
-                this.comptitionlists.forEach(element => {
-                  console.log(element.competition_id);
-                  if (storedId == element.competitions_name && val.selectedcompetition.seasons[0].manual_score_recording != "2") {
-                    this.selectables = element.competitions_name;
-                    this.competition_id = element.competition_id;
-                    this.getMatchReport(element.competition_id);
-                  }else if (val.selectedcompetition.seasons[0].manual_score_recording == "2"  && cntr < 1) {
-                    this.selectables = this.comptitionlists[0].competitions_name;
+          //
+          this.storage.get('UserTeamData').then((val) => {
+            if (val) {
+              let cntr = 0;
+              console.log("From storage:", val.selectedcompetition);
+              let storedId = val.selectedcompetition.competitions_name;
+              this.comptitionlists.forEach(element => {
+                console.log(element.competition_id);
+                if (storedId == element.competitions_name && val.selectedcompetition.seasons[0].manual_score_recording != "2") {
+                  this.selectables = element.competitions_name;
+                  this.competition_id = element.competition_id;
+                  this.getMatchReport(element.competition_id);
+                } else if (val.selectedcompetition.seasons[0].manual_score_recording == "2" && cntr < 1) {
+                  this.selectables = this.comptitionlists[0].competitions_name;
+                  this.competition_id = this.comptitionlists[0].competition_id;
+                  this.getMatchReport(this.competition_id);
+                }
+              });
+            } else {
+              this.selectables = this.comptitionlists[0].competitions_name;
               this.competition_id = this.comptitionlists[0].competition_id;
               this.getMatchReport(this.competition_id);
-                  }
-                });
-              } else {
-                this.selectables = this.comptitionlists[0].competitions_name;
-                this.competition_id = this.comptitionlists[0].competition_id;
-                this.getMatchReport(this.competition_id);
-              }
-            });
-            //
+            }
+          });
+          //
           // }
 
 
@@ -185,7 +184,7 @@ export class MatchreportPage {
 
   // Match Report get function
   getMatchReport(comp) {
-    console.log(comp+':'+'comp')
+    console.log(comp + ':' + 'comp')
     this.ajax.postMethod('get-compition-fixture-match-report', {
       accessKey: 'QzEnDyPAHT12asHb4On6HH2016',
       competition_id: comp
@@ -223,9 +222,9 @@ export class MatchreportPage {
   goToMatchReportDetail(reportId) {
     this.navCtrl.push('MatchreportdetailsPage', { repordid: reportId });
   }
+
   gotomodel() {
     let modal = this.modalCtrl.create('CommommodelPage', { items: this.comptitionlists });
-    let me = this;
     modal.onDidDismiss(data => {
       if (data) {
         this.MatchreportData = [];
@@ -259,8 +258,6 @@ export class MatchreportPage {
   }
   goToAddSite(ad_url) {
     this.ga.trackEvent('Advertisement', 'Viewed', 'Match Report', 1);
-    const browser = this.inapp.create(ad_url);
+    this.inapp.create(ad_url);
   }
-
-
 }

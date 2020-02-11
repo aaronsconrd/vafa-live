@@ -10,7 +10,7 @@ import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/fi
  * Ionic pages and navigation.
  */
 
-const TermsLink = 'http://vafalive.com.au/termsconds';
+// const TermsLink = 'http://vafalive.com.au/termsconds';
 
 @IonicPage()
 @Component({

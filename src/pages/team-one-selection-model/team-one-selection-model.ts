@@ -1,8 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, ModalController, Content } from 'ionic-angular'
+import { IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular'
 import { AjaxProvider } from '../../providers/ajax/ajax';
 import { Events } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
 import { Searchbar } from 'ionic-angular';
 import { environment } from '../../environments/environment';

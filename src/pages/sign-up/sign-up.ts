@@ -1,14 +1,11 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { AjaxProvider } from '../../providers/ajax/ajax';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
 import { Events } from 'ionic-angular';
 import { LocalDataProvider } from '../../providers/local-data/local-data';
-// import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { NewaccountPage } from '../newaccount/newaccount';
-import { HomePage } from '../../pages/home/home';
-import { InnermatchcenterPage } from './../innermatchcenter/innermatchcenter';
 import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
 
 @IonicPage()
