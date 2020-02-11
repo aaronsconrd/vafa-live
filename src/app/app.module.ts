@@ -10,7 +10,6 @@ import { MatchcenterPage } from '../pages/matchcenter/matchcenter';
 import { FixturePage } from '../pages/fixture/fixture';
 import { PostmatchPage } from '../pages/postmatch/postmatch';
 import { LadderPage } from '../pages/ladder/ladder';
-// import { YeardropdownPage } from '../pages/yeardropdown/yeardropdown';
 import { GoalkickersPage } from '../pages/goalkickers/goalkickers';
 import { TeamstatPage } from '../pages/teamstat/teamstat';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -43,10 +42,9 @@ import { gamepasspage } from '../pages/innermatchcenter/innermatchcenter';
 import { Device } from '@ionic-native/device';
 import { FirebaseAnalyticsProvider } from '../providers/firebase-analytics/firebase-analytics';
 import { FirebaseAnalytics } from '@ionic-native/firebase-analytics';
-import { ClubAdminPage } from '../pages/club-admin/club-admin';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
-import { LiveScorePage } from '../pages/live-score/live-score';
-@NgModule({ 
+import { ClubAdminPage } from '../pages/club-admin/club-admin';
+@NgModule({
   declarations: [
     MyApp,
     HomePage,
@@ -54,9 +52,6 @@ import { LiveScorePage } from '../pages/live-score/live-score';
     MatchreportPage,
     MatchcenterPage,
     gamepasspage,
-    ClubAdminPage,
-    LiveScorePage,
-    // YeardropdownPage,
     FixturePage,
     PostmatchPage,
     LadderPage,
@@ -66,7 +61,8 @@ import { LiveScorePage } from '../pages/live-score/live-score';
     KeysPipe,
     ReversePipe,
     Search,
-    RoundPipe
+    RoundPipe,
+    ClubAdminPage
   ],
   imports: [
     BrowserModule,
@@ -89,10 +85,9 @@ import { LiveScorePage } from '../pages/live-score/live-score';
     FixturePage,
     PostmatchPage,
     LadderPage,
-    GoalkickersPage,
     TeamstatPage,
     ClubAdminPage,
-    LiveScorePage
+    GoalkickersPage
   ],
   providers: [
     StatusBar,

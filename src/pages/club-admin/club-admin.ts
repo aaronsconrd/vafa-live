@@ -4,7 +4,7 @@ import { Component, Input, Output, EventEmitter } from "@angular/core";
 // import { LockScreenModule, LockScreenComponent } from 'ionic-simple-lockscreen';
 import { AjaxProvider } from '../../providers/ajax/ajax';
 import { LocalDataProvider } from '../../providers/local-data/local-data';
-import { LiveScorePage } from '../live-score/live-score';
+import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
 
 /**
  * Generated class for the ClubAdminPage page.
@@ -23,7 +23,7 @@ export class ClubAdminPage {
   pin: string = "";
 
   @Output() change: EventEmitter<string> = new EventEmitter<string>();
-  constructor(public navCtrl: NavController,public ajax: AjaxProvider, public localData: LocalDataProvider) {
+  constructor(public navCtrl: NavController, public ajax: AjaxProvider, public localData: LocalDataProvider, public cmnfun: CommomfunctionProvider) {
   }
 
   emitEvent() {
@@ -36,12 +36,27 @@ export class ClubAdminPage {
       return this.checkPin();
     }
   }
-  
+
   checkPin() {
-    // this.ajax.CheckPasscode(this.pin).subscribe((res) => {
-    //   console.log('res', res)
+    // try {
+    //   this.cmnfun.showLoading('Please wait...');
+    //   this.ajax.checkPasscode(this.pin).subscribe((res: any) => {
+    //     this.cmnfun.HideLoading();
+    //     if (res.response == 1) {
+    //       this.navCtrl.push(LiveScorePage);
+    //     } else {
+    //       this.cmnfun.showToast('');
+    //     }
+    //   },error => {
+    //   console.log(error);
+    //    this.cmnfun.showToast('');
     // });
-    this.navCtrl.push(LiveScorePage);
+    // } catch (error) {
+    //   console.error('Error =>', error);
+    //   this.cmnfun.showToast('');
+    //   this.cmnfun.HideLoading();
+    // }
+    this.navCtrl.push('LiveScorePage');
   }
 
   remove() {

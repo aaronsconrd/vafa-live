@@ -40,7 +40,7 @@ export class AjaxProvider {
 
   GetAllPurchases(params) {
     console.log(params);
-    var config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
+    let config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
     return this.http
       .post(baseurl + '/score/custom/get-user-payment-details',
         params, config)
@@ -50,7 +50,7 @@ export class AjaxProvider {
 
   postMethod(category, params) {
     console.log(category);
-    var config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
+    let config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
     return this.http
       .post(baseurl + '/score/default/' + category,
         params, config)
@@ -60,7 +60,7 @@ export class AjaxProvider {
 
   post(category, params) {
     console.log(category);
-    var config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
+    let config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
     return this.http
       .post(baseurl + '/score/' + category,
         params, config)
@@ -68,7 +68,7 @@ export class AjaxProvider {
       .catch(error => error)
   }
   getcompetionlist(category, params, key) {
-    var config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
+    let config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
     this.http
       .post(baseurl + '/score/default/' + category,
         params, config)
@@ -82,7 +82,7 @@ export class AjaxProvider {
       })
   }
   data(category, params) {
-    var config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
+    let config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
     this.http
       .post(baseurl + '/score/default/' + category,
         params, config)
@@ -95,7 +95,7 @@ export class AjaxProvider {
       })
   }
   datalist(category, params) {
-    var config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
+    let config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
     return this.http
       .post(baseurl + '/score/default/' + category,
         params, config)
@@ -103,7 +103,7 @@ export class AjaxProvider {
       .catch(error => error)
   }
   datalistaction(category, params, Type) {
-    var config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
+    let config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
     this.http
       .post(baseurl + '/score/default/' + category,
         params, config)
@@ -118,7 +118,7 @@ export class AjaxProvider {
 
   postaction(category, params) {
     console.log(category);
-    var config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
+    let config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
     return this.http
       .post(baseurl + '/score/matchscore/' + category,
         params, config)
@@ -129,7 +129,7 @@ export class AjaxProvider {
   // get all teams by year
   GetMatchTeam(params) {
     console.log(params)
-    var config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
+    let config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
     return this.http
       .post(baseurl + '/score/custom/get-all-teams-by-year',
         params, config)
@@ -140,7 +140,7 @@ export class AjaxProvider {
   // get fixture data for single game pass
   FixtureDataApi(params) {
     console.log(params)
-    var config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
+    let config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
     return this.http
       .post(baseurl + '/score/custom/get-fixture-details',
         params, config)
@@ -152,7 +152,7 @@ export class AjaxProvider {
   // get all competition year wise api
   GetMatchComp(category, params) {
     console.log(category);
-    var config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
+    let config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
     return this.http
       .post(baseurl + '/score/default/' + category,
         params, config)
@@ -163,7 +163,7 @@ export class AjaxProvider {
 
   postMethodct(category) {
     console.log(category);
-    var config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
+    let config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
     return this.http
       .post(baseurl + '/score/default/' + category,
         { accessKey: 'QzEnDyPAHT12asHb4On6HH2016', }, config)
@@ -173,7 +173,7 @@ export class AjaxProvider {
 
   PaymentpostApi(params) {
     console.log(params)
-    var config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
+    let config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
     return this.http
       // .post('http://54.244.98.247/score/custom/save-payment-email',
       .post(baseurl + '/score/custom/save-payment-email-all',
@@ -184,7 +184,7 @@ export class AjaxProvider {
 
   CheckDeviceData(params) {
     console.log(params)
-    var config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
+    let config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
     return this.http
       .post(baseurl + '/score/custom/login-webuser-deviceid-payment',
         params, config)
@@ -194,7 +194,7 @@ export class AjaxProvider {
 
   EditUserData(params) {
     console.log(params)
-    var config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
+    let config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
     return this.http
       .post(baseurl + '/score/custom/save-data-email',
         params, config)
@@ -204,7 +204,7 @@ export class AjaxProvider {
 
   CheckTrialPeriod(params) {
     console.log(params)
-    var config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
+    let config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
     return this.http
       .post(baseurl + '/score/custom/check-trial-period',
         params, config)
@@ -212,8 +212,18 @@ export class AjaxProvider {
       .catch(error => error)
   }
 
-  CheckPasscode(params) {
-    console.log(params)
-    return params
+  checkPasscode(params: any) {
+    let config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
+    return this.http.post(baseurl + '/score/custom/check-passcode', params, config).map(res => res).catch(error => error)
+  }
+
+  setBestPlayers(params: any) {
+    let config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
+    return this.http.post(baseurl + '/score/custom/best-playes', params, config).map(res => res).catch(error => error)
+  }
+
+  setgoalKickers(params: any) {
+    let config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
+    return this.http.post(baseurl + '/score/custom/goal-kickers', params, config).map(res => res).catch(error => error)
   }
 }

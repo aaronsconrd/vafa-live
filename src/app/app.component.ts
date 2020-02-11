@@ -19,9 +19,10 @@ import { CommomfunctionProvider } from '../providers/commomfunction/commomfuncti
 
 // import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { FirebaseAnalyticsProvider } from '../providers/firebase-analytics/firebase-analytics';
-// import { INTERNAL_BROWSER_DYNAMIC_PLATFORM_PROVIDERS } from '@angular/platform-browser-dynamic';
 import { ClubAdminPage } from '../pages/club-admin/club-admin';
-import { LiveScorePage } from '../pages/live-score/live-score';
+// import { INTERNAL_BROWSER_DYNAMIC_PLATFORM_PROVIDERS } from '@angular/platform-browser-dynamic';
+// import { ClubAdminPage } from '../pages/club-admin/club-admin';
+// import { LiveScorePage } from '../pages/live-score/live-score';
 
 @Component({
   templateUrl: 'app.html'
