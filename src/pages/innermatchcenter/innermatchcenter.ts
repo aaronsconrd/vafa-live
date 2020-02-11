@@ -1041,7 +1041,7 @@ export class InnermatchcenterPage {
 
         }
         //END:DISPLAY TEAM WIN STATUS
-        
+
         this.showcontent = 'show';
         this.cmnfun.HideLoading();
         this.scoreid = setInterval(() => {
@@ -2649,7 +2649,7 @@ export class InnermatchcenterPage {
                 let merged = homeTeamScore.concat(awayTeamScore);
 
                 let scores = [];
-                let i = 1, goalHScore = 0, rbBHscore = 0, totalHScore = 0, goalAScore = 0, rbBAscore = 0, totalAScore = 0, actualTime, splitTime, minuteVal, totalSec;
+                let i = 1, goalHScore: any = 0, rbBHscore: any = 0, totalHScore: any = 0, goalAScore = 0, rbBAscore = 0, totalAScore = 0, actualTime: any, splitTime: any, minuteVal: any, totalSec;
                 let newMerge = [];
 
 
@@ -2658,9 +2658,9 @@ export class InnermatchcenterPage {
                 };
                 let cmp1 = function (x, y) {
                     data = x.split(":");
-                    let data_time1 = parseInt(parseInt(data[0] * 60) + data[1]);
+                    let data_time1 = (parseInt(data[0]) * 60) + data[1];
                     data = y.split(":");
-                    let data_time2 = parseInt(parseInt(data[0] * 60) + data[1]);
+                    let data_time2 = (parseInt(data[0]) * 60) + data[1];
                     return data_time1 > data_time2 ? 1 : data_time1 < data_time2 ? -1 : 0;
 
                 };
@@ -2688,7 +2688,7 @@ export class InnermatchcenterPage {
                 let flagchk = true;
                 let temp = 1;
                 let tempMin = 0;
-                let maxScore = 0;
+                let maxScore: any = 0;
                 let tempQr = 1;
                 let tempValue = 0;
                 let minSore = 0;
@@ -2714,7 +2714,7 @@ export class InnermatchcenterPage {
                             actualTime1 = actualTime1.split(":");
 
 
-                            qrTimeLimit[temp] = parseInt(qrTimeLimit[temp - 1]) + parseInt(actualTime1[0] * 60) + parseInt(actualTime1[1]);
+                            qrTimeLimit[temp] = parseInt(qrTimeLimit[temp - 1]) + (parseInt(actualTime1[0]) * 60) + parseInt(actualTime1[1]);
 
 
                         }
@@ -2727,7 +2727,7 @@ export class InnermatchcenterPage {
                     splitTime = actualTime.split(":");
 
                     minuteVal = splitTime[1];
-                    let TotalSec: any = parseInt(parseInt(splitTime[0] * 60) + parseInt(splitTime[1]));
+                    let TotalSec: any = (parseInt(splitTime[0]) * 60) + parseInt(splitTime[1]);
                     totalSec = (minuteVal / 60).toFixed(2);
 
                     let TotalTime = parseFloat(splitTime[0] + (splitTime[1]) / 60);
@@ -2752,8 +2752,8 @@ export class InnermatchcenterPage {
 
                        }*/
 
-                    let addQrTime = (value3.quater - 1) * timeDuration * 60;
-                    timeTotalGlobal = parseInt(parseInt(splitTime[0] * 60) + parseInt(splitTime[1]) + parseInt(addQrTime));
+                    let addQrTime: any = (value3.quater - 1) * timeDuration * 60;
+                    timeTotalGlobal = (parseInt(splitTime[0]) * 60) + parseInt(splitTime[1]) + parseInt(addQrTime);
 
 
 
@@ -2762,43 +2762,43 @@ export class InnermatchcenterPage {
                         if (value3.quater == '1') {
                             if (value3.stat_id == '1') {
                                 // goalHScore+=6;
-                                goalHScore = parseInt(parseInt(goalHScore) + 6);
+                                goalHScore = parseInt(goalHScore) + 6;
 
                             }
                             else {
                                 //rbBHscore+=1;
-                                rbBHscore = parseInt(parseInt(rbBHscore) + 1);
+                                rbBHscore = parseInt(rbBHscore) + 1;
                             }
                         }
                         else if (value3.quater == '2') {
                             if (value3.stat_id == '1') {
                                 //goalHScore+=6;
-                                goalHScore = parseInt(parseInt(goalHScore) + 6);
+                                goalHScore = parseInt(goalHScore) + 6;
 
                             }
                             else {
                                 // rbBHscore+=1;
-                                rbBHscore = parseInt(parseInt(rbBHscore) + 1);
+                                rbBHscore = parseInt(rbBHscore) + 1;
                             }
                         }
                         else if (value3.quater == '3') {
                             if (value3.stat_id == '1') {
                                 // goalHScore+=6;
-                                goalHScore = parseInt(parseInt(goalHScore) + 6);
+                                goalHScore = parseInt(goalHScore) + 6;
                             }
                             else {
                                 //rbBHscore+=1;
-                                rbBHscore = parseInt(parseInt(rbBHscore) + 1);
+                                rbBHscore = parseInt(rbBHscore) + 1;
                             }
                         }
                         else if (value3.quater == '4') {
                             if (value3.stat_id == '1') {
                                 //goalHScore+=6;
-                                goalHScore = parseInt(parseInt(goalHScore) + 6);
+                                goalHScore = parseInt(goalHScore) + 6;
                             }
                             else {
                                 // rbBHscore+=1;
-                                rbBHscore = parseInt(parseInt(rbBHscore) + 1);
+                                rbBHscore = parseInt(rbBHscore) + 1;
                             }
                         }
                         totalHScore = parseInt(goalHScore + rbBHscore);
@@ -2815,44 +2815,44 @@ export class InnermatchcenterPage {
                             let q1Flag = true;
                             if (value3.stat_id == '1') {
                                 // goalHScore-=6;
-                                goalHScore = parseInt(parseInt(goalHScore) - 6);
+                                goalHScore = parseInt(goalHScore) - 6;
                             }
                             else {
                                 //rbBHscore-=1;
-                                rbBHscore = parseInt(parseInt(rbBHscore) - 1);
+                                rbBHscore = parseInt(rbBHscore) - 1;
                             }
                         }
                         else if (value3.quater == '2') {
                             let q2Flag = true;
                             if (value3.stat_id == '1') {
                                 //goalHScore-=6;
-                                goalHScore = parseInt(parseInt(goalHScore) - 6);
+                                goalHScore = parseInt(goalHScore) - 6;
                             }
                             else {
                                 //rbBHscore-=1;
-                                rbBHscore = parseInt(parseInt(rbBHscore) - 1);
+                                rbBHscore = parseInt(rbBHscore) - 1;
                             }
                         }
                         else if (value3.quater == '3') {
                             let q3Flag = true;
                             if (value3.stat_id == '1') {
                                 //goalHScore-=6;
-                                goalHScore = parseInt(parseInt(goalHScore) - 6);
+                                goalHScore = parseInt(goalHScore) - 6;
                             }
                             else {
                                 // rbBHscore-=1;
-                                rbBHscore = parseInt(parseInt(rbBHscore) - 1);
+                                rbBHscore = parseInt(rbBHscore) - 1;
                             }
                         }
                         else if (value3.quater == '4') {
                             let q4Flag = true;
                             if (value3.stat_id == '1') {
                                 //goalHScore-=6;
-                                goalHScore = parseInt(parseInt(goalHScore) - 6);
+                                goalHScore = parseInt(goalHScore) - 6;
                             }
                             else {
                                 rbBHscore -= 1;
-                                rbBHscore = parseInt(parseInt(rbBHscore) - 1);
+                                rbBHscore = parseInt(rbBHscore) - 1;
                             }
                         }
                         totalHScore = parseInt(goalHScore + rbBHscore);
@@ -2977,7 +2977,7 @@ export class InnermatchcenterPage {
 
                 if (Math.abs(minScore) > maxScore) maxScore = Math.abs(minScore);
 
-                maxScore = parseInt(maxScore + 5);
+                maxScore = parseInt(maxScore) + 5;
                 let modifedScore = [[0, 0]];
                 let lastTempValue = 0;
                 $.each(scores, function (index, item) {
@@ -3521,8 +3521,8 @@ export class InnermatchcenterPage {
         if (k_value == undefined) k = 0; else k = k_value;
         if (h_value == undefined) h = 0; else h = h_value;
 
-        this.homeAwayTeamPlayerWithScore[key].GB = parseInt(parseInt(goal * 6) + parseInt(b + rb));
-        this.homeTeamPlayers1[key].GB = parseFloat(parseInt(parseInt(goal * 6) + parseInt(b + rb)));
+        this.homeAwayTeamPlayerWithScore[key].GB = ((parseInt(goal) * 6) + parseInt(b + rb));
+        this.homeTeamPlayers1[key].GB = ((parseInt(goal) * 6) + parseInt(b + rb));
 
         //this.homeTeamPlayers1[key].D = parseInt(k_value + h_value) ;
 
@@ -3737,7 +3737,7 @@ export class InnermatchcenterPage {
             var jqvar = this;
             $(document).ready(function () {
                 $('#playerStatsTable').DataTable().destroy();
-                 $('#playerStatsTable').DataTable({
+                $('#playerStatsTable').DataTable({
                     scrollY: true,
                     scrollX: true,
                     scrollCollapse: true,
