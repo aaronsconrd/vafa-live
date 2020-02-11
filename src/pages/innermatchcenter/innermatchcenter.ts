@@ -13,9 +13,10 @@ import { StreamingMedia } from '@ionic-native/streaming-media';
 import 'datatables.net';
 import 'datatables.net-fixedcolumns';
 import 'datatables.net-fixedheader';
-import * as $ from 'jquery';
+import 'jquery';
 import { environment } from '../../environments/environment';
 import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
+declare var $: any;
 // import 'datatables.net';
 // import 'datatables.net-fixedcolumns';
 // import 'jquery-flot'
@@ -3407,16 +3408,15 @@ export class InnermatchcenterPage {
 
 
 
-            this.stats[key].awayTeamWidth = parseFloat(percentageUnit * barValueA) + "%";
+            this.stats[key].awayTeamWidth = percentageUnit * barValueA + "%";
 
             if (barValueH == 0)
                 this.stats[key].homeTeamWidth = "22%";
             else {
-                if (parseFloat(percentageUnit * barValueH) < 20)
+                if (percentageUnit * barValueH < 20)
                     this.stats[key].homeTeamWidth = "22%";
                 else
-                    this.stats[key].homeTeamWidth = parseFloat(percentageUnit * barValueH) + "%";
-
+                    this.stats[key].homeTeamWidth = percentageUnit * barValueH + "%";
             }
         }
 
@@ -3430,8 +3430,8 @@ export class InnermatchcenterPage {
             let modifedMaxValue: any = parseFloat(awayBarsSpanVal + maxAway);
 
             let percentageUnit: any = parseFloat(100 / modifedMaxValue);
-            this.stats[key].awayTeamWidth = parseFloat(percentageUnit * awayBarsSpanVal) + "%";
-            this.stats[key].homeTeamWidth = parseFloat(percentageUnit * homeBarsSpanVal) + "%";
+            this.stats[key].awayTeamWidth = percentageUnit * awayBarsSpanVal + "%";
+            this.stats[key].homeTeamWidth = percentageUnit * homeBarsSpanVal + "%";
 
         }
         else if (awayBarsSpanVal == 0 || homeBarsSpanVal == 0) {
@@ -3439,11 +3439,7 @@ export class InnermatchcenterPage {
             this.stats[key].homeTeamColor = 'orange';
             this.stats[key].awayTeamWidth = '20%';
             this.stats[key].homeTeamWidth = '20%';
-
         }
-
-
-
     }
     selectstats(item) {
         this.showAd = false;

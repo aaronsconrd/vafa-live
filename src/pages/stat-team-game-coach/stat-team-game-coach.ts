@@ -11,9 +11,10 @@ import { StreamingMedia } from '@ionic-native/streaming-media';
 import 'datatables.net';
 import 'datatables.net-fixedcolumns';
 import 'datatables.net-fixedheader';
-import * as $ from 'jquery';
+import 'jquery';
 import { environment } from '../../environments/environment';
 import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
+declare var $: any;
 /**
  * Generated class for the InnermatchcenterPage page.
  *

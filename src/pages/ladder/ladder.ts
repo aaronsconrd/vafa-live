@@ -351,7 +351,7 @@ export class LadderPage {
     setTimeout(() => {
       // let windowWidth = (window.innerWidth);
       // let windowHeight = (window.innerHeight) - 150;
-      var table = $('#LadderTable').DataTable({
+      var table: any = $('#LadderTable').DataTable({
         // scrollY: windowHeight,
         // scrollY: 150,
         scrollY: true,
