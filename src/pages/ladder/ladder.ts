@@ -5,7 +5,7 @@ import { CommomfunctionProvider } from '../../providers/commomfunction/commomfun
 import { Events } from 'ionic-angular';
 import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser';
 // import { GoogleAnalytics } from '@ionic-native/google-analytics';
-import * as $ from 'jquery';
+import 'jquery';
 import 'datatables.net';
 import 'datatables.net-fixedcolumns';
 import 'datatables.net-fixedheader';
@@ -14,7 +14,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Storage } from '@ionic/storage';
 import { environment } from '../../environments/environment';
 import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
-
+declare let $: any;
 /**
  * Generated class for the LadderPage page.
  *

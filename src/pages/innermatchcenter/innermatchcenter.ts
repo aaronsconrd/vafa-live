@@ -1,6 +1,6 @@
 import { LocalDataProvider } from './../../providers/local-data/local-data';
 import { Component, ViewChild, NgZone } from '@angular/core';
-import { IonicPage, NavController, NavParams, Content, AlertController, ViewController, Platform, ModalController, PopoverController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Content, AlertController, ViewController, Platform, PopoverController } from 'ionic-angular';
 import { AjaxProvider } from '../../providers/ajax/ajax';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
 import { Events } from 'ionic-angular';
@@ -16,7 +16,7 @@ import 'datatables.net-fixedheader';
 import 'jquery';
 import { environment } from '../../environments/environment';
 import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
-declare var $: any;
+declare let $: any;
 // import 'datatables.net';
 // import 'datatables.net-fixedcolumns';
 // import 'jquery-flot'
@@ -139,8 +139,8 @@ export class InnermatchcenterPage {
         // public ga: GoogleAnalytics,
         public localdata: LocalDataProvider,
         private alertCtrl: AlertController,
-        private streamingMedia: StreamingMedia,
-        private modalCtrl: ModalController,
+        // private streamingMedia: StreamingMedia,
+        // private modalCtrl: ModalController,
         private zone: NgZone,
         private inapp: InAppBrowser,
         public Storage: Storage,
@@ -1769,13 +1769,13 @@ export class InnermatchcenterPage {
         let tempMin = 0;
         let maxScore = 0;
         let tempQr = 1;
-        let tempValue = 0;
+        // let tempValue = 0;
         let minSore = 0;
         let minScore = 0;
         let timeDuration = 20;
 
         //   angular.forEach(this.newMerge, function( value3 ,key3) {
-        this.newMerge.forEach((value3, key3) => {
+        this.newMerge.forEach((value3: any, key3: any) => {
             if (flagchk) {
                 qrTimeLimit[0] = 0;
                 flagchk = false;
@@ -1809,8 +1809,7 @@ export class InnermatchcenterPage {
             let TotalSec = (parseInt(splitTime[0]) * 60) + parseInt(splitTime[1]);
             totalSec = (minuteVal / 60).toFixed(2);
 
-            let TotalTime = parseFloat(splitTime[0] + (splitTime[1]) / 60);
-
+            // let TotalTime = parseFloat(splitTime[0] + (splitTime[1]) / 60);
 
             let addQrTime = (value3.quater - 1) * timeDuration * 60;
             timeTotalGlobal = parseInt((splitTime[0] * 60) + (splitTime[1]) + (addQrTime));
@@ -2691,8 +2690,8 @@ export class InnermatchcenterPage {
                 let tempMin = 0;
                 let maxScore: any = 0;
                 let tempQr = 1;
-                let tempValue = 0;
-                let minSore = 0;
+                // let tempValue = 0;
+                // let minSore = 0;
                 let minScore = 0;
                 let timeDuration = 26;
                 $.each(newMerge, function (key3, value3) {
@@ -2704,24 +2703,13 @@ export class InnermatchcenterPage {
 
                     }
                     else {
-
                         if (temp != value3.quater) {
-
-
-
                             temp = value3.quater;
-
                             let actualTime1 = newMerge[key3 - 1].act_time;
                             actualTime1 = actualTime1.split(":");
-
-
                             qrTimeLimit[temp] = parseInt(qrTimeLimit[temp - 1]) + (parseInt(actualTime1[0]) * 60) + parseInt(actualTime1[1]);
-
-
                         }
                     }
-
-
                     finalQr = value3.quater;
                     actualTime = value3.act_time;
 
@@ -2731,7 +2719,7 @@ export class InnermatchcenterPage {
                     let TotalSec: any = (parseInt(splitTime[0]) * 60) + parseInt(splitTime[1]);
                     totalSec = (minuteVal / 60).toFixed(2);
 
-                    let TotalTime = parseFloat(splitTime[0] + (splitTime[1]) / 60);
+                    // let TotalTime = parseFloat(splitTime[0] + (splitTime[1]) / 60);
 
                     /*
 
@@ -2813,7 +2801,7 @@ export class InnermatchcenterPage {
                     }
                     else {
                         if (value3.quater == '1') {
-                            let q1Flag = true;
+                            // let q1Flag = true;
                             if (value3.stat_id == '1') {
                                 // goalHScore-=6;
                                 goalHScore = parseInt(goalHScore) - 6;
@@ -2824,7 +2812,7 @@ export class InnermatchcenterPage {
                             }
                         }
                         else if (value3.quater == '2') {
-                            let q2Flag = true;
+                            // let q2Flag = true;
                             if (value3.stat_id == '1') {
                                 //goalHScore-=6;
                                 goalHScore = parseInt(goalHScore) - 6;
@@ -2846,7 +2834,7 @@ export class InnermatchcenterPage {
                             }
                         }
                         else if (value3.quater == '4') {
-                            let q4Flag = true;
+                            // let q4Flag = true;
                             if (value3.stat_id == '1') {
                                 //goalHScore-=6;
                                 goalHScore = parseInt(goalHScore) - 6;
@@ -3034,7 +3022,7 @@ export class InnermatchcenterPage {
                 modifedScore.push([timeDuration*60,lastTempValue]);*/
 
                 ticks1 = [[timeDuration * 60, 'Q1'], [timeDuration * 2 * 60, 'Q2'], [timeDuration * 3 * 60, 'Q3'], [timeDuration * 4 * 60, 'Q4']];
-                let QtrScore = [[3.2], [2.3]];
+                // let QtrScore = [[3.2], [2.3]];
 
                 let options = {
                     canvas: false,
@@ -3064,8 +3052,8 @@ export class InnermatchcenterPage {
                 // alert("hh");
                 console.log(ticks1);
                 console.log(modifedScore);
-                let plotObj = $.plot($("#scoreChart"), [{ data: modifedScore }], options);
-                let plotObj1 = $.plot($("#scoreChartmin"), [{ data: modifedScore }], options);
+                $.plot($("#scoreChart"), [{ data: modifedScore }], options);
+                $.plot($("#scoreChartmin"), [{ data: modifedScore }], options);
 
                 $("#scoreChartmin").hide();
                 $("#scoreChartminh").hide();
@@ -3084,7 +3072,7 @@ export class InnermatchcenterPage {
 
         }, error => {
             // this.cmnfun.showToast('Some thing Unexpected happen please try again');
-            let msg = "Sorry but there was an error: ";
+            // let msg = "Sorry but there was an error: ";
         });
 
         //END:Ajax Function
@@ -3376,19 +3364,19 @@ export class InnermatchcenterPage {
             this.stats[key].awayTeamOnlyColor = 'gray';
             let maxAway = 5;
 
-            let modifedMaxValue = parseFloat(barValueH + maxAway);
-            let percentageUnit = parseFloat(100 / modifedMaxValue);
+            let modifedMaxValue: any = parseFloat(barValueH + maxAway);
+            let percentageUnit: any = 100 / modifedMaxValue;
 
             if (barValueA == 0)
                 this.stats[key].awayTeamWidth = "22%";
             else {
 
-                if (parseFloat(percentageUnit * barValueA) < 20)
+                if ((percentageUnit * barValueA) < 20)
                     this.stats[key].awayTeamWidth = "22%";
                 else
-                    this.stats[key].awayTeamWidth = parseFloat(percentageUnit * barValueA) + "%";
+                    this.stats[key].awayTeamWidth = percentageUnit * barValueA + "%";
             }
-            this.stats[key].homeTeamWidth = parseFloat(percentageUnit * barValueH) + "%";
+            this.stats[key].homeTeamWidth = percentageUnit * barValueH + "%";
 
 
         }
@@ -3403,7 +3391,7 @@ export class InnermatchcenterPage {
 
             let modifedMaxValue: any = parseFloat(barValueA + maxAway);
             modifedMaxValue = parseFloat(barValueA + maxAway);
-            let percentageUnit: any = parseFloat(100 / modifedMaxValue);
+            let percentageUnit: any = 100 / modifedMaxValue;
 
 
 
@@ -3429,7 +3417,7 @@ export class InnermatchcenterPage {
             let maxAway: any = 5;
             let modifedMaxValue: any = parseFloat(awayBarsSpanVal + maxAway);
 
-            let percentageUnit: any = parseFloat(100 / modifedMaxValue);
+            let percentageUnit: any = 100 / modifedMaxValue;
             this.stats[key].awayTeamWidth = percentageUnit * awayBarsSpanVal + "%";
             this.stats[key].homeTeamWidth = percentageUnit * homeBarsSpanVal + "%";
 
@@ -3500,22 +3488,22 @@ export class InnermatchcenterPage {
         this.reverse = false;
         this.sortBY('GB');
     }
-    getGBData(g_value, b_value, rb_value, key, obj, k_value, h_value) {
-
-
+    getGBData(g_value: any, b_value: any, rb_value: any, key: any, obj: any, k_value: any, h_value: any) {
         let goal: any = 0;
         let b: any = 0;
         let rb: any = 0;
 
-        let k = 0;
-        let h = 0;
+        // let k = 0;
+        // let h = 0;
 
         if (g_value == undefined) goal = 0; else goal = g_value;
         if (b_value == undefined) b = 0; else b = b_value;
         if (rb_value == undefined) rb = 0; else rb = rb_value;
 
-        if (k_value == undefined) k = 0; else k = k_value;
-        if (h_value == undefined) h = 0; else h = h_value;
+        // if (k_value == undefined) {
+        //     k = 0;
+        // } else k = k_value;
+        // if (h_value == undefined) h = 0; else h = h_value;
 
         this.homeAwayTeamPlayerWithScore[key].GB = ((parseInt(goal) * 6) + parseInt(b + rb));
         this.homeTeamPlayers1[key].GB = ((parseInt(goal) * 6) + parseInt(b + rb));
@@ -4189,7 +4177,7 @@ export class gamepasspage {
     constructor(
         public processproduct: ProductListProvider,
         // public ga: GoogleAnalytics,
-        private alertCtrl: AlertController,
+        // private alertCtrl: AlertController,
         public Storage: Storage,
         public ajax: AjaxProvider,
         public events: Events,

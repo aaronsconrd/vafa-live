@@ -14,7 +14,7 @@ import 'datatables.net-fixedheader';
 import 'jquery';
 import { environment } from '../../environments/environment';
 import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
-declare var $: any;
+declare let $: any;
 /**
  * Generated class for the InnermatchcenterPage page.
  *
@@ -2865,8 +2865,6 @@ export class StatTeamGameCoachPage {
         let barValueA = awayTeamValue;
         let homeBarsSpanVal = homeTeamValue;
         let awayBarsSpanVal = awayTeamValue;
-
-
         if (homeBarsSpanVal > awayBarsSpanVal) {
 
             this.stats[key].homeTeamColor = '#60BA72';
@@ -2876,7 +2874,7 @@ export class StatTeamGameCoachPage {
             let maxAway = 5;
 
             let modifedMaxValue: any = parseFloat(barValueH + maxAway);
-            let percentageUnit: any = parseFloat(100 / modifedMaxValue);
+            let percentageUnit: any = 100 / modifedMaxValue;
 
             if (barValueA == 0)
                 this.stats[key].awayTeamWidth = "22%";
@@ -2898,9 +2896,9 @@ export class StatTeamGameCoachPage {
             let maxAway = 5;
 
 
-            let modifedMaxValue = parseFloat(barValueA + maxAway);
+            let modifedMaxValue: any = parseFloat(barValueA + maxAway);
             modifedMaxValue = parseFloat(barValueA + maxAway);
-            let percentageUnit = parseFloat(100 / modifedMaxValue);
+            let percentageUnit: any = 100 / modifedMaxValue;
             this.stats[key].awayTeamWidth = percentageUnit * barValueA + "%";
 
             if (barValueH == 0)
@@ -2923,9 +2921,9 @@ export class StatTeamGameCoachPage {
             let maxAway = 5;
             let modifedMaxValue = parseFloat(awayBarsSpanVal + maxAway);
 
-            let percentageUnit = parseFloat(100 / modifedMaxValue);
-            this.stats[key].awayTeamWidth = parseFloat(percentageUnit * awayBarsSpanVal) + "%";
-            this.stats[key].homeTeamWidth = parseFloat(percentageUnit * homeBarsSpanVal) + "%";
+            let percentageUnit = 100 / modifedMaxValue;
+            this.stats[key].awayTeamWidth = percentageUnit * awayBarsSpanVal + "%";
+            this.stats[key].homeTeamWidth = percentageUnit * homeBarsSpanVal + "%";
 
         }
         else if (awayBarsSpanVal == 0 || homeBarsSpanVal == 0) {
