@@ -3782,12 +3782,14 @@ export class InnermatchcenterPage {
                         jqvar.GotoIndividual(p);
                     } else {
                         let getValue = eve.target.parentElement.value;
-                        $('.jb-sorting').find('.jd_active_sort').removeClass('jd_active_sort');
                         if (getValue == 'All' || $(eve.target).val() == "All") {
+                            $('.jb-sorting').find('.jd_active_sort').removeClass('jd_active_sort');
                             $('.jb-sorting').find('.allTeam').addClass('jd_active_sort');
                         } else if (getValue == 'homeTeam') {
+                            $('.jb-sorting').find('.jd_active_sort').removeClass('jd_active_sort');
                             $('.jb-sorting').find('.homeTeam').addClass('jd_active_sort');
                         } else if (getValue == 'awayTeam1') {
+                            $('.jb-sorting').find('.jd_active_sort').removeClass('jd_active_sort');
                             $('.jb-sorting').find('.awayTeam1').addClass('jd_active_sort');
                         }
                     }
