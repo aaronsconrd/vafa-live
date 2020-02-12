@@ -17,9 +17,27 @@ import { CommomfunctionProvider } from '../../providers/commomfunction/commomfun
   templateUrl: 'best-player.html',
 })
 export class BestPlayerPage {
-  group: FormGroup;
+  public checkTeam: string = "Away Team";
+  homegroup: FormGroup;
+  awaygroup: FormGroup;
   constructor(private formBuilder: FormBuilder, public ajax: AjaxProvider, public cmnfun: CommomfunctionProvider) {
-    this.group = this.formBuilder.group({
+
+    this.awaygroup = this.formBuilder.group({
+      initial: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(1)]],
+      surname: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+      initial1: ['', [Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(1)]],
+      surname1: ['', [Validators.pattern('[a-zA-Z ]*')]],
+      initial2: ['', [Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(1)]],
+      surname2: ['', [Validators.pattern('[a-zA-Z ]*')]],
+      initial3: ['', [Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(1)]],
+      surname3: ['', [Validators.pattern('[a-zA-Z ]*')]],
+      initial4: ['', [Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(1)]],
+      surname4: ['', [Validators.pattern('[a-zA-Z ]*')]],
+      initial5: ['', [Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(1)]],
+      surname5: ['', [Validators.pattern('[a-zA-Z ]*')]],
+    });
+
+    this.homegroup = this.formBuilder.group({
       initial: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(1)]],
       surname: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
       initial1: ['', [Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(1)]],
@@ -71,5 +89,10 @@ export class BestPlayerPage {
     //   console.error('Error => ', error);
     //   this.cmnfun.showToast('');
     // }
+    
+  }
+  
+  changeTeam(val: string) {
+    this.checkTeam = val;
   }
 }
