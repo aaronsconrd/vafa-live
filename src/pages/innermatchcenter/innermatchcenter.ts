@@ -1041,7 +1041,7 @@ export class InnermatchcenterPage {
 
         }
         //END:DISPLAY TEAM WIN STATUS
-        
+
         this.showcontent = 'show';
         this.cmnfun.HideLoading();
         this.scoreid = setInterval(() => {
@@ -3595,11 +3595,10 @@ export class InnermatchcenterPage {
     }
 
     callAlert(name) { alert(name); return name; };
-    sortBYType(name) {
+    sortBYType(name: any) {
         console.log('Sortby' + name);
         this.orderByFieldName = 'type';
         if (this.reverse) this.reverse = false; else this.reverse = true;
-
     }
     getplayerscoreplayer(data) {
         this.newTotalHomeTeamScore = data.totalHomeTeamScore;
@@ -3737,7 +3736,7 @@ export class InnermatchcenterPage {
             var jqvar = this;
             $(document).ready(function () {
                 $('#playerStatsTable').DataTable().destroy();
-                 $('#playerStatsTable').DataTable({
+                $('#playerStatsTable').DataTable({
                     scrollY: true,
                     scrollX: true,
                     scrollCollapse: true,
@@ -3776,11 +3775,21 @@ export class InnermatchcenterPage {
                 });
                 //     table.order.fixed( {
                 //       pre: [ 1, 'desc' ]
-                $('.playerStatsTable').on('click', 'tr', function () {
+                $('.playerStatsTable').on('click', 'tr', function (eve: any) {
                     console.log($(this).children("td").eq(0).attr('data-t1'));
                     var p = $(this).children("td").eq(0).attr('data-t1');
                     if (p != undefined) {
                         jqvar.GotoIndividual(p);
+                    } else {
+                        let getValue = eve.target.parentElement.value;
+                        $('.jb-sorting').find('.jd_active_sort').removeClass('jd_active_sort');
+                        if (getValue == 'All' || $(eve.target).val() == "All") {
+                            $('.jb-sorting').find('.allTeam').addClass('jd_active_sort');
+                        } else if (getValue == 'homeTeam') {
+                            $('.jb-sorting').find('.homeTeam').addClass('jd_active_sort');
+                        } else if (getValue == 'awayTeam1') {
+                            $('.jb-sorting').find('.awayTeam1').addClass('jd_active_sort');
+                        }
                     }
                 });
                 //   } );
