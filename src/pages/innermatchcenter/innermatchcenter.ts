@@ -1149,7 +1149,7 @@ export class InnermatchcenterPage {
                         console.log('onetime');
                         let alert = this.alertCtrl.create({
                             title: 'PREMIUM PASS REQUIRED',
-                            message: 'Start your 14 day free VAFA PASS trial today.',
+                            message: 'Start your 14 day free YJFL PASS trial today.',
                             buttons: [
                                 {
                                     text: 'No Thanks',
@@ -1286,7 +1286,7 @@ export class InnermatchcenterPage {
                             console.log('onetime');
                             let alert = this.alertCtrl.create({
                                 title: 'PREMIUM PASS REQUIRED',
-                                message: 'Start your 14 day free VAFA PASS trial today.',
+                                message: 'Start your 14 day free YJFL PASS trial today.',
                                 buttons: [
                                     {
                                         text: 'No Thanks',

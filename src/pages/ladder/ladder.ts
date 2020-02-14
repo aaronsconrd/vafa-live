@@ -63,7 +63,7 @@ export class LadderPage {
     presentationstyle: 'pagesheet',//iOS only
     fullscreen: 'yes',//Windows only
     // hideurlbar: 'yes'
-    closebuttoncaption: '< VAFA Live', //iOS only
+    closebuttoncaption: '< YJFL Live', //iOS only
     hidespinner: 'yes',
     toolbarposition: 'top',
     toolbarcolor: '#04225e',
@@ -87,7 +87,7 @@ export class LadderPage {
     presentationstyle: 'pagesheet',//iOS only
     fullscreen: 'yes',//Windows only
     // hideurlbar: 'yes'
-    closebuttoncaption: '< VAFA Live', //iOS only
+    closebuttoncaption: '< YJFL Live', //iOS only
     hidespinner: 'yes',
     toolbarposition: 'top',
     toolbarcolor: '#04225e',

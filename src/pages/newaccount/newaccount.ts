@@ -421,7 +421,7 @@ export class NewaccountPage {
         this.nav.setRoot('LandingpagePage');
       } else if (this.MyTeam.product == '2019 Competition Pass') {
         this.nav.setRoot('LandingpagePage');
-      } else if (this.MyTeam.product == '2019 VAFA Pass') {
+      } else if (this.MyTeam.product == '2019 YJFL Pass') {
         let alert = this.alertCtrl.create({
           subTitle: 'CONGRATULATIONS\nyou have the top\nPREMIUM PASS',
           cssClass: 'CusttoastCtrl',
@@ -431,7 +431,7 @@ export class NewaccountPage {
       } else if (this.MyTeam.product == '2019 Game Pass') {
         this.nav.setRoot('LandingpagePage');
       }
-    } else if (this.MyTeam.product != '2019 VAFA Pass' || this.MyTeam.product == '' && this.isLogin == false) {
+    } else if (this.MyTeam.product != '2019 YJFL Pass' || this.MyTeam.product == '' && this.isLogin == false) {
       this.localData.LoginState('LandingpagePage', '');
       this.navCtrl.push('LoginPage', { iap: 'true' });
     }
@@ -575,7 +575,7 @@ export class NewaccountPage {
 
   // social sharing for mail
   Support() {
-    let subject = 'VAFA Live Support'
+    let subject = 'YJFL Live Support'
     console.log(subject);
     this.SocialSharing.shareViaEmail('', subject, ['support@completesportsmanagement.com.au']).then(() => {
       // Success!
