@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "1027699644897",
-    "firebase_url": "https://vafa-app-live.firebaseio.com",
-    "project_id": "vafa-app-live",
-    "storage_bucket": "vafa-app-live.appspot.com"
+    "project_number": "536517924736",
+    "firebase_url": "https://yjfl-live-aef1b.firebaseio.com",
+    "project_id": "yjfl-live-aef1b",
+    "storage_bucket": "yjfl-live-aef1b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1027699644897:android:b3e15c46ed3d752b07daa0",
+        "mobilesdk_app_id": "1:536517924736:android:d6f85c674c8bc32ea59365",
         "android_client_info": {
           "package_name": "com.support.vafalive"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1027699644897-jqtuo0r75k57eramhijbmubifbge2tf4.apps.googleusercontent.com",
+          "client_id": "536517924736-60ip7ia1k5ntvld1b4vfeljh749i6ili.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDQXm2tt9Idey8_TrD3jnTITGBJNVwwP8I"
+          "current_key": "AIzaSyC0VNqJD1Zb0KJaia9Jcvbc6Ok3XJoIhYU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1027699644897-jqtuo0r75k57eramhijbmubifbge2tf4.apps.googleusercontent.com",
+              "client_id": "536517924736-60ip7ia1k5ntvld1b4vfeljh749i6ili.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
