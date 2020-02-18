@@ -1,0 +1,31 @@
+.best-player {
+  .awayTeam {
+    color: #3880ff;
+  }
+  #BestPlayerTable {
+    .tableHeading {
+      text-align: center;
+    }
+    .setInitialWidth {
+      width: 15%;
+    }
+    .setPadding {
+      padding-left: 20px;
+    }
+    ion-input {
+      input {
+        text-align: left;
+        /* IF YOU ALSO WANT TO PUSH PLACHEHOLDER TO THE RIGHT USE THE FOLLOWING, IF NOT JUST DELETE THE ::-webkit-input-placeholder*/
+        ::-webkit-input-placeholder {
+          text-align: left;
+        }
+      }
+    }
+    .item-md{
+      padding-left: 0px;
+    }
+  }
+  .btnSave {
+    margin-top: 25px !important;
+  }
+}

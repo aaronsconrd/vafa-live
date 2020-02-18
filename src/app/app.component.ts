@@ -19,6 +19,12 @@ import { CommomfunctionProvider } from '../providers/commomfunction/commomfuncti
 import { FirebaseAnalyticsProvider } from '../providers/firebase-analytics/firebase-analytics';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id';
 
+// import { GoogleAnalytics } from '@ionic-native/google-analytics';
+import { ClubAdminPage } from '../pages/club-admin/club-admin';
+// import { INTERNAL_BROWSER_DYNAMIC_PLATFORM_PROVIDERS } from '@angular/platform-browser-dynamic';
+// import { ClubAdminPage } from '../pages/club-admin/club-admin';
+// import { LiveScorePage } from '../pages/live-score/live-score';
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -44,7 +50,7 @@ export class MyApp {
   rootPage: any;
   disableLogin: any = 0;
   isLogin: any = 0;
-  pages: Array<{ title: string, component: any, icon: any, itemseleted: any }>;
+  pages: Array<{ title: string, component: any, img: any, itemseleted: any, icon: any }>;
   seletedTitle: any = 'News';
   accountselect: any = 'notseleted';
   statselect: any = 'notseleted';
@@ -81,13 +87,14 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'News', component: HomePage, icon: 'assets/imgs/menuIcon/newsIcon.png', itemseleted: 'seleted' },
-      { title: 'Match Centre', component: MatchcenterPage, icon: 'assets/imgs/menuIcon/machCEnterIconNew.png', itemseleted: 'notseleted' },
-      { title: 'Fixtures', component: FixturePage, icon: 'assets/imgs/menuIcon/FixturesIcon.png', itemseleted: 'notseleted' },
-      { title: 'Post Match', component: PostmatchPage, icon: 'assets/imgs/menuIcon/PostMatchIcon.png', itemseleted: 'notseleted' },
-      { title: 'Ladder', component: LadderPage, icon: 'assets/imgs/menuIcon/LadderIcon.png', itemseleted: 'notseleted' },
-      { title: 'Match Report', component: MatchreportPage, icon: 'assets/imgs/menuIcon/MatchReportIcon.png', itemseleted: 'notseleted' },
-      { title: 'Goal Kickers', component: GoalkickersPage, icon: 'assets/imgs/menuIcon/GoalKickersIcon.png', itemseleted: 'notseleted' },
+      { title: 'News', component: HomePage, img: 'assets/imgs/menuIcon/newsIcon.png', itemseleted: 'seleted', icon: '' },
+      { title: 'Match Centre', component: MatchcenterPage, img: 'assets/imgs/menuIcon/machCEnterIconNew.png', itemseleted: 'notseleted', icon: '' },
+      { title: 'Fixtures', component: FixturePage, img: 'assets/imgs/menuIcon/FixturesIcon.png', itemseleted: 'notseleted', icon: '' },
+      { title: 'Post Match', component: PostmatchPage, img: 'assets/imgs/menuIcon/PostMatchIcon.png', itemseleted: 'notseleted', icon: '' },
+      { title: 'Ladder', component: LadderPage, img: 'assets/imgs/menuIcon/LadderIcon.png', itemseleted: 'notseleted', icon: '' },
+      { title: 'Match Report', component: MatchreportPage, img: 'assets/imgs/menuIcon/MatchReportIcon.png', itemseleted: 'notseleted', icon: '' },
+      { title: 'Goal Kickers', component: GoalkickersPage, img: 'assets/imgs/menuIcon/GoalKickersIcon.png', itemseleted: 'notseleted', icon: '' },
+      { title: 'Club Admin', component: ClubAdminPage, img: '', itemseleted: 'notseleted', icon: 'information-circle' },
       // { title: 'Player Stats', component: 'PlayerStatPage', icon: 'assets/imgs/menuIcon/PlayerStatsIconWhiteBg.png', itemseleted: 'notseleted' },
       // { title: 'Team Stats', component: TeamstatPage, icon: 'assets/imgs/menuIcon/TeamStatsIcon.png', itemseleted: 'notseleted' },
       // { title: '1 on 1', component: 'OnetoonePage', icon: 'assets/imgs/menuIcon/1on1Icon.png', itemseleted: 'notseleted' }
@@ -201,12 +208,10 @@ export class MyApp {
       }
     })
 
-
     this.events.subscribe('userlogin:changed', res => {
       console.log(res);
       this.disableLogin = res.disableLogin;
       this.isLogin = res.isLogin;
-
     })
     this.events.subscribe('changebanner:changed', res => {
       console.log(res);

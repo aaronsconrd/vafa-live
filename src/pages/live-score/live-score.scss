@@ -1,0 +1,22 @@
+.live-score {
+  background-color: color($colors, black_color);
+  .team {
+    color: color($colors, white_color);
+    text-align: center;
+    font-size: 110%;
+    .exitButton {
+      color: color($colors, white_color);
+      border: solid;
+      border-color: color($colors, white_color);
+      background: transparent;
+    }
+    ion-icon {
+      font-size: 1.8em;
+    }
+    .iconSize {
+      ion-icon {
+        font-size: 2.5em;
+      }
+    }
+  }
+}

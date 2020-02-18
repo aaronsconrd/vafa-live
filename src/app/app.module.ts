@@ -10,7 +10,6 @@ import { MatchcenterPage } from '../pages/matchcenter/matchcenter';
 import { FixturePage } from '../pages/fixture/fixture';
 import { PostmatchPage } from '../pages/postmatch/postmatch';
 import { LadderPage } from '../pages/ladder/ladder';
-// import { YeardropdownPage } from '../pages/yeardropdown/yeardropdown';
 import { GoalkickersPage } from '../pages/goalkickers/goalkickers';
 import { TeamstatPage } from '../pages/teamstat/teamstat';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -44,6 +43,8 @@ import { Device } from '@ionic-native/device';
 import { FirebaseAnalyticsProvider } from '../providers/firebase-analytics/firebase-analytics';
 import { FirebaseAnalytics } from '@ionic-native/firebase-analytics';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import { ClubAdminPage } from '../pages/club-admin/club-admin';
 @NgModule({
   declarations: [
     MyApp,
@@ -52,7 +53,6 @@ import { UniqueDeviceID } from '@ionic-native/unique-device-id';
     MatchreportPage,
     MatchcenterPage,
     gamepasspage,
-    // YeardropdownPage,
     FixturePage,
     PostmatchPage,
     LadderPage,
@@ -62,7 +62,8 @@ import { UniqueDeviceID } from '@ionic-native/unique-device-id';
     KeysPipe,
     ReversePipe,
     Search,
-    RoundPipe
+    RoundPipe,
+    ClubAdminPage
   ],
   imports: [
     BrowserModule,
@@ -85,8 +86,9 @@ import { UniqueDeviceID } from '@ionic-native/unique-device-id';
     FixturePage,
     PostmatchPage,
     LadderPage,
-    GoalkickersPage,
-    TeamstatPage
+    TeamstatPage,
+    ClubAdminPage,
+    GoalkickersPage
   ],
   providers: [
     StatusBar,
@@ -110,7 +112,8 @@ import { UniqueDeviceID } from '@ionic-native/unique-device-id';
     SQLite,
     StreamingMedia,
     FirebaseAnalyticsProvider,
-    UniqueDeviceID
+    UniqueDeviceID,
+    ScreenOrientation
   ]
 })
 export class AppModule { }
