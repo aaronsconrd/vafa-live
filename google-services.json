@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:536517924736:android:2302ffd430b0cacda59365",
+        "mobilesdk_app_id": "1:536517924736:android:93052e0194490b5fa59365",
         "android_client_info": {
-          "package_name": "com.ionicframework.yjf"
+          "package_name": "com.ionicframework.yjfl"
         }
       },
       "oauth_client": [

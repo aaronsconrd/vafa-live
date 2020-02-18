@@ -40,7 +40,7 @@
     "@ionic/storage": "2.2.0",
     "@types/datatables.net": "^1.10.13",
     "cordova-android": "7.1.4",
-    "cordova-android-play-services-gradle-release": "^4.0.0",
+    "cordova-android-play-services-gradle-release": "4.0.0",
     "cordova-ios": "^5.1.0",
     "cordova-plugin-camera": "^2.4.1",
     "cordova-plugin-compat": "^1.2.0",
@@ -117,6 +117,8 @@
       "cordova-plugin-firebase-analytics": {
         "FIREBASE_CORE_VERSION": "16.0.+"
       },
+      "cordova-plugin-uniquedeviceid": {},
+      "cordova-plugin-file": {},
       "cordova-android-play-services-gradle-release": {
         "PLAY-SERVICES-ADS": "18.0.0",
         "PLAY-SERVICES-ADS-IDENTIFIER": "17.0.0",
@@ -170,13 +172,11 @@
         "PLAY-SERVICES-VISION-IMAGE-LABEL": "18.0.0",
         "PLAY-SERVICES-WALLET": "17.0.0",
         "PLAY-SERVICES-WEARABLE": "17.0.0"
-      },
-      "cordova-plugin-uniquedeviceid": {},
-      "cordova-plugin-file": {}
+      }
     },
     "platforms": [
-      "android",
-      "ios"
+      "ios",
+      "android"
     ]
   }
 }
