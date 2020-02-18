@@ -41,12 +41,12 @@
     "@types/datatables.net": "^1.10.13",
     "cordova-android": "7.1.4",
     "cordova-android-play-services-gradle-release": "^4.0.0",
-    "cordova-ios": "^5.1.1",
+    "cordova-ios": "^5.1.0",
     "cordova-plugin-camera": "^2.4.1",
     "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-device": "^2.0.3",
     "cordova-plugin-facebook4": "^1.10.1",
-    "cordova-plugin-file": "^4.3.3",
+    "cordova-plugin-file": "^6.0.2",
     "cordova-plugin-file-transfer": "^1.7.1",
     "cordova-plugin-filepath": "^1.4.2",
     "cordova-plugin-firebase-analytics": "^1.1.1",
@@ -99,7 +99,6 @@
       },
       "cordova-plugin-inapppurchase": {},
       "cordova-plugin-streaming-media": {},
-      "cordova-plugin-file": {},
       "cordova-plugin-file-transfer": {},
       "cordova-plugin-camera": {
         "CAMERA_USAGE_DESCRIPTION": "Allow the app to access your camera",
@@ -172,7 +171,8 @@
         "PLAY-SERVICES-WALLET": "17.0.0",
         "PLAY-SERVICES-WEARABLE": "17.0.0"
       },
-      "cordova-plugin-uniquedeviceid": {}
+      "cordova-plugin-uniquedeviceid": {},
+      "cordova-plugin-file": {}
     },
     "platforms": [
       "android",
