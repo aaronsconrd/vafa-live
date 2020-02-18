@@ -9,7 +9,6 @@ import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser'
 // import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { ProductListProvider } from '../../providers/product-list/product-list';
 import { InAppPurchase } from '@ionic-native/in-app-purchase';
-import { StreamingMedia } from '@ionic-native/streaming-media';
 import 'datatables.net';
 import 'datatables.net-fixedcolumns';
 import 'datatables.net-fixedheader';
@@ -17,16 +16,6 @@ import 'jquery';
 import { environment } from '../../environments/environment';
 import { FirebaseAnalyticsProvider } from '../../providers/firebase-analytics/firebase-analytics';
 declare let $: any;
-// import 'datatables.net';
-// import 'datatables.net-fixedcolumns';
-// import 'jquery-flot'
-// import 'jquery.flot.tooltip'
-/**
- * Generated class for the InnermatchcenterPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 const GamePass = 'game_pass';
 
@@ -94,7 +83,6 @@ export class InnermatchcenterPage {
     showcontent: any = 'hide';
     showfooter: any;
     showrest: boolean = false;
-    i: number = 0;
     selectedOption: any = ['all'];
     statcheck: any = 'SCORE';
     playerStatsTable0: any = 'playerStatsTable';
@@ -228,7 +216,7 @@ export class InnermatchcenterPage {
     }
     goToAddSite(ad_url) {
         this.ga.trackEvent('Advertisement', 'Viewed', 'Score', 1);
-        const browser = this.inapp.create(ad_url);
+        this.inapp.create(ad_url);
     }
     onScroll() {
         //   this.content.ionScrollEnd.subscribe((data)=>{
@@ -278,12 +266,7 @@ export class InnermatchcenterPage {
             $('.overlay').removeClass('overlay1');
             $('.border-left-graph').removeClass('rm_h');
             $('.border-right-graph').removeClass('rm_h');
-            //  if(this.i>=10)
-            // {
-            //    this.i=0;
-            // }
-            // if(this.i==1)
-            //     {
+   
             this.shortGraph = 1;
             this.zone.run(() => {
                 this.shortAdvhideshow = 1;
@@ -299,12 +282,7 @@ export class InnermatchcenterPage {
             $("#scoreChartminh").hide();
 
             $('.overlay').addClass('overlay');
-            //         }
-            // this.i++;
         }
-        //  },200);
-
-        // });
     }
 
     ionViewDidLoad() {
@@ -1031,15 +1009,11 @@ export class InnermatchcenterPage {
                 this.winTeamScore = '';
             }
             else {
-                let str1 = "It's all locked up";
-
                 if (this.newTotalHomeTeamScore == this.newTotalAwayTeamScore) {
                     this.winTeamStatus = "It's all locked up";
                     this.winTeamScore = '';
                 }
-
             }
-
         }
         //END:DISPLAY TEAM WIN STATUS
 
@@ -1711,13 +1685,13 @@ export class InnermatchcenterPage {
 
 
         let scores = [];
-        let i = 1, goalHScore = 0, rbBHscore = 0, totalHScore = 0, goalAScore = 0, rbBAscore = 0, totalAScore = 0, actualTime, splitTime, minuteVal, totalSec;
+        let goalHScore = 0, rbBHscore = 0, totalHScore = 0, actualTime, splitTime;
         let newMerge = [];
 
-        let cmp2 = function (x, y) {
+        let cmp2 = function (x: any, y: any) {
             return x > y ? 1 : x < y ? -1 : 0;
         };
-        let cmp3 = function (x, y) {
+        let cmp3 = function (x: any, y: any) {
             let data = x.split(":");
             let data_time1 = (parseInt(data[0]) * 60) + data[1];
             data = y.split(":");
@@ -1726,10 +1700,8 @@ export class InnermatchcenterPage {
 
         };
 
-        merged_1.sort(function (a, b) {
-            //console.log("hh");
-            //console.log(a);
-            //console.log(b);
+        merged_1.sort(function (a: any, b: any) {
+
             //note the minus before -cmp, for descending order
             return cmp2(
                 [cmp2(a.quater, b.quater), cmp2(a.act_time, b.act_time)],
@@ -1766,20 +1738,15 @@ export class InnermatchcenterPage {
         let qrTimeLimit = Array();
         let flagchk = true;
         let temp = 1;
-        let tempMin = 0;
         let maxScore = 0;
-        let tempQr = 1;
-        // let tempValue = 0;
         let minSore = 0;
         let minScore = 0;
         let timeDuration = 20;
 
-        //   angular.forEach(this.newMerge, function( value3 ,key3) {
         this.newMerge.forEach((value3: any, key3: any) => {
             if (flagchk) {
                 qrTimeLimit[0] = 0;
                 flagchk = false;
-                tempMin = 0;
                 qrTimeLimit[temp] = 1;
 
             }
@@ -1804,59 +1771,38 @@ export class InnermatchcenterPage {
             actualTime = value3.act_time;
 
             splitTime = actualTime.split(":");
-
-            minuteVal = splitTime[1];
-            let TotalSec = (parseInt(splitTime[0]) * 60) + parseInt(splitTime[1]);
-            totalSec = (minuteVal / 60).toFixed(2);
-
-            // let TotalTime = parseFloat(splitTime[0] + (splitTime[1]) / 60);
-
             let addQrTime = (value3.quater - 1) * timeDuration * 60;
             timeTotalGlobal = parseInt((splitTime[0] * 60) + (splitTime[1]) + (addQrTime));
-
-
-
-            // alert(actualTime+","+TotalSec+"--"+timeTotalGlobal);
             if ((value3.team_type) == 'home') {
                 if (value3.quater == '1') {
                     if (value3.stat_id == '1') {
-                        // goalHScore+=6;
                         goalHScore = goalHScore + 6;
-
                     }
                     else {
-                        //rbBHscore+=1;
                         rbBHscore = rbBHscore + 1;
                     }
                 }
                 else if (value3.quater == '2') {
                     if (value3.stat_id == '1') {
-                        //goalHScore+=6;
                         goalHScore = goalHScore + 6;
-
                     }
                     else {
-                        // rbBHscore+=1;
                         rbBHscore = rbBHscore + 1;
                     }
                 }
                 else if (value3.quater == '3') {
                     if (value3.stat_id == '1') {
-                        // goalHScore+=6;
                         goalHScore = goalHScore + 6
                     }
                     else {
-                        //rbBHscore+=1;
                         rbBHscore = rbBHscore + 1;
                     }
                 }
                 else if (value3.quater == '4') {
                     if (value3.stat_id == '1') {
-                        //goalHScore+=6;
                         goalHScore = goalHScore + 6;
                     }
                     else {
-                        // rbBHscore+=1;
                         rbBHscore = rbBHscore + 1;
                     }
                 }
@@ -1919,16 +1865,8 @@ export class InnermatchcenterPage {
                         minScore = totalHScore;
                 }
             }
-
-
-            i += 1;
-
         });
-        //console.log("scores"+scores);
-
-
-
-
+       
         let ticks1 = [];
         if ((quaterAScore[0] !== '0.0') || (quaterHScore[0] !== '0.0')) {
             if (qrTimeLimit.length > 0) {
@@ -2649,7 +2587,7 @@ export class InnermatchcenterPage {
                 let merged = homeTeamScore.concat(awayTeamScore);
 
                 let scores = [];
-                let i = 1, goalHScore: any = 0, rbBHscore: any = 0, totalHScore: any = 0, goalAScore = 0, rbBAscore = 0, totalAScore = 0, actualTime: any, splitTime: any, minuteVal: any, totalSec;
+                let goalHScore: any = 0, rbBHscore: any = 0, totalHScore: any = 0, actualTime: any, splitTime: any;
                 let newMerge = [];
 
 
@@ -2687,18 +2625,13 @@ export class InnermatchcenterPage {
                 let qrTimeLimit = Array();
                 let flagchk = true;
                 let temp = 1;
-                let tempMin = 0;
                 let maxScore: any = 0;
-                let tempQr = 1;
-                // let tempValue = 0;
-                // let minSore = 0;
                 let minScore = 0;
                 let timeDuration = 26;
                 $.each(newMerge, function (key3, value3) {
 
                     if (flagchk) {
                         qrTimeLimit[0] = 0; flagchk = false;
-                        tempMin = 0;
                         qrTimeLimit[temp] = 1;
 
                     }
@@ -2714,79 +2647,38 @@ export class InnermatchcenterPage {
                     actualTime = value3.act_time;
 
                     splitTime = actualTime.split(":");
-
-                    minuteVal = splitTime[1];
-                    let TotalSec: any = (parseInt(splitTime[0]) * 60) + parseInt(splitTime[1]);
-                    totalSec = (minuteVal / 60).toFixed(2);
-
-                    // let TotalTime = parseFloat(splitTime[0] + (splitTime[1]) / 60);
-
-                    /*
-
-                       if(tempQr == value3.quater)
-                       {
-                           timeTotalGlobal=parseInt(parseInt(splitTime[0]*60)+parseInt(splitTime[1])+parseInt(tempMin));
-                           //console.log("tempMin Q"+value3.quater+" "+tempMin);
-                          // console.log('tempQr eq='+timeTotalGlobal);
-                          //console.log("================");
-                       }
-                       else
-                       {
-                            tempQr =  value3.quater;
-                            tempMin = timeTotalGlobal;
-                            timeTotalGlobal= parseInt(parseInt(tempMin) + parseInt(splitTime[0]*60) + parseInt(splitTime[1]));
-                            //console.log("tempMin- Q"+value3.quater+" "+tempMin);
-                            //console.log('tempQr neq='+timeTotalGlobal);
-                            //console.log("================");
-
-                       }*/
-
                     let addQrTime: any = (value3.quater - 1) * timeDuration * 60;
                     timeTotalGlobal = (parseInt(splitTime[0]) * 60) + parseInt(splitTime[1]) + parseInt(addQrTime);
-
-
-
-                    // alert(actualTime+","+TotalSec+"--"+timeTotalGlobal);
                     if ((value3.team_type) == 'home') {
                         if (value3.quater == '1') {
                             if (value3.stat_id == '1') {
-                                // goalHScore+=6;
                                 goalHScore = parseInt(goalHScore) + 6;
-
                             }
                             else {
-                                //rbBHscore+=1;
                                 rbBHscore = parseInt(rbBHscore) + 1;
                             }
                         }
                         else if (value3.quater == '2') {
                             if (value3.stat_id == '1') {
-                                //goalHScore+=6;
                                 goalHScore = parseInt(goalHScore) + 6;
-
                             }
                             else {
-                                // rbBHscore+=1;
                                 rbBHscore = parseInt(rbBHscore) + 1;
                             }
                         }
                         else if (value3.quater == '3') {
                             if (value3.stat_id == '1') {
-                                // goalHScore+=6;
                                 goalHScore = parseInt(goalHScore) + 6;
                             }
                             else {
-                                //rbBHscore+=1;
                                 rbBHscore = parseInt(rbBHscore) + 1;
                             }
                         }
                         else if (value3.quater == '4') {
                             if (value3.stat_id == '1') {
-                                //goalHScore+=6;
                                 goalHScore = parseInt(goalHScore) + 6;
                             }
                             else {
-                                // rbBHscore+=1;
                                 rbBHscore = parseInt(rbBHscore) + 1;
                             }
                         }
@@ -2801,42 +2693,31 @@ export class InnermatchcenterPage {
                     }
                     else {
                         if (value3.quater == '1') {
-                            // let q1Flag = true;
                             if (value3.stat_id == '1') {
-                                // goalHScore-=6;
                                 goalHScore = parseInt(goalHScore) - 6;
                             }
                             else {
-                                //rbBHscore-=1;
                                 rbBHscore = parseInt(rbBHscore) - 1;
                             }
                         }
                         else if (value3.quater == '2') {
-                            // let q2Flag = true;
                             if (value3.stat_id == '1') {
-                                //goalHScore-=6;
                                 goalHScore = parseInt(goalHScore) - 6;
                             }
                             else {
-                                //rbBHscore-=1;
                                 rbBHscore = parseInt(rbBHscore) - 1;
                             }
                         }
                         else if (value3.quater == '3') {
-                            let q3Flag = true;
                             if (value3.stat_id == '1') {
-                                //goalHScore-=6;
                                 goalHScore = parseInt(goalHScore) - 6;
                             }
                             else {
-                                // rbBHscore-=1;
                                 rbBHscore = parseInt(rbBHscore) - 1;
                             }
                         }
                         else if (value3.quater == '4') {
-                            // let q4Flag = true;
                             if (value3.stat_id == '1') {
-                                //goalHScore-=6;
                                 goalHScore = parseInt(goalHScore) - 6;
                             }
                             else {
@@ -2853,20 +2734,11 @@ export class InnermatchcenterPage {
                                 minScore = totalHScore;
                         }
                     }
-
-
-                    i += 1;
-
                 });
-                //console.log(scores);
-
-
-                //console.log(maxScore);
-                let ticks1 = [];
+                let ticks1: any = [];
                 if ((quaterAScore[0] !== '0.0') || (quaterHScore[0] !== '0.0')) {
                     if (qrTimeLimit.length > 0) {
                         ticks1 = [[30, 'Q1']];
-                        //ticks1=ticks1/2;
                         if ($('#q1AwayScore').html() == '-') {
 
                             $('#q1AwayScore').html(quaterAScore[0]);
@@ -3925,40 +3797,19 @@ export class InnermatchcenterPage {
                         $(this).show();
 
                     })
-                    // $('.jd_advContainer1').removeClass('jd_rmBorder');
-                    // selfarr.SortAll();
-                    //   var arr = $("#playerStatsTable tbody tr");
-                    //   arr = shuffle(arr);
-                    //   arr.each(function (index,value) {
-                    //       $(this).show();
-                    // })
-                    // console.log(arr);
                     setTimeout(function () { selfval.sortBYval(selfval.jd_active); }, 200);
                 }
 
             })
 
-            // get individual player id from datatable function
-            // $("tr[role='row']").on("click",function() {
-            //   var plyId = ($(this).children("td").eq(0).attr('data-t1'));
-            //   console.log(plyId)
-            //   if(plyId != undefined){
-            //     // self.GotoIndividual(plyId);
-            //   }
-            // });
-            //
-
             this.cmnfun.HideLoading();
         }, 100);
-        // $ionicLoading.hide();
         //Player End
         this.showDataTable = true;
     }
     clickhunk() {
-        // alert('hello');
     }
-    sortBYval(val) {
-        // this.sortBY('GB');
+    sortBYval(val: any) {
         var idname = this.jd_active;
         $("." + idname).trigger("click");
         $("." + idname).click(function () {
@@ -3975,11 +3826,9 @@ export class InnermatchcenterPage {
         if (this.reverse == true) {
             this.reverse = false;
             this.orderByFieldName = this.jd_active;
-            //	$(this).addClass("active1");
         } else {
             this.reverse = false;
             this.orderByFieldName = this.jd_active;
-            //$(this).addClass("active1");
         }
 
     }
