@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:536517924736:android:d6f85c674c8bc32ea59365",
+        "mobilesdk_app_id": "1:536517924736:android:2302ffd430b0cacda59365",
         "android_client_info": {
-          "package_name": "com.support.vafalive"
+          "package_name": "com.ionicframework.yjf"
         }
       },
       "oauth_client": [
@@ -30,6 +30,14 @@
             {
               "client_id": "536517924736-60ip7ia1k5ntvld1b4vfeljh749i6ili.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "536517924736-1u76rfhu1klsed6k2g1aibvlrmjajdnv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ionicframework.yjfl",
+                "app_store_id": "1185403508"
+              }
             }
           ]
         }

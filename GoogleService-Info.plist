@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>536517924736-cqqond50687559i30ijl0nd8gvpgiu0t.apps.googleusercontent.com</string>
+	<string>536517924736-1u76rfhu1klsed6k2g1aibvlrmjajdnv.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.536517924736-cqqond50687559i30ijl0nd8gvpgiu0t</string>
+	<string>com.googleusercontent.apps.536517924736-1u76rfhu1klsed6k2g1aibvlrmjajdnv</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDoBA8F2U9_TMShbp4--CHgSMOWcBvA9dM</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.support.vafalive</string>
+	<string>com.ionicframework.yjfl</string>
 	<key>PROJECT_ID</key>
 	<string>yjfl-live-aef1b</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:536517924736:ios:9e005c08ed81fd0ba59365</string>
+	<string>1:536517924736:ios:71eb663027c21d30a59365</string>
 	<key>DATABASE_URL</key>
 	<string>https://yjfl-live-aef1b.firebaseio.com</string>
 </dict>
