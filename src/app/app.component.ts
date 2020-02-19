@@ -18,12 +18,7 @@ import { ProductListProvider } from '../providers/product-list/product-list';
 import { CommomfunctionProvider } from '../providers/commomfunction/commomfunction';
 import { FirebaseAnalyticsProvider } from '../providers/firebase-analytics/firebase-analytics';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id';
-
-// import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { ClubAdminPage } from '../pages/club-admin/club-admin';
-// import { INTERNAL_BROWSER_DYNAMIC_PLATFORM_PROVIDERS } from '@angular/platform-browser-dynamic';
-// import { ClubAdminPage } from '../pages/club-admin/club-admin';
-// import { LiveScorePage } from '../pages/live-score/live-score';
 
 @Component({
   templateUrl: 'app.html'

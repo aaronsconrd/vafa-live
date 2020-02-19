@@ -253,7 +253,7 @@ var NewaccountPage = /** @class */ (function () {
         // }else if(this.userdata.last_name=='' || this.userdata.last_name==null || this.userdata.last_name==undefined){
         //   this.cmnfun.showToast('Please enter your last name');
         // }else{
-        var subject = 'VAFA Live Support';
+        var subject = 'YJFL Live Support';
         // +'-'+this.userdata.first_name+' '+this.userdata.last_name;
         console.log(subject);
         this.SocialSharing.shareViaEmail('', subject, ['admin@completesportsmanagement.com.au']).then(function () {

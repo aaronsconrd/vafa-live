@@ -40,17 +40,17 @@
     "@ionic-native/youtube-video-player": "^4.18.0",
     "@ionic/storage": "2.2.0",
     "@types/datatables.net": "^1.10.13",
-    "cordova-android": "^7.1.4",
+    "cordova-android": "7.1.4",
     "cordova-android-play-services-gradle-release": "4.0.0",
-    "cordova-ios": "^5.1.1",
+    "cordova-ios": "^5.1.0",
     "cordova-plugin-camera": "^2.4.1",
     "cordova-plugin-compat": "^1.2.0",
-    "cordova-plugin-device": "^2.0.2",
-    "cordova-plugin-facebook4": "^1.7.4",
-    "cordova-plugin-file": "^4.3.3",
-    "cordova-plugin-file-transfer": "^1.6.3",
-    "cordova-plugin-filepath": "1.4.2",
-    "cordova-plugin-firebase-analytics": "1.1.1",
+    "cordova-plugin-device": "^2.0.3",
+    "cordova-plugin-facebook4": "^1.10.1",
+    "cordova-plugin-file": "^6.0.2",
+    "cordova-plugin-file-transfer": "^1.7.1",
+    "cordova-plugin-filepath": "^1.4.2",
+    "cordova-plugin-firebase-analytics": "^1.1.1",
     "cordova-plugin-inappbrowser": "^3.2.0",
     "cordova-plugin-inapppurchase": "^1.2.0",
     "cordova-plugin-ionic-keyboard": "^2.2.0",
@@ -89,7 +89,9 @@
   "cordova": {
     "plugins": {
       "cordova-plugin-x-socialsharing": {
-        "ANDROID_SUPPORT_V4_VERSION": "24.1.1+"
+        "ANDROID_SUPPORT_V4_VERSION": "24.1.1+",
+        "PHOTO_LIBRARY_ADD_USAGE_DESCRIPTION": "This app requires photo library access to function properly.",
+        "PHOTO_LIBRARY_USAGE_DESCRIPTION": "This app requires photo library access to function properly."
       },
       "cordova-plugin-youtube-video-player": {},
       "cordova-plugin-inappbrowser": {},
@@ -99,7 +101,6 @@
       },
       "cordova-plugin-inapppurchase": {},
       "cordova-plugin-streaming-media": {},
-      "cordova-plugin-file": {},
       "cordova-plugin-file-transfer": {},
       "cordova-plugin-camera": {
         "CAMERA_USAGE_DESCRIPTION": "Allow the app to access your camera",
@@ -118,6 +119,8 @@
       "cordova-plugin-firebase-analytics": {
         "FIREBASE_CORE_VERSION": "16.0.+"
       },
+      "cordova-plugin-uniquedeviceid": {},
+      "cordova-plugin-file": {},
       "cordova-android-play-services-gradle-release": {
         "PLAY-SERVICES-ADS": "18.0.0",
         "PLAY-SERVICES-ADS-IDENTIFIER": "17.0.0",
@@ -171,9 +174,7 @@
         "PLAY-SERVICES-VISION-IMAGE-LABEL": "18.0.0",
         "PLAY-SERVICES-WALLET": "17.0.0",
         "PLAY-SERVICES-WEARABLE": "17.0.0"
-      },
-      "cordova-plugin-uniquedeviceid": {},
-      "cordova-plugin-screen-orientation": {}
+      }
     },
     "platforms": [
       "ios",

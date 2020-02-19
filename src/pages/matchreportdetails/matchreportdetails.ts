@@ -160,7 +160,7 @@ export class MatchreportdetailsPage {
 
   gmailShare(img, title, createdAt, pm_vdo) {
     var text = title + "  " + createdAt;
-    this.socialSharing.shareViaEmail(text, 'VAFA Live Match', [], img).then(() => {
+    this.socialSharing.shareViaEmail(text, 'YJFL Live Match', [], img).then(() => {
       // Sharing via email is possible
     }).catch(() => {
       this.cmnfun.showToast('Sharing via email is not possible');

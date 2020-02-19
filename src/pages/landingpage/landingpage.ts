@@ -649,7 +649,7 @@ export class LandingpagePage {
       product_id = this.processproduct.getplusproduct();
       // product_id = PremiumPlus2019;
     } else if (val == 5) {
-      this.ga.trackEvent("VAFA Pass", "Selected", "2019", 1);
+      this.ga.trackEvent("YJFL Pass", "Selected", "2019", 1);
       product_id = VafaPass;
     }
     this.User.product_id = product_id;

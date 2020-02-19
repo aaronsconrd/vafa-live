@@ -360,7 +360,7 @@ export class ProductListProvider {
         let ProductType = '2019 Game Pass';
         return ProductType;
       } else if (product == this.ProductList.VafaPass ) {
-        let ProductType = '2019 VAFA Pass';
+        let ProductType = '2019 YJFL Pass';
         return ProductType;
       }
     } else {
