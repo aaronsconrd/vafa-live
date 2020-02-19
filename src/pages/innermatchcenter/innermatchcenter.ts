@@ -1686,7 +1686,7 @@ export class InnermatchcenterPage {
 
         let scores = [];
         let goalHScore = 0, rbBHscore = 0, totalHScore = 0, actualTime, splitTime;
-        let newMerge = [];
+        // let newMerge = [];
 
         let cmp2 = function (x: any, y: any) {
             return x > y ? 1 : x < y ? -1 : 0;
@@ -1733,7 +1733,7 @@ export class InnermatchcenterPage {
 
         let quaterHScore = ["0.0", "0.0", "0.0", "0.0"];
         let quaterAScore = ["0.0", "0.0", "0.0", "0.0"];
-        let finalQr = 0;
+        // let finalQr = 0;
         let timeTotalGlobal = 0;
         let qrTimeLimit = Array();
         let flagchk = true;
@@ -1767,7 +1767,7 @@ export class InnermatchcenterPage {
             }
 
 
-            finalQr = value3.quater;
+            // finalQr = value3.quater;
             actualTime = value3.act_time;
 
             splitTime = actualTime.split(":");
@@ -2588,7 +2588,7 @@ export class InnermatchcenterPage {
 
                 let scores = [];
                 let goalHScore: any = 0, rbBHscore: any = 0, totalHScore: any = 0, actualTime: any, splitTime: any;
-                let newMerge = [];
+                
 
 
                 let cmp = function (x, y) {
@@ -2611,16 +2611,15 @@ export class InnermatchcenterPage {
                         [cmp(b.quater, a.quater), cmp1(b.act_time, a.act_time)]
                     );
                 });
-
+                let newMerge = [];
                 $.each(merged, function (key5, value5) {
                     if (value5.stat_id == '1' || value5.stat_id == '2' || value5.stat_id == '3')
                         newMerge.push(value5);
-
                 });
 
                 //console.log('==old merged ARRAY=='); console.log(merged);console.log(merged.length);console.log('======');console.log('==new merged ARRAY==');console.log(newMerge);console.log(newMerge.length);
                 //let res;
-                let finalQr = 0;
+                // let finalQr = 0;
                 let timeTotalGlobal = 0;
                 let qrTimeLimit = Array();
                 let flagchk = true;
@@ -2643,7 +2642,7 @@ export class InnermatchcenterPage {
                             qrTimeLimit[temp] = parseInt(qrTimeLimit[temp - 1]) + (parseInt(actualTime1[0]) * 60) + parseInt(actualTime1[1]);
                         }
                     }
-                    finalQr = value3.quater;
+                    // finalQr = value3.quater;
                     actualTime = value3.act_time;
 
                     splitTime = actualTime.split(":");
@@ -3762,21 +3761,21 @@ export class InnermatchcenterPage {
                 // this.sortBYType("away");
             });
 
-            function shuffle(array) {
-                var currentIndex = array.length, temporaryValue, randomIndex;
+            // function shuffle(array) {
+            //     var currentIndex = array.length, temporaryValue, randomIndex;
 
-                // While there remain elements to shuffle...
-                while (0 !== currentIndex) {
-                    // Pick a remaining element...
-                    randomIndex = Math.floor(Math.random() * currentIndex);
-                    currentIndex -= 1;
-                    // And swap it with the current element.
-                    temporaryValue = array[currentIndex];
-                    array[currentIndex] = array[randomIndex];
-                    array[randomIndex] = temporaryValue;
-                }
-                return array;
-            }
+            //     // While there remain elements to shuffle...
+            //     while (0 !== currentIndex) {
+            //         // Pick a remaining element...
+            //         randomIndex = Math.floor(Math.random() * currentIndex);
+            //         currentIndex -= 1;
+            //         // And swap it with the current element.
+            //         temporaryValue = array[currentIndex];
+            //         array[currentIndex] = array[randomIndex];
+            //         array[randomIndex] = temporaryValue;
+            //     }
+            //     return array;
+            // }
 
             $('.allTeam').on('click', function () {
                 $('.jd_advContainer1').addClass('jd_rmBorder');
