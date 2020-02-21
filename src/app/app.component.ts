@@ -6,12 +6,12 @@ import { Events } from 'ionic-angular';
 import { AjaxProvider } from '../providers/ajax/ajax';
 
 import { HomePage } from '../pages/home/home';
-import { MatchreportPage } from '../pages/matchreport/matchreport';
+// import { MatchreportPage } from '../pages/matchreport/matchreport';
 import { MatchcenterPage } from '../pages/matchcenter/matchcenter';
 import { FixturePage } from '../pages/fixture/fixture';
-import { PostmatchPage } from '../pages/postmatch/postmatch';
+// import { PostmatchPage } from '../pages/postmatch/postmatch';
 import { LadderPage } from '../pages/ladder/ladder';
-import { GoalkickersPage } from '../pages/goalkickers/goalkickers';
+// import { GoalkickersPage } from '../pages/goalkickers/goalkickers';
 import { Storage } from '@ionic/storage';
 import { LocalDataProvider } from '../providers/local-data/local-data';
 import { ProductListProvider } from '../providers/product-list/product-list';
