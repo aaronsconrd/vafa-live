@@ -204,18 +204,44 @@ export class AjaxProvider {
       .catch(error => error)
   }
 
+  /** New flow with club admin Start */
+
+  /**
+   * Check password
+   * @param params {password:pin} 
+   */
   checkPasscode(params: any) {
-    let config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
-    return this.http.post(baseurl + '/score/custom/check-passcode', params, config).map(res => res).catch(error => error)
+    let config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } };
+    return this.http.post(baseurl + '/score/custom/verifyPassword', params, config).map(res => res).catch(error => error)
   }
 
   setBestPlayers(params: any) {
-    let config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
+    let config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } };
     return this.http.post(baseurl + '/score/custom/best-playes', params, config).map(res => res).catch(error => error)
   }
 
   setgoalKickers(params: any) {
-    let config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, };
+    let config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } };
     return this.http.post(baseurl + '/score/custom/goal-kickers', params, config).map(res => res).catch(error => error)
   }
+
+  /**
+   * Game Information
+   * @param params 
+   */
+  getgameInformation(params: any) {
+    let config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } };
+    return this.http.post(baseurl + '/score/custom/getGameInformation', params, config).map(res => res).catch(error => error)
+  }
+
+  /**
+   * Update Goal Api
+   * @param params 
+   */
+  latestfixturequaterTimeScore(params: any) {
+    let config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } };
+    return this.http.post(baseurl + 'score/default/latest-fixture-quater-and-time-score', params, config).map(res => res).catch(error => error)
+  }
+
+  /** New flow with club admin End */
 }

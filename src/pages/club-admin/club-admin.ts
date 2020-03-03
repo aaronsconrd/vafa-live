@@ -38,25 +38,29 @@ export class ClubAdminPage {
   }
 
   checkPin() {
-    // try {
-    //   this.cmnfun.showLoading('Please wait...');
-    //   this.ajax.checkPasscode(this.pin).subscribe((res: any) => {
-    //     this.cmnfun.HideLoading();
-    //     if (res.response == 1) {
-    //       this.navCtrl.push(LiveScorePage);
-    //     } else {
-    //       this.cmnfun.showToast('');
-    //     }
-    //   },error => {
-    //   console.log(error);
-    //    this.cmnfun.showToast('');
-    // });
-    // } catch (error) {
-    //   console.error('Error =>', error);
-    //   this.cmnfun.showToast('');
-    //   this.cmnfun.HideLoading();
-    // }
-    this.navCtrl.push('LiveScorePage');
+    try {
+      this.cmnfun.showLoading('Please wait...');
+      let passData = {
+        password: this.pin
+      }
+      this.ajax.checkPasscode(passData).subscribe((res: any) => {
+        this.cmnfun.HideLoading();
+        if (res.response == 1) {
+          // this.navCtrl.push(LiveScorePage);
+        } else {
+          this.cmnfun.showToast('');
+        }
+      }, error => {
+        this.cmnfun.HideLoading();
+        console.log(error);
+        this.cmnfun.showToast('');
+      });
+    } catch (error) {
+      console.error('Error =>', error);
+      this.cmnfun.showToast('');
+      this.cmnfun.HideLoading();
+    }
+    // this.navCtrl.push('LiveScorePage');
   }
 
   remove() {
