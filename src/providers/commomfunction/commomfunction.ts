@@ -32,7 +32,7 @@ export class CommomfunctionProvider {
     // toast.present();
     let msg1 = 'Oops! Something went wrong. Try closing and re-opening the App.'
     let alert = this.alertCtrl.create({
-      subTitle: msg1,
+      subTitle: msg ? msg : msg1,
       cssClass: 'CusttoastCtrl',
       buttons: ['OK']
     });

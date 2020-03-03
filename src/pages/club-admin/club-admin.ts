@@ -5,6 +5,7 @@ import { Component, Input, Output, EventEmitter } from "@angular/core";
 import { AjaxProvider } from '../../providers/ajax/ajax';
 import { LocalDataProvider } from '../../providers/local-data/local-data';
 import { CommomfunctionProvider } from '../../providers/commomfunction/commomfunction';
+import { LiveScorePage } from '../live-score/live-score';
 
 /**
  * Generated class for the ClubAdminPage page.
@@ -41,14 +42,15 @@ export class ClubAdminPage {
     try {
       this.cmnfun.showLoading('Please wait...');
       let passData = {
-        password: this.pin
+        passcode: this.pin
       }
       this.ajax.checkPasscode(passData).subscribe((res: any) => {
         this.cmnfun.HideLoading();
-        if (res.response == 1) {
-          // this.navCtrl.push(LiveScorePage);
+        if (res.message == "Invalid Passcode") {
+          this.cmnfun.showToast(res.message);
+          this.pin = "";
         } else {
-          this.cmnfun.showToast('');
+          this.navCtrl.push(LiveScorePage);
         }
       }, error => {
         this.cmnfun.HideLoading();
@@ -60,7 +62,6 @@ export class ClubAdminPage {
       this.cmnfun.showToast('');
       this.cmnfun.HideLoading();
     }
-    // this.navCtrl.push('LiveScorePage');
   }
 
   remove() {

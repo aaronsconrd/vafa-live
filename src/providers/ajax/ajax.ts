@@ -212,7 +212,7 @@ export class AjaxProvider {
    */
   checkPasscode(params: any) {
     let config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } };
-    return this.http.post(baseurl + '/score/custom/verifyPassword', params, config).map(res => res).catch(error => error)
+    return this.http.post(baseurl + '/score/default/verify-passcode', params, config).map(res => res).catch(error => error)
   }
 
   setBestPlayers(params: any) {
