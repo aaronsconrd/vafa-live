@@ -44,6 +44,7 @@ export class RegisteredpassPage {
 				password: this.getPassword1.user_password
 			}).subscribe((res) => {
 				this.cmnfun.HideLoading();
+				localStorage.isLogin = 'true';
 				console.log(res);
 				this.fulluserdetails = res;
 				if (this.fulluserdetails.code == 3) {
@@ -100,7 +101,6 @@ export class RegisteredpassPage {
 						this.events.publish('userlogin:changed', item3);
 					}
 				}
-
 			}, error => {
 				this.cmnfun.HideLoading();
 				this.cmnfun.showToast2('Some thing Unexpected happen please try again');

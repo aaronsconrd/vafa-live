@@ -286,20 +286,25 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     console.log(this.seletedTitle);
+    if (page.title == "Club Admin") {
+      if (localStorage.isLogin != "true") {
+        this.accessDenied();
+        return false;
+      }
+    }
     if (page.title != this.seletedTitle) {
       this.pages.forEach(eachObj => {
-        console.log(eachObj.title);
-        if (page.title == eachObj.title) {
-          eachObj.itemseleted = 'seleted';
-        }
-        else {
-          eachObj.itemseleted = 'notseleted';
-        }
+        eachObj.itemseleted = page.title == eachObj.title ? 'seleted' : 'notseleted';
+        // if (page.title == eachObj.title) {
+        //   eachObj.itemseleted = 'seleted';
+        // }
+        // else {
+        //   eachObj.itemseleted = 'notseleted';
+        // }
       });
       this.accountselect = 'notseleted';
       this.seletedTitle = page.title;
       this.nav.setRoot(page.component);
-
     }
   }
 

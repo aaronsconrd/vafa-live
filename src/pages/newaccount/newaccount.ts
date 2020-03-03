@@ -255,6 +255,7 @@ export class NewaccountPage {
             this.ajax.post('custom/user-logout', LogoutData).subscribe((res) => {
               console.log(res);
               this.ApiResponse = res;
+              localStorage.removeItem('isLogin');
               this.storage.remove('userData');
               this.storage.remove('FullData');
               this.storage.remove('checkLogin');
